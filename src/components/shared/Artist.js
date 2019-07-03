@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 export default ({ artist, tag }) => {
   const Tag = tag;
   return (
-    <div className="position-relative text-light" style={{ width: '100%', backgroundColor: '#d8d8d8', marginBottom: '30px' }}>
+    <div className="position-relative artist" style={{ width: '100%', backgroundColor: '#d8d8d8', marginBottom: '30px' }}>
       {artist.frontmatter.announced && artist.frontmatter.image
         ?
         <PreviewCompatibleImage
@@ -16,7 +16,12 @@ export default ({ artist, tag }) => {
         :
         <div style={{ width: '100%', paddingBottom: '100%' }}></div>
       }
-      <div className="overlay-centered">
+      <div className="artist-name" style={{
+        width: '100%',
+        textAlign: 'center',
+        position: 'absolute',
+        bottom: 0
+      }}>
         <Tag className={'m-0'}>
           {artist.frontmatter.announced
             ?

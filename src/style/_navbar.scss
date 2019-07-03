@@ -1,79 +1,62 @@
-
 .navbar {
- .main-menu {
-  font-family: $teko;
-  font-size: 2.5rem;
-  a.active {
-    text-decoration: underline;
-    text-decoration-color: theme-color("primary");
-    text-underline-position: under
+  .nav-link {
+    padding-bottom: 0px;
+    padding-top: 0px;
   }
- }
-}
-
-.navbar .nav-link {
-  padding-bottom: 0px;
-  padding-top: 0px;
-}
-
-.navbar-toggler {
-  .icon-bar {
-    background-color: $icon-bar-color;
+  .navbar-brand {
+    padding: 0;
+    margin: 0;
   }
-  .top-bar {
-    transform: rotate(0);
-  }
-  .middle-bar {
-    opacity: 1;
-  }
-  .bottom-bar {
-    transform: rotate(0);
-  }
-  &.collapsed {
+  .navbar-toggler {
+    // http://kylegoslan.co.uk/bootstrap-4-hamburger-menu-animation/
+    .icon-bar {
+      width: 27px; 
+      height: 3px;
+      display: block;
+      transition: all 0.2s;
+      margin-top: 5px;
+    }
     .top-bar {
-      transform: rotate(45deg);
-      transform-origin: 10% 10%;
+      transform: rotate(0);
     }
     .middle-bar {
-      opacity: 0;
+      opacity: 1;
     }
     .bottom-bar {
-      transform: rotate(-45deg);
-      transform-origin: 10% 90%;
+      transform: rotate(0);
+    }
+    &.collapsed {
+      .top-bar {
+        transform: rotate(45deg);
+        transform-origin: 10% 10%;
+      }
+      .middle-bar {
+        opacity: 0;
+      }
+      .bottom-bar {
+        transform: rotate(-45deg);
+        transform-origin: 10% 90%;
+      }
+    }
+  }
+  .navbar-nav-left {
+    padding: 1.75rem;
+    @include media-breakpoint-down(xs) { 
+      text-align: center;
+    }
+    @include media-breakpoint-up(sm) { 
+      height: 100vh !important;
+      min-width: 200px;
+      position: absolute;
+      left: 0px;
+      color: white;
+    }
+  }
+  .nav-social {
+    display: block;
+    > li {
+      display: inline-block !important;
     }
   }
 }
 
-.navbar {
- .main-menu {
-  a.active {
-    text-decoration: underline;
-    text-decoration-color: theme-color("primary");
-    text-underline-position: under
-  }
- }
-}
-.navbar-nav-left {
-  padding: ($navbar-toggler-padding-x + $navbar-padding-x) 40px ;
-  @include media-breakpoint-down(md) { 
-    background-color: $dark
-  }
-  @include media-breakpoint-down(xs) { 
-    text-align: center;
-  }
-  @include media-breakpoint-up(sm) { 
-    top: $nav-height;
-    height: 100vh !important;
-    min-width: 200px;
-    position: absolute;
-    left: 0px;
-    color: white;
-  }
-}
-
-.nav-social {
-  display: block;
-  > li {
-    display: inline-block !important;
-  }
-}

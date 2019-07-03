@@ -75,7 +75,12 @@ module.exports = themeOptions => {
       {
         resolve: 'gatsby-plugin-netlify-cms',
         options: {
-          modulePath: `${__dirname}/src/cms/cms.js`,
+          modulePath: `${__dirname}/src/cms.js`,
+          manualInit: true,
+          enableIdentityWidget: false,
+          manualInit: true,
+          publicPath: 'admin',
+          htmlTitle: 'Content Manager'
         },
       },
       {
@@ -97,6 +102,13 @@ module.exports = themeOptions => {
         },
       },
       {
+        // This is only needed temporarily. Themes will automatically be transpiled in later versions.
+        resolve: 'gatsby-plugin-compile-es6-packages',
+        options: {
+          modules: ['gatsby-theme-psg']
+        }
+      },
+      {
         resolve: `gatsby-plugin-manifest`,
         options: {
           name: themeOptions.title,
@@ -110,15 +122,5 @@ module.exports = themeOptions => {
       },
       'gatsby-plugin-offline',
     ],
-    mapping: {
-      'MarkdownRemark.frontmatter.artists': `MarkdownRemark.frontmatter.name`,
-      'MarkdownRemark.frontmatter.mainact': `MarkdownRemark.frontmatter.name`,
-      'MarkdownRemark.frontmatter.artist': `MarkdownRemark.frontmatter.name`,
-      'MarkdownRemark.frontmatter.artist1': `MarkdownRemark.frontmatter.name`,
-      'MarkdownRemark.frontmatter.artist2': `MarkdownRemark.frontmatter.name`,
-      'MarkdownRemark.frontmatter.artist3': `MarkdownRemark.frontmatter.name`,
-      'MarkdownRemark.frontmatter.info1': `MarkdownRemark.frontmatter.title`,
-      'MarkdownRemark.frontmatter.info2': `MarkdownRemark.frontmatter.title`,
-    },
   }
 }

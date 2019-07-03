@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import logo from "./logo.svg"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Tickets from '../../Tickets'
 import Social from "../../shared/Social"
 import useSiteMetadata from "../../shared/SiteMetadata";
+import Logo from "./Logo";
 
 class Navbar_ extends React.Component {
   constructor(props) {
@@ -61,7 +61,7 @@ const NavbarTemplate = ({ scroll, isHome }) => {
         {!isHome || scroll
           ?
           <Link to="/" className="navbar-brand">
-            <img src={logo} alt={title} />
+            <Logo title={title} />
           </Link>
           : ''
         }
