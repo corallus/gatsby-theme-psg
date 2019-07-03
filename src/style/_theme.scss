@@ -1,0 +1,68 @@
+.navbar {
+  &.is-home {
+  background-color: rgba(0,0,0,0) !important;
+  }
+  &.scroll {
+  background-color: rgba(0,0,0,1) !important;
+  }
+  .navbar-brand {
+    padding: 0;
+    img {
+      max-height: 58px;
+    }
+  }
+}
+
+.navbar-toggler {
+  font-size: 2.5rem !important;
+  font-family: $headings-font-family;
+  border: 0;
+  .bar {
+    padding-bottom: 10px;
+  }
+}
+
+h1, h2, h3, .h1, .h2, .h3, .btn { text-transform: uppercase; }
+
+.footer-links a {
+  color: white
+}
+
+$btn-height: 60px;
+
+.btn {
+  height: $btn-height;
+  svg {
+    padding-bottom: 6px;
+  }
+}
+
+.btn-lg {
+  height: 84px;
+}
+
+.btn-transparent {
+  background-color: rgba(0,0,0,.7);
+  border: 0;
+  height: $btn-height - 6px; 
+  border-radius: 7px;
+}
+
+.section-info, .section-contact {
+  background-color: #f5f5f5;
+}
+
+.navbar .social-link {
+  line-height: $btn-height;
+  color: white;
+}
+
+.lead {
+  h1 {
+    margin: 0
+  }
+}
+
+b, strong {
+  font-weight: $font-weight-bold;
+}

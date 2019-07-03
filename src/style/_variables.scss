@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Teko');
+
+$teko: 'Teko', sans-serif;
+
+$font-family-base: 'Roboto', sans-serif;
+$headings-font-family: $teko;
+
+$font-size-base: 1.4rem;
+
+$h1-font-size:                3.5rem;
+$h2-font-size:                4rem;
+$h3-font-size:                3rem;
+$h4-font-size:                2rem;
+$headings-font-weight:        normal;
+
+$btn-padding-y:               0;
+$btn-font-size:               2.5rem;
+$btn-font-size-sm:            1.5rem;
+$btn-padding-y-lg:            0;
+$btn-font-size-lg:            3.5rem;
+$btn-font-family:             $teko;
+$btn-border-width:            3px;
+
+$nav-height: 76px;
+
+$dark: black;
+$navbar-dark-color:                 $white;
+$navbar-dark-hover-color:           rgba($white, .75);
+$navbar-dark-active-color:          $white;
+$navbar-dark-disabled-color:        rgba($white, .25);
+$navbar-dark-toggler-icon-bg:       str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255,255,255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23");
+$navbar-dark-toggler-border-color:  rgba($white, .0);
+$enable-rounded:                    false;
+
+$icon-bar-color: white;
+
+$theme-colors: (
+  "dark": $black,
+  "primary": #6b00ff
+);
