@@ -46,10 +46,9 @@ class Tickets extends React.Component {
         return (
             <React.Fragment>
                 <Button
-                    variant="outline-light"
                     size={this.props.size}
                     onClick={() => this.setState({ modalShow: true })}
-                    className="ticket-button"
+                    className="btn-tickets"
                 >
                     TICKETS <MdArrowForward size={32} />
                 </Button>

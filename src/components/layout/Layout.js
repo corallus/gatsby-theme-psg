@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
-import useSiteMetadata from '../shared/SiteMetadata'
+import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import '../../style/all.scss'
 import { globalHistory } from "@reach/router"

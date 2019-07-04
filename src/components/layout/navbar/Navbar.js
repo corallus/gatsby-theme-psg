@@ -3,9 +3,10 @@ import { Link } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import Tickets from '../../Tickets'
-import Social from "../../shared/Social"
-import useSiteMetadata from "../../shared/SiteMetadata";
+import Social from "../../Social"
+import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
+import './navbar.scss'
 
 class Navbar_ extends React.Component {
   constructor(props) {

@@ -2,20 +2,16 @@ import React from 'react'
 import { Button, Modal } from 'react-bootstrap'
 import { MdPlayCircleOutline } from 'react-icons/md';
 
-class VideoModal extends React.Component {
-    render() {
-        return (
-            <Modal {...this.props} aria-labelledby="contained-modal-title-vcenter" centered>
-                    <video width="100%" controls>
-                        <source src="video.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-            </Modal>
-        );
-    }
+export const Video = ({src}) => {
+    return (
+        <video width="100%" controls>
+            <source src={src} type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    )
 }
 
-class Video extends React.Component {
+class VideoModal extends React.Component {
     constructor(...args) {
         super(...args);
 
@@ -37,10 +33,12 @@ class Video extends React.Component {
                     <MdPlayCircleOutline /> Watch promo
                 </Button>
 
-                <VideoModal size="lg" show={this.state.modalShow} onHide={modalClose} />
+                <Modal size="lg" show={this.state.modalShow} onHide={modalClose} aria-labelledby="contained-modal-title-vcenter" centered>
+                    <Video src={this.props.src} />
+                </Modal>
             </React.Fragment>
         );
     }
 }
 
-export default Video;
+export default VideoModal;

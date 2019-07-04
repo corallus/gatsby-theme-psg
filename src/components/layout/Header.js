@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Heading = (props) => (
+export default (props) => (
   <div
     className="img-fluid text-center"
     style={{
@@ -15,5 +15,3 @@ const Heading = (props) => (
       {props.children}
   </div>
 )
-
-export default Heading

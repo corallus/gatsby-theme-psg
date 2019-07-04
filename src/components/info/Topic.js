@@ -2,7 +2,7 @@ import React from 'react';
 import { Accordion } from 'react-bootstrap'
 import { Card } from 'react-bootstrap'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
-import { HTMLContent } from '../shared/Content'
+import HTMLContent from '../Content'
 import { graphql } from 'gatsby'
 
 export default ({ item, eventKey, handleClick, active }) => (
@@ -20,7 +20,7 @@ export default ({ item, eventKey, handleClick, active }) => (
     </Card.Header>
     <Accordion.Collapse eventKey={eventKey}>
       <Card.Body>
-        <HTMLContent className="content" content={item.html} />
+        <HTMLContent content={item.html} />
       </Card.Body>
     </Accordion.Collapse>
   </Card>

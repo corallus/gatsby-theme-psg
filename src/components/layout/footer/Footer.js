@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Social from '../../shared/Social';
-import useSiteMetadata from '../../shared/SiteMetadata';
+import Social from '../../Social';
+import useSiteMetadata from '../../SiteMetadata';
 import Logo from './Logo';
 
 const Footer = () => {
