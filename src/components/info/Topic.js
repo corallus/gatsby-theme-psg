@@ -4,6 +4,7 @@ import { Card } from 'react-bootstrap'
 import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import HTMLContent from '../Content'
 import { graphql } from 'gatsby'
+import './style.scss'
 
 export default ({ item, eventKey, handleClick, active }) => (
   <Card className="border-0" style={{marginBottom: '15px'}}>

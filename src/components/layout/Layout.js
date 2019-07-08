@@ -4,7 +4,6 @@ import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
 import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
-import '../../style/all.scss'
 import { globalHistory } from "@reach/router"
 
 const TemplateWrapper = ({ children }) => {

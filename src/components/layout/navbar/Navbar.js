@@ -2,11 +2,11 @@ import React from "react"
 import { Link } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Tickets from '../../Tickets'
+import Tickets from '../../../../../gigi/src/components/Tickets'
 import Social from "../../Social"
 import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
-import './navbar.scss'
+import './style.scss'
 
 class Navbar_ extends React.Component {
   constructor(props) {

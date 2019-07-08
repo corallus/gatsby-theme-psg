@@ -1,0 +1,4 @@
+ul.nav-footer li a { list-style: none; display: inline; }
+ul.nav-footer li:after { content: "•"; color: gray }
+ul.nav-footer li:last-child:after { content: none; }
+ul.nav-footer li:first-child a { padding-left: 0 }

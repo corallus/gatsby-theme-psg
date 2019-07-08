@@ -4,8 +4,8 @@ import HTMLContent from 'gatsby-theme-psg/src/components/Content'
 
 export default () => {
   const data = useStaticQuery(graphql`
-      query TicketQuery { 
-        markdownRemark(frontmatter: {templateKey: {eq: "tickets"}}) {
+      query ContactQuery { 
+        markdownRemark(frontmatter: {templateKey: {eq: "contact"}}) {
           html 
           frontmatter { 
             title 

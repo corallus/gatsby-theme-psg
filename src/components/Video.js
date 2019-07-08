@@ -11,7 +11,7 @@ export const Video = ({src}) => {
     )
 }
 
-class VideoModal extends React.Component {
+export class VideoModal extends React.Component {
     constructor(...args) {
         super(...args);
 
@@ -41,4 +41,4 @@ class VideoModal extends React.Component {
     }
 }
 
-export default VideoModal;
+export default Video;

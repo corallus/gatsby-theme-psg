@@ -1,0 +1,13 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@include media-breakpoint-up(md) { 
+  .carousel-control-prev {
+    left: -15%;
+  }
+
+  .carousel-control-next {
+    right: -15%;
+  }
+}

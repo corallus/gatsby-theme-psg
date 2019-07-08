@@ -1,14 +1,15 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import Social from '../../Social';
-import useSiteMetadata from '../../SiteMetadata';
-import Logo from './Logo';
+import Social from '../../Social'
+import useSiteMetadata from '../../SiteMetadata'
+import Logo from './Logo'
+import './style.scss'
 
 const Footer = () => {
   const { menuItems, social, title } = useSiteMetadata()
   return (
-    <footer className="footer bg-dark text-light pb-5">
+    <footer className="footer pb-5">
       <div className="container text-center text-md-left">
         <div className="row justify-content-end">
           <div className="col-12 col-md-3 pl-0">
