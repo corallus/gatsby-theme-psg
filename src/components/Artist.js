@@ -2,11 +2,12 @@ import React from 'react'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import { graphql } from 'gatsby'
 
-export default ({ artist, tag }) => {
-  const Tag = tag;
+export default ({ act, tag }) => {
+  const artist = act.frontmatter.artist
+  const Tag = tag
   return (
     <div className="position-relative artist" style={{ width: '100%', backgroundColor: '#d8d8d8', marginBottom: '30px' }}>
-      {artist.frontmatter.announced && artist.frontmatter.image
+      {act.frontmatter.announced && artist.frontmatter.image
         ?
         <PreviewCompatibleImage
           imageInfo={artist.frontmatter}
@@ -23,7 +24,7 @@ export default ({ artist, tag }) => {
         bottom: 0
       }}>
         <Tag className={'m-0'}>
-          {artist.frontmatter.announced
+          {act.frontmatter.announced
             ?
             artist.frontmatter.name
             :
@@ -36,7 +37,7 @@ export default ({ artist, tag }) => {
 }
 
 export const query = graphql`
-  fragment Artist on MarkdownRemark {
+  fragment ArtistFragment on MarkdownRemark {
     excerpt(pruneLength: 400)
     id
     fields {
@@ -45,10 +46,7 @@ export const query = graphql`
     html
     frontmatter {
       name
-      lineup
-      announced
       templateKey
-      time
       image {
         childImageSharp {
           fluid(maxWidth: 800, maxHeight: 800, quality: 100) {

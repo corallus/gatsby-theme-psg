@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, StaticQuery } from 'gatsby'
 import { Tab, ButtonGroup, Nav } from 'react-bootstrap'
+import Lineup from './lineup/Lineup';
 
-class Events extends React.Component {
+class EventContainer extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
@@ -15,12 +16,13 @@ class Events extends React.Component {
           <Tab.Container id="event-tabs" defaultActiveKey={posts[0].node.id}>
             <ButtonGroup aria-label="Events" size="sm" className="text-uppercase">
               {posts.map(({ node: post }) => (
-                <Nav.Link as="button" className="btn btn-outline-primary" eventKey={post.id}>{post.frontmatter.name}</Nav.Link>
+                <Nav.Link as="button" className="btn btn-outline-primary" key={post.id} eventKey={post.id}>{post.frontmatter.name}</Nav.Link>
               ))}
             </ButtonGroup>
-            <Tab.Content>
+            <Tab.Content className="py-3">
               {posts.map(({ node: post }) => (
-                <Tab.Pane eventKey={post.id}>
+                <Tab.Pane eventKey={post.id} key={post.id}>
+                  <Lineup event={post.id} />
                   <h1 className="text-capitalize">{post.frontmatter.date}</h1>
                   <p className="lead">{post.frontmatter.location}</p>
                 </Tab.Pane>
@@ -35,7 +37,7 @@ class Events extends React.Component {
   }
 }
 
-Events.propTypes = {
+EventContainer.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
@@ -70,6 +72,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <Events data={data} count={count} />}
+    render={(data, count) => <EventContainer data={data} count={count} />}
   />
 )
