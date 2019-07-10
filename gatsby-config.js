@@ -9,6 +9,7 @@ module.exports = themeOptions => {
       social: themeOptions.social,
       navbarBackground: themeOptions.navbarBackground,
       navbarVariant: themeOptions.navbarVariant,
+      showLogo: themeOptions.showLogo,
       menuItems: themeOptions.menuItems
     },
     plugins: [

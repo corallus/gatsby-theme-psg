@@ -2,35 +2,29 @@ import React from 'react'
 import PreviewCompatibleImage from '../../PreviewCompatibleImage'
 import { graphql } from 'gatsby'
 
-export default ({ act, tag }) => {
+export default ({ act }) => {
   const artist = act.frontmatter.artist
-  const Tag = tag
   return (
-    <div className="position-relative artist" style={{ width: '100%', backgroundColor: '#d8d8d8', marginBottom: '30px' }}>
+    <div className="card mb-3 artist" style={{ backgroundColor: '#d8d8d8' }}>
       {act.frontmatter.announced && artist.frontmatter.image
         ?
         <PreviewCompatibleImage
           imageInfo={artist.frontmatter}
           alt={artist.frontmatter.name}
-          className="img-fluid position-absolute"
-          style={{ top: '0', bottom: '0', right: '0', left: '0' }} />
+          className="card-img"
+        />
         :
         <div style={{ width: '100%', paddingBottom: '100%' }}></div>
       }
-      <div className="artist-name" style={{
-        width: '100%',
-        textAlign: 'center',
-        position: 'absolute',
-        bottom: 0
-      }}>
-        <Tag className={'m-0'}>
+      <div className="card-img-overlay d-flex flex-column justify-content-end p-0">
+        <div className="card-footer rounded-0">
           {act.frontmatter.announced
             ?
             artist.frontmatter.name
             :
             'To be announced'
           }
-        </Tag>
+        </div>
       </div>
     </div>
   )
@@ -49,7 +43,7 @@ export const query = graphql`
       templateKey
       image {
         childImageSharp {
-          fluid(maxWidth: 800, maxHeight: 800, quality: 100) {
+          fluid(maxWidth: 800, maxHeight: 600, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }

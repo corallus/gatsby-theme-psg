@@ -1,21 +1,21 @@
 import React from 'react';
 import { Accordion } from 'react-bootstrap'
 import { Card } from 'react-bootstrap'
-import { FaArrowDown, FaArrowUp } from 'react-icons/fa'
 import HTMLContent from '../Content'
 import { graphql } from 'gatsby'
+import { MdArrowDownward, MdArrowUpward } from 'react-icons/md';
 import './style.scss'
 
 export default ({ item, eventKey, handleClick, active }) => (
-  <Card className="border-0" style={{marginBottom: '15px'}}>
+  <Card className="card-info border-0 text-left" style={{marginBottom: '15px'}}>
     <Card.Header className="border-0">
-      <Accordion.Toggle as={'h4'} onClick={() => handleClick(eventKey)} variant="link" eventKey={eventKey} className={'mb-0'+(active ? ' active' : '')}>
+      <Accordion.Toggle as={'h4'} onClick={() => handleClick(eventKey)} eventKey={eventKey} className={'mb-0'+(active ? ' active' : '')}>
         {item.frontmatter.title}
         {active
           ?
-          <FaArrowUp className="float-right" style={{marginTop: '9px'}} size={20} />
+          <MdArrowUpward className="float-right" />
           :
-          <FaArrowDown className="float-right" style={{marginTop: '9px'}} size={20} />
+          <MdArrowDownward className="float-right" />
         }
       </Accordion.Toggle>
     </Card.Header>

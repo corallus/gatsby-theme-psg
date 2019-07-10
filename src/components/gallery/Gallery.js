@@ -69,6 +69,7 @@ class Gallery extends React.Component {
           activeIndex={page}
           direction={direction}
           onSelect={this.handleSelect}
+          interval={null}
           nextIcon={<FaArrowCircleRight color="black" />}
           prevIcon={<FaArrowCircleLeft color="black" />}
         >

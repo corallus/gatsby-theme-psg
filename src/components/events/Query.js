@@ -17,6 +17,7 @@ export const useEventsQuery = () => {
                 templateKey
                 location
                 date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
+                dateShort: date(formatString: "DD MMM", locale: "nl-NL")
                 tickets {
                   name
                   price

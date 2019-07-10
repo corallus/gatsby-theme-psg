@@ -8,7 +8,7 @@ import { globalHistory } from "@reach/router"
 import '../../style/theme.scss'
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description, menuItems, social, image } = useSiteMetadata()
+  const { title, description, menuItems, social, image, showLogo } = useSiteMetadata()
   const isHome = globalHistory.location.pathname === '/'
   return (
     <React.Fragment>
@@ -21,7 +21,7 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={image} />
       </Helmet>
-      <Navbar menuItems={menuItems} social={social} isHome={isHome} />
+      <Navbar isHome={isHome} showLogo={showLogo} />
       {children}
       <Footer menuItems={menuItems} social={social} isHome={isHome} />
       <CookieConsent

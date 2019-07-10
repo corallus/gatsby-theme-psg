@@ -12,13 +12,13 @@ export default ({highlighted=2, numItems=-1, event=null}) => {
         ?
         <div className="row">
           {acts.slice(0, highlighted).map(({ node: post }) => (
-            <div className="col-md-6" key={post.id}>
-              <Artist act={post} tag="h3" />
+            <div className="col-md-6 artist-highlighted" key={post.id}>
+              <Artist act={post} />
             </div>
           ))}
           {acts.slice(highlighted, numItems+1).map(({ node: post }) => (
             <div className="col-md-4" key={post.id}>
-              <Artist act={post} tag="h3" />
+              <Artist act={post} />
             </div>
           ))}
         </div>
