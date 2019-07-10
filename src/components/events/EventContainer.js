@@ -11,7 +11,7 @@ export default (props) => {
       {posts.length
         ?
         <Tab.Container id="event-tabs" defaultActiveKey={posts[0].node.id}>
-          <ButtonGroup aria-label="Events" size="sm" className="text-uppercase">
+          <ButtonGroup aria-label="Events" size="sm" className="text-uppercase mx-auto">
             {posts.map(({ node: post }) => (
               <Nav.Link as="button" className="btn btn-outline-primary" key={post.id} eventKey={post.id}>{post.frontmatter.name}</Nav.Link>
             ))}

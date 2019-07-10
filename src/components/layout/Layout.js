@@ -22,7 +22,7 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:image" content={image} />
       </Helmet>
       <Navbar menuItems={menuItems} social={social} isHome={isHome} />
-      <div className="text-center text-md-left">{children}</div>
+      {children}
       <Footer menuItems={menuItems} social={social} isHome={isHome} />
       <CookieConsent
         enableDeclineButton

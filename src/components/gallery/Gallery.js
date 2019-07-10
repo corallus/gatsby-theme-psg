@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Carousel } from 'react-bootstrap'
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa'
-import Lightbox from 'react-image-lightbox';
-import 'react-image-lightbox/style.css';
+import Lightbox from 'react-image-lightbox'
+import PreviewCompatibleImage from '../PreviewCompatibleImage'
+import 'react-image-lightbox/style.css'
 import './style.scss'
 
 class Gallery extends React.Component {
@@ -14,67 +15,74 @@ class Gallery extends React.Component {
     this.handleOpen = this.handleOpen.bind(this);
 
     this.state = {
-      index: 0,
+      page: 0,
       direction: null,
-      imagesPerPage: props.itemsPerPage,
-      photoIndex: 0,
+      imageIndex: 0,
       isOpen: false,
     };
   }
 
   handleOpen(key) {
-    const { index, imagesPerPage } = this.state
-    return this.setState({ photoIndex: key + (index * imagesPerPage), isOpen: true })
+    const { page: index } = this.state
+    this.setState({ photoIndex: key + (index * this.props.imagesPerPage), isOpen: true })
   }
 
   handleSelect(selectedIndex, e) {
     this.setState({
-      index: selectedIndex,
+      page: selectedIndex,
       direction: e.direction,
     });
   }
 
   render() {
-    const { index, direction, imagesPerPage, photoIndex, isOpen } = this.state;
-    const images = this.props.images;
+    const { page, direction, imageIndex, isOpen } = this.state;
+    const { images, imagesPerPage } = this.props;
 
-    const pageNumbers = [];
+    const pages = [];
     for (let i = 1; i <= Math.ceil(this.props.images.length / imagesPerPage); i++) {
       let indexOfLastImage = i * imagesPerPage;
       let indexOfFirstImage = indexOfLastImage - imagesPerPage;
-      let images = this.props.images.slice(indexOfFirstImage, indexOfLastImage);
-      pageNumbers.push(images);
+      let page = this.props.images.slice(indexOfFirstImage, indexOfLastImage);
+      pages.push(page);
     }
     return (
       <div>
         {isOpen && (
           <Lightbox
-            mainSrc={images[photoIndex]}
-            nextSrc={images[(photoIndex + 1) % images.length]}
-            prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+            mainSrc={images[imageIndex].image.childImageSharp.fluid.src}
+            nextSrc={images[(imageIndex + 1) % images.length].image.childImageSharp.fluid.src}
+            prevSrc={images[(imageIndex + images.length - 1) % images.length].image.childImageSharp.fluid.src}
             onCloseRequest={() => this.setState({ isOpen: false })}
             onMovePrevRequest={() =>
               this.setState({
-                photoIndex: (photoIndex + images.length - 1) % images.length,
+                photoIndex: (imageIndex + images.length - 1) % images.length,
               })
             }
             onMoveNextRequest={() =>
               this.setState({
-                photoIndex: (photoIndex + 1) % images.length,
+                photoIndex: (imageIndex + 1) % images.length,
               })
             }
           />
         )}
         <Carousel
-          activeIndex={index}
+          activeIndex={page}
           direction={direction}
           onSelect={this.handleSelect}
           nextIcon={<FaArrowCircleRight color="black" />}
           prevIcon={<FaArrowCircleLeft color="black" />}
         >
 
-          {pageNumbers.map((page, i) => (
-            <Slide images={page} />
+          {pages.map((page, i) => (
+            <Carousel.Item key={i}>
+              <div className="row">
+                {page.map((image, j) => (
+                  <div key={j} onClick={() => this.handleOpen(j)} className="col-md-4" style={{ padding: '15px' }}>
+                    <PreviewCompatibleImage imageInfo={image} />
+                  </div>
+                ))}
+              </div>
+            </Carousel.Item>
           ))}
         </Carousel>
       </div>
@@ -86,7 +94,7 @@ Gallery.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-      name: PropTypes.string,
+      alt: PropTypes.string,
     })
   ),
 }

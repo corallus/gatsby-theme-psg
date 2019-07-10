@@ -121,6 +121,10 @@ const config = createConfig({
             { label: 'Tekst', name: 'body', widget: 'markdown' },
             { label: 'Info 1', name: 'info1', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title' },
             { label: 'Info 2', name: 'info2', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title' },
+            { label: 'Fotos', name: 'images', widget: 'list', required: false, fields: [
+              { label: 'Plaatje', name: 'image', widget: 'image' },
+              { label: 'Alt', name: 'alt', widget: 'string' },
+            ]},
           ]
         },
         {

@@ -83,13 +83,6 @@ module.exports = themeOptions => {
           htmlTitle: 'Content Manager'
         },
       },
-      {
-        resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
-        options: {
-          develop: true, // Activates purging in npm run develop
-          purgeOnly: ['/theme.sass']
-        },
-      }, // must be after other CSS plugins
       'gatsby-plugin-sitemap',
       {
         resolve: `gatsby-plugin-google-tagmanager`,

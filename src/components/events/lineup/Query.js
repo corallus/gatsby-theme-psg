@@ -31,6 +31,7 @@ export const useLineupQuery = () => {
                     }
                 }
                 event {
+                    id
                     frontmatter {
                         date
                     }

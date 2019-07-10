@@ -1,5 +1,5 @@
 import React from 'react'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import PreviewCompatibleImage from '../../PreviewCompatibleImage'
 import { graphql } from 'gatsby'
 
 export default ({ act, tag }) => {
