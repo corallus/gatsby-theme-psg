@@ -3,6 +3,10 @@
 @import "~bootstrap/scss/mixins";
 
 .navbar {
+  .nav-link {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
   .navbar-brand {
     padding: 0;
     margin: 0;

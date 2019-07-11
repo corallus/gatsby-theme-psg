@@ -17,7 +17,7 @@ export default ({ act }) => {
         <div style={{ width: '100%', paddingBottom: '100%' }}></div>
       }
       <div className="card-img-overlay d-flex flex-column justify-content-end p-0">
-        <div className="card-footer rounded-0">
+        <div className="card-footer rounded-0 text-center">
           {act.frontmatter.announced
             ?
             artist.frontmatter.name
