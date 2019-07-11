@@ -5,7 +5,6 @@ import Navbar from './navbar/Navbar'
 import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
-import '../../style/theme.scss'
 
 const TemplateWrapper = ({ children }) => {
   const { title, description, menuItems, social, image, showLogo } = useSiteMetadata()

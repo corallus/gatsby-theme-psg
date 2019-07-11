@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Tickets from '../../../../../gigi/src/components/Tickets'
 import Social from "../../Social"
 import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
@@ -53,7 +52,9 @@ const NavbarTemplate = ({ scroll, isHome }) => {
             <Social social={social} />
             <li className="nav-item">
               <span className="nav-link">
-                <Tickets />
+                <Link to="/tickets" className="btn btn-tickets">
+                  TICKETS <MdArrowForward size={32} />
+                </Link>
               </span>
             </li>
           </ul>
