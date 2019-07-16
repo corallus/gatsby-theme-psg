@@ -9,7 +9,7 @@ module.exports = themeOptions => {
       social: themeOptions.social,
       navbarBackground: themeOptions.navbarBackground,
       navbarVariant: themeOptions.navbarVariant,
-      showLogo: themeOptions.showLogo,
+      scrollOffset: themeOptions.scrollOffset,
       menuItems: themeOptions.menuItems
     },
     plugins: [
@@ -79,7 +79,6 @@ module.exports = themeOptions => {
           modulePath: `${__dirname}/src/cms.js`,
           manualInit: true,
           enableIdentityWidget: false,
-          manualInit: true,
           publicPath: 'admin',
           htmlTitle: 'Content Manager'
         },

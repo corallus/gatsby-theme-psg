@@ -3,6 +3,9 @@
 @import "~bootstrap/scss/mixins";
 
 .navbar {
+  .nav-events {
+    margin-left: 200px;
+  }
   .nav-link {
     padding-bottom: 0px;
     padding-top: 0px;

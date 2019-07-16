@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
-import { MdArrowForward } from 'react-icons/md';
+import { MdArrowForward } from 'react-icons/md'
 
 class TicketModal extends React.Component {
     render() {
@@ -33,30 +33,22 @@ class TicketModal extends React.Component {
     }
 }
 
-class Tickets extends React.Component {
-    constructor(...args) {
-        super(...args);
+function Tickets({ size = null }) {
+    const [showModal, setModal] = useState(false);
 
-        this.state = { modalShow: false };
-    }
+    return (
+        <React.Fragment>
+            <Button
+                size={size}
+                variant='tickets'
+                onClick={() => setModal(true)}
+            >
+                TICKETS <MdArrowForward size={32} />
+            </Button>
 
-    render() {
-        let modalClose = () => this.setState({ modalShow: false });
-
-        return (
-            <React.Fragment>
-                <Button
-                    size={this.props.size}
-                    variant='tickets'
-                    onClick={() => this.setState({ modalShow: true })}
-                >
-                    TICKETS <MdArrowForward size={32} />
-                </Button>
-
-                <TicketModal show={this.state.modalShow} onHide={modalClose} />
-            </React.Fragment>
-        );
-    }
+            <TicketModal show={showModal} onHide={() => setModal(false)} />
+        </React.Fragment>
+    )
 }
 
-export default Tickets;
+export default Tickets

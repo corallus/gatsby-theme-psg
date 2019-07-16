@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -8,44 +8,34 @@ import Logo from "./Logo";
 import './style.scss'
 import { MdArrowForward } from "react-icons/md";
 import Tickets from "../../Tickets";
+import { useEventsQuery } from "../../events/Query";
+import { NavDropdown } from "react-bootstrap";
 
-class Navbar_ extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isHome: props.isHome,
-      scroll: false
-    }
-    this.handleScroll = this.handleScroll.bind(this);
-  }
+function Navbar_({ scrollOffset, isHome = false }) {
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
+  const [scroll, setScroll] = useState(false);
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
+  useEffect(
+    () => {
+      const handleScroll = () => setScroll(window.scrollY > scrollOffset);
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll)
+    },
+  );
 
-  handleScroll() {
-    this.setState({
-      scroll: window.scrollY > this.props.scrollOffset
-    })
-  }
-
-  render() {
-    const { scroll, isHome } = this.state;
-    return (
-      <NavbarTemplate scroll={scroll} isHome={isHome}></NavbarTemplate>
-    )
-  }
+  return (
+    <NavbarTemplate scroll={scroll} isHome={isHome}></NavbarTemplate>
+  )
 }
 
 
 const NavbarTemplate = ({ scroll, isHome }) => {
   const { menuItems, social, title, navbarBackground, navbarVariant } = useSiteMetadata()
+  const events = useEventsQuery()
+  const handleSelect = eventKey => alert(`selected ${eventKey}`);
+
   return (
-    <Navbar bg={navbarBackground} variant={navbarVariant} fixed="top" expand="false" className={'container-fluid no-gutters' + (isHome ? ' is-home' : ' not-home') + (scroll ? ' scroll' : '')}>
+    <Navbar bg={navbarBackground} variant={navbarVariant} fixed="top" expand={null} className={'container-fluid no-gutters' + (isHome ? ' is-home' : ' not-home') + (scroll ? ' scroll' : '')}>
 
       <div className="col order-1 col-sm-5 order-sm-3 text-right">
         <div className="d-none d-lg-inline-block">
@@ -77,16 +67,27 @@ const NavbarTemplate = ({ scroll, isHome }) => {
           </span>
           <span className="d-none d-sm-inline">MENU</span>
         </Navbar.Toggle>
+        {console.log(events)}
+        {events.length > 1 &&
+          <Nav activeKey={events[0].node.frontmatter.name} className="nav-events" onSelect={handleSelect}>
+            <NavDropdown title={events[0].node.frontmatter.name} id="nav-dropdown">
+              {events.map((item, i) => (
+                <NavDropdown.Item eventKey={i}>{item.node.frontmatter.name} {item.node.frontmatter.date}</NavDropdown.Item>
+              ))
+              }
+            </NavDropdown>
+          </Nav>
+        }
       </div>
       <Navbar.Collapse id="basic-navbar-nav" className="order-4 navbar-nav-left text-white">
         <Nav as="ul" className="text-uppercase main-menu">
           {menuItems.map((item, i) => (
             <li key={i} className="nav-item">
               {item.external
-              ?
-              <a href={item.link} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
-              :
-              <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
+                ?
+                <a href={item.link} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
+                :
+                <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
               }
             </li>
           ))}
