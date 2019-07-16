@@ -7,6 +7,7 @@ import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
 import './style.scss'
 import { MdArrowForward } from "react-icons/md";
+import Tickets from "../../Tickets";
 
 class Navbar_ extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ class Navbar_ extends React.Component {
 
   handleScroll() {
     this.setState({
-      scroll: window.scrollY > this.props.showLogo
+      scroll: window.scrollY > this.props.scrollOffset
     })
   }
 
@@ -52,9 +53,7 @@ const NavbarTemplate = ({ scroll, isHome }) => {
             <Social social={social} />
             <li className="nav-item">
               <span className="nav-link">
-                <Link to="/tickets" className="btn btn-tickets">
-                  TICKETS <MdArrowForward size={32} />
-                </Link>
+                <Tickets />
               </span>
             </li>
           </ul>

@@ -84,7 +84,12 @@ module.exports = themeOptions => {
           htmlTitle: 'Content Manager'
         },
       },
-      'gatsby-plugin-sitemap',
+      {
+        resolve: 'gatsby-plugin-sitemap',
+        options: {
+          exclude: ["/kruidvat"],
+        }
+      },
       {
         resolve: `gatsby-plugin-google-tagmanager`,
         options: {

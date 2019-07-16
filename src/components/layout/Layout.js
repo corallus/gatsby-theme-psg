@@ -7,7 +7,7 @@ import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
 
 const TemplateWrapper = ({ children }) => {
-  const { title, description, menuItems, social, image, showLogo } = useSiteMetadata()
+  const { title, description, image, scrollOffset } = useSiteMetadata()
   const isHome = globalHistory.location.pathname === '/'
   return (
     <React.Fragment>
@@ -20,9 +20,9 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={image} />
       </Helmet>
-      <Navbar isHome={isHome} showLogo={showLogo} />
+      <Navbar isHome={isHome} scrollOffset={scrollOffset} />
       {children}
-      <Footer menuItems={menuItems} social={social} isHome={isHome} />
+      <Footer />
       <CookieConsent
         enableDeclineButton
         declineButtonText="Weigeren"

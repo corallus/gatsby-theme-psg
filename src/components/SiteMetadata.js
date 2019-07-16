@@ -14,7 +14,7 @@ const useSiteMetadata = () => {
             }
             navbarVariant
             navbarBackground
-            showLogo
+            scrollOffset
             menuItems {
               name
               link
