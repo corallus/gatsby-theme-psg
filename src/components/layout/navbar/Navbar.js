@@ -8,13 +8,13 @@ import Logo from "./Logo";
 import './style.scss'
 import { MdArrowForward } from "react-icons/md";
 import Tickets from "../../Tickets";
-import { useEventsQuery } from "../../events/Query";
-import { NavDropdown } from "react-bootstrap";
+import { Form } from "react-bootstrap";
+import { EventContext } from "../Layout";
 
-function Navbar_({ scrollOffset, isHome = false }) {
+export default ({ scrollOffset, isHome = false }) => {
+  const { menuItems, social, title, navbarBackground, navbarVariant } = useSiteMetadata()
 
   const [scroll, setScroll] = useState(false);
-
   useEffect(
     () => {
       const handleScroll = () => setScroll(window.scrollY > scrollOffset);
@@ -22,17 +22,6 @@ function Navbar_({ scrollOffset, isHome = false }) {
       return () => window.removeEventListener('scroll', handleScroll)
     },
   );
-
-  return (
-    <NavbarTemplate scroll={scroll} isHome={isHome}></NavbarTemplate>
-  )
-}
-
-
-const NavbarTemplate = ({ scroll, isHome }) => {
-  const { menuItems, social, title, navbarBackground, navbarVariant } = useSiteMetadata()
-  const events = useEventsQuery()
-  const handleSelect = eventKey => alert(`selected ${eventKey}`);
 
   return (
     <Navbar bg={navbarBackground} variant={navbarVariant} fixed="top" expand={null} className={'container-fluid no-gutters' + (isHome ? ' is-home' : ' not-home') + (scroll ? ' scroll' : '')}>
@@ -59,7 +48,7 @@ const NavbarTemplate = ({ scroll, isHome }) => {
         }
       </div>
       <div className="col order-3 col-sm-5 order-sm-1 text-right text-sm-left">
-        <Navbar.Toggle aria-controls="basic-navbar-nav float-right float-sm-left text-light">
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="mr-2 d-inline-block align-middle bar">
             <span className="icon-bar top-bar"></span>
             <span className="icon-bar middle-bar"></span>
@@ -67,17 +56,23 @@ const NavbarTemplate = ({ scroll, isHome }) => {
           </span>
           <span className="d-none d-sm-inline">MENU</span>
         </Navbar.Toggle>
-        {console.log(events)}
-        {events.length > 1 &&
-          <Nav activeKey={events[0].node.frontmatter.name} className="nav-events" onSelect={handleSelect}>
-            <NavDropdown title={events[0].node.frontmatter.name} id="nav-dropdown">
-              {events.map((item, i) => (
-                <NavDropdown.Item eventKey={i}>{item.node.frontmatter.name} {item.node.frontmatter.date}</NavDropdown.Item>
-              ))
-              }
-            </NavDropdown>
-          </Nav>
-        }
+        <EventContext.Consumer>
+          {({ event, updateEvent, events }) => (
+            events.length > 1 &&
+            <Form className="event-selector">
+              <Form.Group controlId="eventSelector">
+                <Form.Control as="select" onChange={e => updateEvent(JSON.parse(e.target.value))} value={JSON.stringify(event)}>  
+                  {events.map((item, i) => (
+                    <option key={item.node.id} value={JSON.stringify(item.node)}>
+                      {item.node.frontmatter.dateShort} {item.node.frontmatter.name}
+                    </option>
+                  ))
+                  }
+                </Form.Control>
+              </Form.Group>
+            </Form>
+          )}
+        </EventContext.Consumer>
       </div>
       <Navbar.Collapse id="basic-navbar-nav" className="order-4 navbar-nav-left text-white">
         <Nav as="ul" className="text-uppercase main-menu">
@@ -104,5 +99,3 @@ const NavbarTemplate = ({ scroll, isHome }) => {
     </Navbar>
   )
 }
-
-export default Navbar_

@@ -142,6 +142,7 @@ export default function (config = {}) {
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
           },
+          /*
           {
             file: 'src/pages/timetable/index.md',
             label: 'Timetable',
@@ -153,6 +154,7 @@ export default function (config = {}) {
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
           }
+          */
         ]
       }
     ],

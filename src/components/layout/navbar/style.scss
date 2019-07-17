@@ -15,11 +15,6 @@
     margin: 0;
   }
   .navbar-toggler {
-    @include media-breakpoint-up(sm) { 
-      z-index: 1050;
-      position: fixed;
-      top: 0px;
-    }
     // http://kylegoslan.co.uk/bootstrap-4-hamburger-menu-animation/
     .icon-bar {
       width: 27px; 

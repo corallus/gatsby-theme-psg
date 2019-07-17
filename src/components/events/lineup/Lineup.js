@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Artist from './Artist';
 import { useLineupQuery } from './Query'
+import { EventContext } from '../../layout/Layout';
 
-export default ({highlighted=2, numItems=-1, event=null}) => {
+export default ({highlighted=2, numItems=-1}) => {
   const data = useLineupQuery()
+  const {event} = useContext(EventContext)
   const acts = (event !== null ? data.filter(item => item.node.frontmatter.event.id === event.id): data)
 
   return (

@@ -1,14 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Helmet from 'react-helmet'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
 import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
+import { useEventsQuery } from '../events/Query';
+
+export const eventContext = React.createContext(JSON.parse(localStorage.getItem('event')))
+
+function EventProvider ({ children }) {
+  const events = useEventsQuery()
+  const [event, setEvent] = useState(JSON.parse(localStorage.getItem('event')) || events[0].node);
+  useEffect(() => {
+    // Update the document title using the browser API
+    localStorage.setItem('event', JSON.stringify(event))
+  });
+
+  return (
+    <EventContext.Provider value={{
+      events: events,
+      event: event,
+      updateEvent: (value) => {
+        setEvent(value)
+      }
+    }}>
+      {children}
+    </EventContext.Provider>
+
+  )
+
+}
+export const EventContext = React.createContext(null)
 
 const TemplateWrapper = ({ children }) => {
   const { title, description, image, scrollOffset } = useSiteMetadata()
   const isHome = globalHistory.location.pathname === '/'
+
   return (
     <React.Fragment>
       <Helmet>
@@ -20,8 +48,10 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={image} />
       </Helmet>
-      <Navbar isHome={isHome} scrollOffset={scrollOffset} />
-      {children}
+      <EventProvider>
+        <Navbar isHome={isHome} scrollOffset={scrollOffset} />
+        {children}
+      </EventProvider>
       <Footer />
       <CookieConsent
         enableDeclineButton
@@ -37,7 +67,7 @@ const TemplateWrapper = ({ children }) => {
       >
         <small>Wij gebruiken cookies volgens onze <a href="/cookie-policy.pdf">Cookie Policy</a></small>
       </CookieConsent>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 
