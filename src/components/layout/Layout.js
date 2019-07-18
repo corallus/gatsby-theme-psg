@@ -7,13 +7,12 @@ import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
 import { useEventsQuery } from '../events/Query';
 
-export const eventContext = React.createContext(JSON.parse(localStorage.getItem('event')))
+export const EventContext = React.createContext(null)
 
 function EventProvider ({ children }) {
   const events = useEventsQuery()
-  const [event, setEvent] = useState(JSON.parse(localStorage.getItem('event')) || events[0].node);
+  const [event, setEvent] = useState((typeof window !== 'undefined' && JSON.parse(localStorage.getItem('event'))) || events[0].node);
   useEffect(() => {
-    // Update the document title using the browser API
     localStorage.setItem('event', JSON.stringify(event))
   });
 
@@ -27,11 +26,8 @@ function EventProvider ({ children }) {
     }}>
       {children}
     </EventContext.Provider>
-
   )
-
 }
-export const EventContext = React.createContext(null)
 
 const TemplateWrapper = ({ children }) => {
   const { title, description, image, scrollOffset } = useSiteMetadata()

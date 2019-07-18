@@ -53,7 +53,7 @@ export default ({ scrollOffset, isHome = false }) => {
             <span className="icon-bar middle-bar"></span>
             <span className="icon-bar bottom-bar"></span>
           </span>
-          <span className="d-none d-sm-inline">MENU</span>
+          <span className="d-none d-sm-inline">MENU</span> 
         </Navbar.Toggle>
         <EventToggler />
       </div>
