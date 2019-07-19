@@ -7,7 +7,6 @@ import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
 import './style.scss'
 import { MdArrowForward } from "react-icons/md";
-import Tickets from "../../Tickets";
 import EventToggler from "./EventToggler";
 
 export default ({ scrollOffset, isHome = false }) => {
@@ -31,7 +30,9 @@ export default ({ scrollOffset, isHome = false }) => {
             <Social social={social} />
             <li className="nav-item">
               <span className="nav-link">
-                <Tickets />
+                <Link to="/tickets" className="btn btn-tickets">
+                  TICKETS <MdArrowForward size={32} />
+                </Link>
               </span>
             </li>
           </ul>
@@ -53,7 +54,7 @@ export default ({ scrollOffset, isHome = false }) => {
             <span className="icon-bar middle-bar"></span>
             <span className="icon-bar bottom-bar"></span>
           </span>
-          <span className="d-none d-sm-inline">MENU</span> 
+          <span className="d-none d-sm-inline">MENU</span>
         </Navbar.Toggle>
         <EventToggler />
       </div>

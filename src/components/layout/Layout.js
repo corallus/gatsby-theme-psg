@@ -5,7 +5,7 @@ import Navbar from './navbar/Navbar'
 import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
-import { useEventsQuery } from '../events/Query';
+import { useEventsQuery } from '../event/Query';
 
 export const EventContext = React.createContext(null)
 
