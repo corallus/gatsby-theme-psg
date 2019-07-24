@@ -9,7 +9,7 @@ export default () => {
             {({ event }) => (
                 event &&
                 <div>
-                    <span className="h2 text-uppercase">
+                    <span className="h2">
                         {event.frontmatter.date}
                     </span>
                     <p className="lead">{event.frontmatter.location}</p>

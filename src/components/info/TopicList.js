@@ -15,35 +15,35 @@ class TopicList extends React.Component {
     this.handleCl = this.handleCl.bind(this);
   }
 
-  handleCl(key) {
+  handleCl (key) {
     return this.setState({ activeKey: key })
   }
 
-  render() {
+  render () {
     const { data, category } = this.props
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <Accordion defaultActiveKey="0">
-        <div className="row">
-          <div className="col-md-6">
-            {posts.filter(function (element) { return element.node.frontmatter.category === category }).map((item, i) => (
-              i % 2 ?
-                ''
-                :
-                <Topic handleClick={this.handleCl} item={item.node} eventKey={i} active={i === this.state.activeKey} key={i} />
-            ))}
+        <Accordion defaultActiveKey="0">
+          <div className="row">
+            <div className="col-md-6">
+              {posts.filter(function (element) { return element.node.frontmatter.category === category }).map((item, i) => (
+                i % 2 ?
+                  ''
+                  :
+                  <Topic handleClick={this.handleCl} item={item.node} eventKey={i} active={i === this.state.activeKey} key={i} />
+              ))}
+            </div>
+            <div className="col-md-6">
+              {posts.filter(function (element) { return element.node.frontmatter.category === category }).map((item, i) => (
+                i % 2 ?
+                  <Topic handleClick={this.handleCl} item={item.node} eventKey={i} active={i === this.state.activeKey} key={i} />
+                  :
+                  ''
+              ))}
+            </div>
           </div>
-          <div className="col-md-6">
-            {posts.filter(function (element) { return element.node.frontmatter.category === category }).map((item, i) => (
-              i % 2 ?
-                <Topic handleClick={this.handleCl} item={item.node} eventKey={i} active={i === this.state.activeKey} key={i} />
-                :
-                ''
-            ))}
-          </div>
-        </div>
-      </Accordion>
+        </Accordion>
     )
   }
 }

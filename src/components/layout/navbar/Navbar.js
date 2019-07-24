@@ -13,9 +13,14 @@ export default ({ scrollOffset, isHome = false }) => {
   const { menuItems, social, title, navbarBackground, navbarVariant } = useSiteMetadata()
 
   const [scroll, setScroll] = useState(false);
+  const [showLogo, setShowLogo] = useState(false);
+
   useEffect(
     () => {
-      const handleScroll = () => setScroll(window.scrollY > scrollOffset);
+      const handleScroll = () => {
+        setShowLogo(window.scrollY > scrollOffset);
+        setScroll(window.scrollY > 0);
+      }
       window.addEventListener("scroll", handleScroll);
       return () => window.removeEventListener('scroll', handleScroll)
     },
@@ -39,7 +44,7 @@ export default ({ scrollOffset, isHome = false }) => {
         </div>
       </div>
       <div className="col-xs-2 order-2 col-sm-2 text-center">
-        {!isHome || scroll
+        {!isHome || showLogo
           ?
           <Link to="/" className="navbar-brand">
             <Logo title={title} />

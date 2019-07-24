@@ -1,24 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import { EventContext } from '../../layout/Layout';
 import Ticket from './Ticket';
 import moment from 'moment';
 
 export default () => {
   const { event } = useContext(EventContext)
-
-  const [earlyBird, setEarlyBird] = useState(moment().isBefore(moment(event.early_bird)))
-
-  useEffect(() => {
-    var timerID = setInterval(() => tick(), 1000);
-
-    return function cleanup() {
-      clearInterval(timerID);
-    };
-  });
-
-  function tick() {
-    setEarlyBird(moment().isBefore(moment(event.early_bird)))
-  }
+  const earlyBird = moment().isBefore(moment(event.frontmatter.early_bird))
 
   return (
     <div className="row">

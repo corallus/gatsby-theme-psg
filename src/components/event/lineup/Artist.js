@@ -1,5 +1,5 @@
 import React from 'react'
-import PreviewCompatibleImage from '../../PreviewCompatibleImage'
+import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 
 export default ({ act }) => {
@@ -8,13 +8,12 @@ export default ({ act }) => {
     <div className="card mb-3 artist" style={{ backgroundColor: '#d8d8d8' }}>
       {act.frontmatter.announced && artist.frontmatter.image
         ?
-        <PreviewCompatibleImage
-          imageInfo={artist.frontmatter}
+        <Img fluid={artist.frontmatter.image.childImageSharp.fluid}
           alt={artist.frontmatter.name}
           className="card-img"
         />
         :
-        <div style={{ width: '100%', paddingBottom: '100%' }}></div>
+        <div style={{ width: '100%', paddingBottom: '80%' }}></div>
       }
       <div className="card-img-overlay d-flex flex-column justify-content-end p-0">
         <div className="card-footer rounded-0 text-center">

@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Carousel } from 'react-bootstrap'
+import { Carousel, Card } from 'react-bootstrap'
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa'
 import Lightbox from 'react-image-lightbox'
-import PreviewCompatibleImage from '../PreviewCompatibleImage'
+import Img from 'gatsby-image'
 import 'react-image-lightbox/style.css'
 import './style.scss'
 
@@ -67,7 +67,7 @@ class Gallery extends React.Component {
         )}
         <Carousel
           activeIndex={page}
-          direction={direction}
+          dir={direction}
           onSelect={this.handleSelect}
           interval={null}
           nextIcon={<FaArrowCircleRight color="black" />}
@@ -79,7 +79,9 @@ class Gallery extends React.Component {
               <div className="row">
                 {page.map((image, j) => (
                   <div key={j} onClick={() => this.handleOpen(j)} className="col-md-4" style={{ padding: '15px' }}>
-                    <PreviewCompatibleImage imageInfo={image} />
+                    <Card>
+                      <Img className="card-img" fluid={image.image.childImageSharp.fluid} alt={image.alt} />
+                    </Card>
                   </div>
                 ))}
               </div>

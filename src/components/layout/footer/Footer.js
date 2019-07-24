@@ -9,7 +9,7 @@ import './style.scss'
 const Footer = () => {
   const { menuItems, social, title } = useSiteMetadata()
   return (
-    <footer className="footer pb-5">
+    <footer className="footer">
       <div className="container text-center text-md-left">
         <div className="row justify-content-end">
           <div className="col-12 col-md-3 pl-0">
