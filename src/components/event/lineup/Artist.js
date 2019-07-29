@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 export default ({ act }) => {
   const artist = act.frontmatter.artist
   return (
-    <div className="card mb-3 artist" style={{ backgroundColor: '#d8d8d8' }}>
+    <div className="card artist" style={{ backgroundColor: '#d8d8d8' }}>
       {act.frontmatter.announced && artist.frontmatter.image
         ?
         <Img fluid={artist.frontmatter.image.childImageSharp.fluid}

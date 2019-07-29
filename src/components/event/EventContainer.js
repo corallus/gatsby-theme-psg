@@ -13,7 +13,7 @@ export default () => {
               {events.map(({ node: post }) => (
                 <Button
                   variant="outline-primary"
-                  className={'btn btn-outline-primary' + (event.id === post.id ? ' active' : '')}
+                  className={(event.id === post.id ? ' active' : '')}
                   key={post.id} onClick={() => updateEvent(post)}
                 >
                   {post.frontmatter.name} {post.frontmatter.dateShort}

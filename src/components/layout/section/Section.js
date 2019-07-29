@@ -12,7 +12,7 @@ export default (props) => {
         <Heading title={props.title} />
       </header>
       <div className="container">
-        <div className="mb-4">
+        <div className="mb-5">
           {props.children}
         </div>
         {props.link !== undefined &&

@@ -29,13 +29,15 @@ function EventProvider ({ children }) {
   )
 }
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = (props) => {
   const { title, description, image, scrollOffset } = useSiteMetadata()
   const isHome = globalHistory.location.pathname === '/'
 
   return (
     <React.Fragment>
-      <Helmet>
+      <Helmet bodyAttributes={{
+        class: (props.template ? props.template : '')
+      }}>
         <html lang="nl" />
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -46,7 +48,7 @@ const TemplateWrapper = ({ children }) => {
       </Helmet>
       <EventProvider>
         <Navbar isHome={isHome} scrollOffset={scrollOffset} />
-        {children}
+        {props.children}
       </EventProvider>
       <Footer />
       <CookieConsent

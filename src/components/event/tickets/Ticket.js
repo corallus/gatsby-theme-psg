@@ -28,9 +28,11 @@ export default ({ ticket, early_bird }) => {
             <span className="current-price">{currentPrice[0]}<span className="decimals">{currentPrice[1]}</span></span>
           </div>
         </div>
+        {url !== null &&
         <Button href={url} className="btn btn-secundary">
           Koop ticket <MdArrowForward size={32} />
         </Button>
+        }
       </Card.Body>
     </Card>
   )
