@@ -2,11 +2,16 @@
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 
-
 .navbar {
-  .nav-link {
-    padding-bottom: 0px;
-    padding-top: 0px;
+  .nav-right {
+    text-align: right;
+    li {
+      display: inline;
+    }
+    .nav-link {
+      padding-bottom: 0px;
+      padding-top: 0px;
+    }
   }
   .navbar-brand {
     padding: 0;
@@ -24,6 +29,7 @@
       margin-top: 5px;
     }
     .top-bar {
+      margin-top: 0;
       transform: rotate(0);
     }
     .middle-bar {
@@ -48,17 +54,17 @@
   }
   .event-selector {
     position: relative;
-    z-index: 131;
+    //z-index: 131;
   }
   .navbar-nav-left {
     text-align: left;
-    padding: 1.75rem;
-    @include media-breakpoint-down(xs) { 
+    padding: 1rem;
+    @include media-breakpoint-down(md) { 
       text-align: center;
     }
-    @include media-breakpoint-up(sm) { 
+    @include media-breakpoint-up(lg) { 
       height: 100vh !important;
-      min-width: 350px;
+      min-width: 250px;
       position: absolute;
       left: 0px;
       top: 0;

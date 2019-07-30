@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap';
-import { MdArrowForward } from 'react-icons/md';
+import { Card } from 'react-bootstrap';
+import Button from './Button'
 
 export default ({ ticket, early_bird }) => {
   const { name, price, price_early, url } = ticket
@@ -29,9 +29,7 @@ export default ({ ticket, early_bird }) => {
           </div>
         </div>
         {url !== null &&
-        <Button href={url} className="btn btn-secundary">
-          Koop ticket <MdArrowForward size={32} />
-        </Button>
+          <Button url={url} />
         }
       </Card.Body>
     </Card>

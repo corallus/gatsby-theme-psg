@@ -1,8 +1,7 @@
 import React from 'react'
 import Heading from './Heading';
-import { MdArrowForward } from 'react-icons/md'
-import { Link } from 'gatsby'
 import './style.scss'
+import Button from './Button'
 
 export default (props) => {
   const {style, className} = props
@@ -17,7 +16,7 @@ export default (props) => {
         </div>
         {props.link !== undefined &&
           <footer className="section-footer">
-            <Link to={props.link} className="btn btn-section">{props.linkName} <MdArrowForward size={32} /></Link>
+            <Button link={props.link} text={props.linkName} />
           </footer>
         }
       </div>
