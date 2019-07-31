@@ -29,40 +29,41 @@ export default ({ scrollOffset, isHome = false }) => {
   return (
     <Navbar bg={navbarBackground} variant={navbarVariant} fixed="top" expand={null}
       className={'container-fluid no-gutters' + (isHome ? ' is-home' : ' not-home') + (scroll ? ' scroll' : '')}>
-
-      <div className="col-4 order-lg-4 d-none d-lg-block">
-        <ul className="nav nav-right justify-content-end">
-          <Social social={social} />
-          <li className="nav-item">
-            <span className="nav-link">
-              <TicketButton />
+      <div className="d-flex w-100 order-0 align-items-center navbar-content">
+        <div className="w-100 order-lg-4 d-none d-lg-block">
+          <ul className="nav nav-right justify-content-end">
+            <Social social={social} />
+            <li className="nav-item">
+              <span className="nav-link">
+                <TicketButton />
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div className="w-100 order-2 order-lg-3 text-center">
+          {!isHome || showLogo
+            ?
+            <Link to="/" className="navbar-brand">
+              <Logo title={title} />
+            </Link>
+            : ''
+          }
+        </div>
+        <div className="order-3 order-lg-1 text-right text-lg-left d-flex align-items-center">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className="align-middle">
+            <span className="mr-2 d-inline-block align-middle bar">
+              <span className="icon-bar top-bar"></span>
+              <span className="icon-bar middle-bar"></span>
+              <span className="icon-bar bottom-bar"></span>
             </span>
-          </li>
-        </ul>
+            <span className="d-none d-md-inline">MENU</span>
+          </Navbar.Toggle>
+        </div>
+        <div className="order-1 order-lg-2 text-right text-md-left w-100 d-flex align-items-center">
+          <EventToggler />
+        </div>
       </div>
-      <div className="col-4 order-2 order-lg-3 text-center">
-        {!isHome || showLogo
-          ?
-          <Link to="/" className="navbar-brand">
-            <Logo title={title} />
-          </Link>
-          : ''
-        }
-      </div>
-      <div className="col-3 col-lg-1 order-3 order-lg-1 text-right text-lg-left">
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="float-lg-left">
-          <span className="mr-2 d-inline-block align-middle bar">
-            <span className="icon-bar top-bar"></span>
-            <span className="icon-bar middle-bar"></span>
-            <span className="icon-bar bottom-bar"></span>
-          </span>
-          <span className="d-none d-md-inline">MENU</span>
-        </Navbar.Toggle>
-      </div>
-      <div className="col-3 col-lg-3 order-1 order-lg-2 text-right text-md-left">
-        <EventToggler />
-      </div>
-      <Navbar.Collapse id="basic-navbar-nav" className="navbar-nav-left order-6">
+      <Navbar.Collapse id="basic-navbar-nav" className="navbar-nav-left">
         <Nav as="ul" className="main-menu navbar-nav">
           {menuItems.map((item, i) => (
             <li key={i} className="nav-item">
