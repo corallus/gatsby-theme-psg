@@ -12,12 +12,12 @@ const Footer = () => {
     <footer className="footer py-4">
       <div className="container text-center text-md-left">
         <div className="row">
-          <div className="col-12 col-md-auto pl-0">
+          <div className="col-auto mx-auto mx-lg-0 pl-0">
             <Logo />
           </div>
-          <div className="col-12 col-md-9 d-flex align-content-end flex-wrap">
+          <div className="col-12 col-lg-9 d-flex align-content-end px-4 flex-wrap">
             <div className="navigation mb-2 w-100 d-md-flex justify-content-between">
-              <ul className="nav main-menu">
+              <ul className="nav main-menu justify-content-center">
                 {menuItems.map((item, i) => (
                   <li key={i} className="nav-item">
                     {item.external
@@ -29,7 +29,7 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-              <ul className="nav social-menu">
+              <ul className="nav social-menu justify-content-center">
                 <Social social={social} />
               </ul>
             </div>

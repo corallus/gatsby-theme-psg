@@ -40,7 +40,7 @@ export default ({ scrollOffset, isHome = false }) => {
             </li>
           </ul>
         </div>
-        <div className="w-100 order-2 order-lg-3 text-center">
+        <div className="order-2 order-lg-3 text-center">
           {!isHome || showLogo
             ?
             <Link to="/" className="navbar-brand">
@@ -49,8 +49,8 @@ export default ({ scrollOffset, isHome = false }) => {
             : ''
           }
         </div>
-        <div className="order-3 order-lg-1 text-right text-lg-left d-flex align-items-center">
-          <Navbar.Toggle aria-controls="basic-navbar-nav" className="align-middle">
+        <div className="order-3 order-lg-1 d-flex align-items-center">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left align-middle">
             <span className="mr-2 d-inline-block align-middle bar">
               <span className="icon-bar top-bar"></span>
               <span className="icon-bar middle-bar"></span>

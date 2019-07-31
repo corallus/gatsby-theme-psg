@@ -16,11 +16,17 @@
   .navbar-brand {
     padding: 0;
     margin: 0;
+    img {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0);
+      max-width: 30%;
+    }
   }
   .navbar-toggler {
+    border: 0;
+    padding-left: 0;
     position: relative;
-    width: 110px;
-    text-align: right;
     z-index: 1051;
     // http://kylegoslan.co.uk/bootstrap-4-hamburger-menu-animation/
     .icon-bar {

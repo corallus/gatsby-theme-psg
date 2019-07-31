@@ -8,7 +8,7 @@ export default () => {
     <React.Fragment>
       <EventContext.Consumer>
         {({ event, updateEvent, events }) => (
-          events.length > 1 ?
+            events.length > 1 &&
             <ButtonGroup aria-label="Events" size="sm" className="text-uppercase mx-auto">
               {events.map(({ node: post }) => (
                 <Button
@@ -20,8 +20,6 @@ export default () => {
                 </Button>
               ))}
             </ButtonGroup>
-            :
-            <h3 className="text-center">To be announced</h3>
         )}
       </EventContext.Consumer>
     </React.Fragment>
