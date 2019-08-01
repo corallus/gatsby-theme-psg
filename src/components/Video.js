@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Modal } from 'react-bootstrap'
-import { MdPlayCircleOutline, MdPlayArrow } from 'react-icons/md';
+import { MdPlayCircleOutline } from 'react-icons/md';
 
 export const Video = (props) => {
     const [showText, setShowText] = useState(true);
@@ -22,7 +22,6 @@ export const Video = (props) => {
                     zIndex: 1,
                     top: '50%',
                     left: '50%',
-                    fontSize: '32px',
                     fontWeight: 'bold',
                     transform: 'translate(-50%, -50%)'
                 }}>

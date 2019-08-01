@@ -16,7 +16,7 @@ export default () => {
                   className={(event.id === post.id ? ' active' : '')}
                   key={post.id} onClick={() => updateEvent(post)}
                 >
-                  {post.frontmatter.name} {post.frontmatter.dateShort}
+                  {post.frontmatter.dateShort} <span className="d-none d-sm-inline">{post.frontmatter.name}</span>
                 </Button>
               ))}
             </ButtonGroup>

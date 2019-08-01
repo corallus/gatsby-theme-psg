@@ -78,6 +78,10 @@
       top: 0;
     }
   }
+  .navbar-collapse {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
   .nav-social {
     display: block;
     > li {
