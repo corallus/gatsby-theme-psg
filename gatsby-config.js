@@ -14,7 +14,16 @@ module.exports = themeOptions => {
     },
     plugins: [
       'gatsby-plugin-react-helmet',
-      'gatsby-plugin-sass',
+      {
+        resolve: `gatsby-plugin-sass`,
+        options: {
+          file: path.resolve('./src/style/theme.scss'),
+          data: '@import "variables.scss";',
+          includePaths: [
+            path.resolve('./src/style'),
+          ],
+        },
+      },
       {
         // keep as first gatsby-source-filesystem plugin for gatsby image support
         resolve: 'gatsby-source-filesystem',
