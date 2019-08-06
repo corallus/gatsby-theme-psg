@@ -12,7 +12,6 @@ export const EventContext = React.createContext(null)
 function EventProvider ({ children }) {
   const events = useEventsQuery()
   const [event, setEvent] = useState((typeof window !== 'undefined' && JSON.parse(localStorage.getItem('event'))) || events[0].node)
-  console.log((typeof window !== 'undefined' && JSON.parse(localStorage.getItem('event'))) || events[0].node)
   useEffect(() => {
     localStorage.setItem('event', JSON.stringify(event))
   });
