@@ -20,7 +20,7 @@ export const useLineupQuery = () => {
                 artist {
                     html
                     frontmatter {
-                        name
+                        title
                         image {
                             childImageSharp {
                                 fluid(maxWidth: 800, maxHeight: 800, quality: 100) {
@@ -36,7 +36,6 @@ export const useLineupQuery = () => {
                         date
                     }
                 }
-                name
                 lineup
                 announced
                 templateKey

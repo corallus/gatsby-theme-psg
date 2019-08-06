@@ -9,11 +9,9 @@ export default function (config = {}) {
         label: 'Artiesten',
         folder: 'src/content/artists',
         create: true,
-        identifier_field: 'name',
-        slug: '{{slug}}',
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'artist' },
-          { label: 'Naam', name: 'name', widget: 'string' },
+          { label: 'Naam', name: 'title', widget: 'string' },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
           { label: 'Plaatje', name: 'image', widget: 'image', required: false },
         ]
@@ -27,10 +25,9 @@ export default function (config = {}) {
         summary: "{{title}} ({{event}})",
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'act' },
-          { label: 'Naam', name: 'title', widget: 'string' },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
-          { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['name'], valueField: 'name' },
-          { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['name'], valueField: 'date', required: true },
+          { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
+          { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
           { label: 'Tijd', name: 'time', widget: 'datetime', default: '', format: 'hh:mm', required: false },
           { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: false },
           { label: 'In lineup', name: 'lineup', widget: 'boolean', default: true },
@@ -42,11 +39,9 @@ export default function (config = {}) {
         label: 'Evenementen',
         folder: 'src/content/events',
         create: true,
-        identifier_field: 'date',
-        slug: '{{date}}',
-        summary: "{{name}} ({{date}})",
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'event' },
+          { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string' },
           { label: 'Naam', name: 'name', widget: 'string' },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
@@ -144,19 +139,6 @@ export default function (config = {}) {
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
           },
-          /*
-          {
-            file: 'src/pages/timetable/index.md',
-            label: 'Timetable',
-            name: 'timetable',
-            fields: [
-              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'timetable-page' },
-              { label: 'Titel', name: 'title', widget: 'string' },
-              { label: 'Plaatje', name: 'image', widget: 'image' },
-              { label: 'Tekst', name: 'body', widget: 'markdown' },
-            ]
-          }
-          */
         ]
       }
     ],

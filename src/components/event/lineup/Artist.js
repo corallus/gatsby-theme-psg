@@ -9,7 +9,7 @@ export default ({ act }) => {
       {act.frontmatter.announced && artist.frontmatter.image
         ?
         <Img fluid={artist.frontmatter.image.childImageSharp.fluid}
-          alt={artist.frontmatter.name}
+          alt={artist.frontmatter.title}
           className="card-img"
         />
         :
@@ -19,7 +19,7 @@ export default ({ act }) => {
         <div className="card-footer rounded-0 text-center">
           {act.frontmatter.announced
             ?
-            artist.frontmatter.name
+            artist.frontmatter.title
             :
             'To be announced'
           }

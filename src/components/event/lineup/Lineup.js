@@ -5,7 +5,9 @@ import { EventContext } from '../../layout/Layout';
 
 export default ({highlighted=2, numItems=-1}) => {
   const data = useLineupQuery()
+  console.log(data)
   const {event} = useContext(EventContext)
+  console.log(event)
   const acts = (event !== null ? data.filter(item => item.node.frontmatter.event.id === event.id): data)
 
   return (
