@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import Artist from './Artist';
+import Act from './Act';
 import { useLineupQuery } from './Query'
 import { EventContext } from '../../layout/Layout';
 
@@ -15,12 +15,12 @@ export default ({highlighted=2, numItems=-1}) => {
         <div className="row">
           {acts.slice(0, highlighted).map(({ node: post }) => (
             <div className="col-md-6 artist-highlighted" key={post.id}>
-              <Artist act={post} />
+              <Act act={post} />
             </div>
           ))}
           {acts.slice(highlighted, numItems+1).map(({ node: post }) => (
             <div className="col-md-4" key={post.id}>
-              <Artist act={post} />
+              <Act act={post} />
             </div>
           ))}
         </div>
