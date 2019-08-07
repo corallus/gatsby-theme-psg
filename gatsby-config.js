@@ -17,7 +17,6 @@ module.exports = themeOptions => {
       {
         resolve: `gatsby-plugin-sass`,
         options: {
-          file: path.resolve('./src/style/theme.scss'),
           data: '@import "variables.scss";',
           includePaths: [
             path.resolve('./src/style'),

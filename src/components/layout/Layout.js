@@ -6,6 +6,7 @@ import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
 import { useEventsQuery } from '../event/Query';
+import '../../theme.scss'
 
 export const EventContext = React.createContext(null)
 

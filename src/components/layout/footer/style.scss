@@ -1,7 +1,3 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
-
 .footer {
     @include media-breakpoint-up(md) { 
         ul.main-menu li a { list-style: none; display: inline; }
@@ -11,5 +7,5 @@
     }
     .text-muted {
         color: rgba($color:#fff, $alpha: .5) !important;
-    }
+    } 
 }
