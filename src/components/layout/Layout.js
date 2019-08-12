@@ -49,9 +49,9 @@ const TemplateWrapper = (props) => {
       </Helmet>
       <EventProvider>
         <Navbar isHome={isHome} scrollOffset={scrollOffset} />
-        <div className="wrapper">
+        <main className="wrapper">
           {props.children}
-        </div>
+        </main>
       </EventProvider>
       <Footer />
       <CookieConsent

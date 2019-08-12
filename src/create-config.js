@@ -13,7 +13,7 @@ export default function (config = {}) {
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'artist' },
           { label: 'Naam', name: 'title', widget: 'string' },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
-          { label: 'Plaatje', name: 'image', widget: 'image', required: false },
+          { label: 'Plaatje', name: 'image', widget: 'image', required: false, default: '' },
         ]
       },
       {
