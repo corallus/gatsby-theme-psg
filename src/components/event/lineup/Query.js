@@ -18,17 +18,7 @@ export const useLineupQuery = () => {
               html
               frontmatter {
                 artist {
-                    html
-                    frontmatter {
-                        title
-                        image {
-                            childImageSharp {
-                                fluid(maxWidth: 800, maxHeight: 800, quality: 100) {
-                                    ...GatsbyImageSharpFluid
-                                }
-                            }
-                        }
-                    }
+                    ...ArtistFragment
                 }
                 event {
                     id

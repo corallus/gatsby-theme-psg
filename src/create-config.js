@@ -13,7 +13,7 @@ export default function (config = {}) {
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'artist' },
           { label: 'Naam', name: 'title', widget: 'string' },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
-          { label: 'Plaatje', name: 'image', widget: 'image', required: false, default: '' },
+          { label: 'Plaatje', name: 'image', widget: 'image', required: false },
         ]
       },
       {
@@ -21,12 +21,11 @@ export default function (config = {}) {
         label: 'Acts',
         folder: 'src/content/acts',
         create: true,
-        slug: '{{artist}}-{{event}}',
-        summary: "{{artist}} ({{event}})",
-        identifier_field: 'artist',
+        slug: '{{title}}-{{event}}',
+        summary: "{{title}} ({{event}})",
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'act' },
-          { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
+          { label: 'Artiest', name: 'title', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
           { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
           { label: 'Tijd', name: 'time', widget: 'datetime', default: '', format: 'hh:mm', required: false },
           { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: false },
