@@ -22,16 +22,17 @@ export default function (config = {}) {
         folder: 'src/content/acts',
         create: true,
         slug: '{{artist}}-{{event}}',
-        summary: "{{title}} ({{event}})",
+        summary: "{{artist}} ({{event}})",
+        identifier_field: 'artist',
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'act' },
-          { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
           { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
           { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
           { label: 'Tijd', name: 'time', widget: 'datetime', default: '', format: 'hh:mm', required: false },
           { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: false },
           { label: 'In lineup', name: 'lineup', widget: 'boolean', default: true },
-          { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int' }
+          { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int' },
+          { label: 'Tekst', name: 'body', widget: 'markdown', required: false }
         ]
       },
       {
@@ -42,10 +43,11 @@ export default function (config = {}) {
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'event' },
           { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string' },
-          { label: 'Naam', name: 'name', widget: 'string' },
+          { label: 'Naam', name: 'name', widget: 'string', required: false },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
+          { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
           {
             label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [
               { label: 'Naam', name: 'name', widget: 'string' },
@@ -61,7 +63,6 @@ export default function (config = {}) {
         label: 'Info',
         folder: 'src/content/info',
         create: true,
-        identifier_field: 'title',
         slug: '{{slug}}',
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'info' },
@@ -107,8 +108,8 @@ export default function (config = {}) {
               { label: 'Titel', name: 'title', widget: 'string' },
               { label: 'Plaatje', name: 'image', widget: 'image' },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
-              { label: 'Info 1', name: 'info1', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title' },
-              { label: 'Info 2', name: 'info2', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title' },
+              { label: 'Info 1', name: 'info1', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title', required: false },
+              { label: 'Info 2', name: 'info2', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title', required: false },
               {
                 label: 'Fotos', name: 'images', widget: 'list', required: false, fields: [
                   { label: 'Plaatje', name: 'image', widget: 'image' },
