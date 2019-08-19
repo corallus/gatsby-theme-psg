@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 
 export default ({ act }) => {
-  const artist = act.frontmatter.title
+  const artist = act.frontmatter.artist
   return (
     <div className="card artist" style={{ backgroundColor: '#d8d8d8' }}>
       {act.frontmatter.announced && artist.frontmatter.image
