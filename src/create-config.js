@@ -63,12 +63,12 @@ export default function (config = {}) {
         label: 'Info',
         folder: 'src/content/info',
         create: true,
-        slug: '{{slug}}',
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'info' },
           { label: 'Titel', name: 'title', widget: 'string', required: true },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: true },
           { label: 'Categorie', name: 'category', widget: 'select', options: ['Tickets', 'Algemene info', 'Vervoer'], required: false },
+          { label: 'Events', name: 'events', widget: 'relation', collection: 'events', multiple: true, searchFields: ['title'], valueField: 'title', required: true },
           { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int', required: false }
         ]
       },
