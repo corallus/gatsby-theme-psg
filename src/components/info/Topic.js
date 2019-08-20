@@ -40,6 +40,9 @@ export const query = graphql`
       title
       category
       templateKey
+      events {
+        id
+      }
     }
   }
 `
