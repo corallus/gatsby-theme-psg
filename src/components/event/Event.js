@@ -2,17 +2,18 @@ import React from 'react'
 import { Link } from 'gatsby';
 import { MdArrowForward } from 'react-icons/md';
 import { EventContext } from '../layout/Layout';
+import Content from '../Content';
 
 export default () => {
     return (
         <EventContext.Consumer>
             {({ event }) => (
                 event &&
-                <div>
+                <div className="event">
                     <span className="h2">
-                        {event.frontmatter.date}
+                        {event.frontmatter.location}
                     </span>
-                    <p className="lead">{event.frontmatter.location}</p>
+                    <Content content={event.html} className="lead" />
                     <Link to='/tickets' className="btn btn-secundary">Koop je tickets <MdArrowForward size={32} /></Link>
                 </div>
             )}

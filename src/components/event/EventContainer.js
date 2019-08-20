@@ -12,7 +12,7 @@ export default () => {
             <ButtonGroup aria-label="Events" size="sm" className="text-uppercase mx-auto">
               {events.map(({ node: post }) => (
                 <Button
-                  variant="outline-primary"
+                  variant="event-selector"
                   className={(event.id === post.id ? ' active' : '')}
                   key={post.id} onClick={() => updateEvent(post)}
                 >
