@@ -7,16 +7,16 @@ import { MdArrowDownward, MdArrowUpward } from 'react-icons/md';
 import './style.scss'
 
 export default ({ item, eventKey, handleClick, active }) => (
-  <Card className="card-info border-0 text-left" style={{marginBottom: '15px'}}>
+  <Card className="card-info border-0 text-left" style={{ marginBottom: '15px' }}>
     <Card.Header className="border-0">
-      <Accordion.Toggle as={'h4'} onClick={() => handleClick(eventKey)} eventKey={eventKey} className={'mb-0'+(active ? ' active' : '')}>
-        {item.frontmatter.title}
-        {active
-          ?
-          <MdArrowUpward className="float-right" />
-          :
-          <MdArrowDownward className="float-right" />
-        }
+      <Accordion.Toggle as={'h4'} onClick={active ? () => handleClick(null): () => handleClick(eventKey)} eventKey={eventKey} className={'mb-0 d-flex align-items-center justify-content-between' + (active ? ' active' : '')}>
+          {item.frontmatter.title}
+          {active
+            ?
+            <MdArrowUpward />
+            :
+            <MdArrowDownward />
+          }
       </Accordion.Toggle>
     </Card.Header>
     <Accordion.Collapse eventKey={eventKey}>

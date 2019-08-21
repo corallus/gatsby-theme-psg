@@ -1,11 +1,12 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
+import { Card } from 'react-bootstrap';
 
 export default ({ act }) => {
   const artist = act.frontmatter.artist
   return (
-    <div className="card artist" style={{ backgroundColor: '#d8d8d8' }}>
+    <Card className="artist" style={{ backgroundColor: '#d8d8d8' }}>
       {act.frontmatter.announced && artist.frontmatter.image
         ?
         <Img fluid={artist.frontmatter.image.childImageSharp.fluid}
@@ -15,8 +16,8 @@ export default ({ act }) => {
         :
         <div style={{ width: '100%', paddingBottom: '80%' }}></div>
       }
-      <div className="card-img-overlay d-flex flex-column justify-content-end p-0">
-        <div className="card-footer rounded-0 text-center">
+      <Card.ImgOverlay>
+        <div className="card-footer">
           {act.frontmatter.announced
             ?
             artist.frontmatter.title
@@ -24,8 +25,8 @@ export default ({ act }) => {
             'To be announced'
           }
         </div>
-      </div>
-    </div>
+      </Card.ImgOverlay>
+    </Card>
   )
 }
 

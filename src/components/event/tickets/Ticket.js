@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'react-bootstrap';
+import { Card, Col, Row, Badge } from 'react-bootstrap';
 import Button from './Button'
 
 export default ({ ticket, early_bird }) => {
@@ -11,23 +11,26 @@ export default ({ ticket, early_bird }) => {
     <Card className="ticket">
       <Card.Body>
         <h3>{name}</h3>
-        <div className={'row price my-2 ' + (early_bird_price ? 'early' : 'regular')}>
+        <Row className={'price my-2 ' + (early_bird_price ? 'early' : 'regular')}>
           {early_bird_price &&
-            <React.Fragment>
-              <div className="col-auto">
-                <div className="badge badge-danger text-uppercase">
-                  Early bird
-                </div>
-                <div className="regular-price">
-                  {price.toFixed(2)}
-                </div>
+            <Col className="col-auto">
+              <Badge variant="danger" className="text-uppercase">
+                Early bird
+              </Badge>
+              <div className="regular-price">
+                {price.toFixed(2)}
               </div>
-            </React.Fragment>
+            </Col>
           }
-          <div className="col">
-            <span className="current-price">{currentPrice[0]}<span className="decimals">{currentPrice[1]}</span></span>
-          </div>
-        </div>
+          <Col>
+            <span className="current-price">
+              {currentPrice[0]}
+              <span className="decimals">
+                {currentPrice[1]}
+              </span>
+            </span>
+          </Col>
+        </Row>
         {url !== null &&
           <Button url={url} />
         }
