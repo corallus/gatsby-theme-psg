@@ -4,7 +4,7 @@ import { MdArrowForward } from 'react-icons/md';
 
 export default () => {
     return (
-        <Link to="/tickets" className="btn btn-primary">
+        <Link to="/tickets" className="btn btn-tickets">
             TICKETS <MdArrowForward size={32} />
         </Link>
     )

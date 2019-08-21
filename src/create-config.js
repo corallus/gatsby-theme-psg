@@ -68,7 +68,7 @@ export default function (config = {}) {
           { label: 'Titel', name: 'title', widget: 'string', required: true },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: true },
           { label: 'Categorie', name: 'category', widget: 'select', options: ['Tickets', 'Algemene info', 'Vervoer'], required: false },
-          { label: 'Events', name: 'events', widget: 'relation', collection: 'events', multiple: true, searchFields: ['title'], valueField: 'title', required: true },
+          { label: 'Events', name: 'events', widget: 'relation', collection: 'events', required: false, multiple: true, searchFields: ['title'], valueField: 'title' },
           { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int', required: false }
         ]
       },

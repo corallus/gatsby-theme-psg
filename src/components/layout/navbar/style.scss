@@ -15,9 +15,13 @@
     img {
       position: absolute;
       left: 50%;
+      top: 0;
       transform: translate(-50%, 0);
       max-width: 30%;
     }
+  }
+  .social-link {
+    line-height: $navbar-content-height;
   }
   .navbar-toggler {
     border: 0;
@@ -60,9 +64,13 @@
     position: relative;
     //z-index: 131;
   }
-  .navbar-nav-left {
+  .navbar-collapse {
+    font-family: $menu-font-family;
     text-align: left;
     padding: 1rem;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-top: $nav-height;
     @include media-breakpoint-down(md) { 
       text-align: center;
     }
@@ -73,10 +81,6 @@
       left: 0px;
       top: 0;
     }
-  }
-  .navbar-collapse {
-    max-height: 100vh;
-    overflow-y: auto;
   }
   .nav-social {
     display: block;

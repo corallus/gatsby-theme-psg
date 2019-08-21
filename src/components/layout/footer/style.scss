@@ -1,4 +1,16 @@
 .footer {
+    background: $footer-background;
+    color: $footer-color;
+    .social-link {
+        padding: 0 8px;
+    }
+    a {
+        color: $footer-color !important;
+    }
+    .main-menu {
+        font-size: 1.5rem;
+        text-transform: uppercase
+    }
     @include media-breakpoint-up(md) { 
         ul.main-menu li a { list-style: none; display: inline; }
         ul.main-menu li:after { content: "•"; color: rgba($color:#fff, $alpha: .5) }

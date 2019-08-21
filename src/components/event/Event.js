@@ -14,7 +14,7 @@ export default () => {
                         {event.frontmatter.location}
                     </span>
                     <Content content={event.html} className="lead" />
-                    <Link to='/tickets' className="btn btn-secundary">Koop je tickets <MdArrowForward size={32} /></Link>
+                    <Link to='/tickets' className="btn btn-tickets">Koop je tickets <MdArrowForward size={32} /></Link>
                 </div>
             )}
         </EventContext.Consumer> 

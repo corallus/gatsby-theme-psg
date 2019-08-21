@@ -63,8 +63,8 @@ export default ({ scrollOffset, isHome = false }) => {
           <EventToggler />
         </div>
       </div>
-      <Navbar.Collapse id="basic-navbar-nav" className="navbar-nav-left">
-        <Nav as="ul" className="main-menu navbar-nav">
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav as="ul" className="main-menu">
           {menuItems.map((item, i) => (
             <li key={i} className="nav-item">
               {item.external
