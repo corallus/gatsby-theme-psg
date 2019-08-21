@@ -18,13 +18,13 @@ export default ({ ticket, early_bird }) => {
                 Early bird
               </Badge>
               <div className="regular-price">
-                {price.toFixed(2)}
+                €{price.toFixed(2)}
               </div>
             </Col>
           }
           <Col>
             <span className="current-price">
-              {currentPrice[0]}
+              €{currentPrice[0]}
               <span className="decimals">
                 {currentPrice[1]}
               </span>

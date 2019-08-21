@@ -4,9 +4,8 @@ import './style.scss'
 import Button from './Button'
 
 export default (props) => {
-  const {style, className} = props
   return (
-    <section style={style} className={'section'+(className ? ' '+className: '')}>
+    <section {...props}>
       <header>
         <Heading title={props.title} />
       </header>

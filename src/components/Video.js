@@ -12,8 +12,8 @@ export const Video = (props) => {
     }
 
     return (
-        <div className="position-relative">
-            <video width="100%" controls className="video" ref={video} onClick={() => setShowText(false)}>
+        <div className="position-relative video">
+            <video width="100%" controls ref={video} onClick={() => setShowText(false)}>
                 <source src={props.src} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
