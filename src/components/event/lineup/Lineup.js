@@ -18,7 +18,7 @@ export default ({highlighted=2, numItems=-1}) => {
               <Act act={post} />
             </div>
           ))}
-          {acts.slice(highlighted, numItems+1).map(({ node: post }) => (
+          {acts.slice(highlighted, numItems).map(({ node: post }) => (
             <div className="col-md-4" key={post.id}>
               <Act act={post} />
             </div>
