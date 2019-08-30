@@ -3,19 +3,19 @@ import Heading from './Heading';
 import './style.scss'
 import Button from './Button'
 
-export default (props) => {
+export default ({title, linkName, className, children, link}) => {
   return (
-    <section {...props}>
+    <section className={'section '+className}>
       <header>
-        <Heading title={props.title} />
+        <Heading title={title} />
       </header>
       <div className="container">
         <div className="mb-5">
-          {props.children}
+          {children}
         </div>
-        {props.link !== undefined &&
+        {link !== undefined && linkName !== undefined &&
           <footer className="section-footer">
-            <Button link={props.link} text={props.linkName} />
+            <Button link={link} text={linkName} />
           </footer>
         }
       </div>
