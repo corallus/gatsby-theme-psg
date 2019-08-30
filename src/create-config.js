@@ -29,7 +29,7 @@ export default function (config = {}) {
           { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
           { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
           { label: 'Tijd', name: 'time', widget: 'datetime', default: '', format: 'hh:mm', required: false },
-          { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: false },
+          { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true },
           { label: 'In lineup', name: 'lineup', widget: 'boolean', default: true },
           { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int' },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false }
