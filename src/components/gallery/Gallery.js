@@ -24,7 +24,10 @@ class Gallery extends React.Component {
 
   handleOpen(key) {
     const { page: index } = this.state
-    this.setState({ photoIndex: key + (index * this.props.imagesPerPage), isOpen: true })
+    this.setState({ imageIndex: key + (index * this.props.imagesPerPage), isOpen: true })
+    console.log('page:'+index)
+    console.log('image:'+key)
+    console.log(key + (index * this.props.imagesPerPage))
   }
 
   handleSelect(selectedIndex, e) {
@@ -55,12 +58,12 @@ class Gallery extends React.Component {
             onCloseRequest={() => this.setState({ isOpen: false })}
             onMovePrevRequest={() =>
               this.setState({
-                photoIndex: (imageIndex + images.length - 1) % images.length,
+                imageIndex: (imageIndex + images.length - 1) % images.length,
               })
             }
             onMoveNextRequest={() =>
               this.setState({
-                photoIndex: (imageIndex + 1) % images.length,
+                imageIndex: (imageIndex + 1) % images.length,
               })
             }
           />
