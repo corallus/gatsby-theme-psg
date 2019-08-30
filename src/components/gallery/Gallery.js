@@ -25,9 +25,6 @@ class Gallery extends React.Component {
   handleOpen(key) {
     const { page: index } = this.state
     this.setState({ imageIndex: key + (index * this.props.imagesPerPage), isOpen: true })
-    console.log('page:'+index)
-    console.log('image:'+key)
-    console.log(key + (index * this.props.imagesPerPage))
   }
 
   handleSelect(selectedIndex, e) {
