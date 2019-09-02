@@ -3,7 +3,7 @@ import Heading from './Heading';
 import './style.scss'
 import Button from './Button'
 
-export default ({title, linkName, className, children, link}) => {
+export default ({title, linkName = null, className, children, link = null}) => {
   return (
     <section className={'section '+className}>
       <header>
@@ -13,7 +13,7 @@ export default ({title, linkName, className, children, link}) => {
         <div className="mb-5">
           {children}
         </div>
-        {link !== undefined && linkName !== undefined &&
+        {link !== null && linkName !== null &&
           <footer className="section-footer">
             <Button link={link} text={linkName} />
           </footer>
