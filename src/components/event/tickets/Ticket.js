@@ -8,9 +8,9 @@ export default ({ ticket, early_bird }) => {
   const currentPrice = (early_bird_price ? price_early : price).toFixed(2).split('.')
 
   return (
-    <Card className="ticket">
-      <Card.Body>
-        <h3>{name}</h3>
+    <Card className="ticket h-100">
+      <Card.Body className="d-flex flex-column">
+        <h3 className="mb-auto">{name}</h3>
         <Row className={'price my-2 ' + (early_bird_price ? 'early' : 'regular')}>
           {early_bird_price &&
             <Col className="col-auto">
