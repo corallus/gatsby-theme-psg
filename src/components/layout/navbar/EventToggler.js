@@ -13,7 +13,7 @@ export default () => (
                 <Dropdown.Menu>
                     {events.map((item, i) => (
                         <Dropdown.Item onClick={() => updateEvent(item.node)} key={i}>
-                            {item.node.frontmatter.dateShort}{item.node.frontmatter.name}
+                            {item.node.frontmatter.dateShort} {item.node.frontmatter.name}
                         </Dropdown.Item>
                     ))
                     }
