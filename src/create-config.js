@@ -140,6 +140,16 @@ export default function (config = {}) {
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
           },
+          {
+            file: 'src/pages/timetable/index.md',
+            label: 'Timetable',
+            name: 'timetable',
+            fields: [
+              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'lineup-page' },
+              { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Tekst', name: 'body', widget: 'markdown' },
+            ]
+          },
         ]
       }
     ],
