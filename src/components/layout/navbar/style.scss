@@ -1,34 +1,29 @@
 .navbar {
-  .nav-right {
-    text-align: right;
-    li {
-      display: inline;
+  > .d-flex {
+    min-height: $logo-height;
+    :first-child {
+      position: relative;
+      z-index: 1051;
     }
-    .nav-link {
-      padding-bottom: 0px;
-      padding-top: 0px;
+    > div {
+      flex: 1 1 0
+    }
+  }
+  .secondary-menu-navbar {
+    li {
+      .nav-link {
+        padding-left: 1rem;
+      }
     }
   }
   .navbar-brand {
     padding: 0;
     margin: 0;
-    img {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      z-index: 2;
-      transform: translate(-50%, 0);
-      max-width: 30%;
-    }
-  }
-  .social-link {
-    line-height: $navbar-content-height;
+    font-size: 0;
   }
   .navbar-toggler {
     border: 0;
     padding-left: 0;
-    position: relative;
-    z-index: 1051;
     // http://kylegoslan.co.uk/bootstrap-4-hamburger-menu-animation/
     .icon-bar {
       width: 27px; 
@@ -61,17 +56,13 @@
       }
     }
   }
-  .event-selector {
-    position: relative;
-    z-index: 131;
-  }
   .navbar-collapse {
     font-family: $menu-font-family;
     text-align: left;
     padding: 1rem;
     max-height: 100vh;
     overflow-y: auto;
-    padding-top: $nav-height;
+    padding-top: $logo-height + 2 * $navbar-padding-y;
     position: absolute;
     left: 0;
     top: 0;
@@ -83,12 +74,6 @@
     @include media-breakpoint-up(lg) { 
       height: 100vh !important;
       min-width: 350px;
-    }
-  }
-  .nav-social {
-    display: block;
-    > li {
-      display: inline-block !important;
     }
   }
 }

@@ -18,7 +18,7 @@ export default ({ url }) => {
           <Modal.Title>Tickets kopen</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <iframe width="100%" height="800px" frameBorder="0" src={url}></iframe>
+          <iframe title="koop tickets" width="100%" height="800px" frameBorder="0" src={url}></iframe>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
