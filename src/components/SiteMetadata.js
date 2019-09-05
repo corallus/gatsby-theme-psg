@@ -12,8 +12,6 @@ const useSiteMetadata = () => {
               facebook
               instagram
             }
-            navbarVariant
-            navbarBackground
             scrollOffset
             menuItems {
               name
