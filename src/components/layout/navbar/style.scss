@@ -16,6 +16,9 @@
       }
     }
   }
+  .btn-link {
+    color: $navbar-dark-color;
+  }
   .navbar-brand {
     padding: 0;
     margin: 0;
@@ -31,6 +34,7 @@
       display: block;
       transition: all 0.2s;
       margin-top: 5px;
+      background-color: $navbar-dark-color;
     }
     .top-bar {
       margin-top: 0;
@@ -54,6 +58,14 @@
         transform: rotate(-45deg);
         transform-origin: 10% 90%;
       }
+    }
+  }
+  &.navbar-light {
+    .btn-link {
+      color: $navbar-light-color;
+    }
+    .icon-bar {
+      background-color: $navbar-light-color !important;
     }
   }
   .navbar-collapse {

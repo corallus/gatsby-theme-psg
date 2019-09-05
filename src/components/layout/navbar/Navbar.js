@@ -60,7 +60,7 @@ const CollapseMenu = () => {
 }
 
 export default ({ scrollOffset, isHome = false }) => {
-  const { title, navbarBackground, navbarVariant } = useSiteMetadata()
+  const { title } = useSiteMetadata()
 
   const [scroll, setScroll] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
@@ -77,8 +77,7 @@ export default ({ scrollOffset, isHome = false }) => {
   );
 
   return (
-    <Navbar bg={navbarBackground} variant={navbarVariant} fixed="top" expand={null}
-      className={(isHome ? 'is-home' : ' not-home') + (scroll ? ' scroll' : '')}>
+    <Navbar variant={(isHome && !scroll ? 'dark': 'light')} fixed="top" expand={null}>
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div className="d-flex align-items-center">
           <div className="d-none d-lg-inline-block">
