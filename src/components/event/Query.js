@@ -18,6 +18,7 @@ const { allMarkdownRemark } = useStaticQuery(
                 location
                 early_bird
                 date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
+                dateMedium: date(formatString: "MMMM YYYY", locale: "nl-NL")
                 dateShort: date(formatString: "DD MMM", locale: "nl-NL")
                 tickets {
                   name
