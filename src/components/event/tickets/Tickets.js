@@ -80,24 +80,3 @@ export default () => {
     </>
   )
 }
-
-
-<!-- Noscript content for added SEO -->
-<!-- You can customize this button any way you like -->
-<button id="eventbrite-widget-modal-trigger-66562354795" type="button">Buy Tickets</button>
-
-<script src="https://www.eventbrite.nl/static/widgets/eb_widgets.js"></script>
-
-<script type="text/javascript">
-    var exampleCallback = function() {
-        console.log('Order complete!');
-    };
-
-    window.EBWidgets.createWidget({
-        widgetType: 'checkout',
-        eventId: '66562354795',
-        modal: true,
-        modalTriggerElementId: 'eventbrite-widget-modal-trigger-66562354795',
-        onOrderComplete: exampleCallback
-    });
-</script>
