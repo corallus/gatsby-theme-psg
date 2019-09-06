@@ -11,7 +11,9 @@ export default () => {
                 event &&
                 <div className="event">
                     <span className="h2">
-                        {event.frontmatter.location}
+                        {event.frontmatter.location} {event.frontmatter.status &&
+                        <span className="text-danger">[Uiterkocht]</span>
+                        }
                     </span>
                     <Content content={event.html} className="lead" />
                     <Link to='/tickets' className="btn btn-tickets">Koop je tickets <MdArrowForward size={32} /></Link>

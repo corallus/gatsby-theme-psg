@@ -77,7 +77,7 @@ export default ({ scrollOffset, isHome = false }) => {
   );
 
   return (
-    <Navbar variant={(isHome && !scroll ? 'dark': 'light')} fixed="top" expand={null}>
+    <Navbar variant={(scroll ? 'light': 'dark')} fixed="top" expand={null}>
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div className="d-flex align-items-center">
           <div className="d-none d-lg-inline-block">

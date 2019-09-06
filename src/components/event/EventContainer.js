@@ -14,7 +14,7 @@ export default () => {
                 <Button
                   variant="event-selector"
                   className={(event.id === post.id ? ' active' : '')}
-                  key={post.id} onClick={() => updateEvent(post)}
+                  key={post.id} onClick={() => updateEvent(post.id)}
                 >
                   {post.frontmatter.dateShort} <span className="d-none d-sm-inline">{post.frontmatter.name}</span>
                 </Button>

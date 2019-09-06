@@ -44,6 +44,7 @@ export default function (config = {}) {
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'event' },
           { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string' },
           { label: 'Naam', name: 'name', widget: 'string', required: false },
+          { label: 'Status', name: 'status', widget: 'string', required: false },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },

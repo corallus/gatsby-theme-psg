@@ -8,11 +8,12 @@ export default () => (
             events.length > 1 &&
             <Dropdown className="event-selector">
                 <Dropdown.Toggle variant="link" size="sm" className="py-0" id="dropdown-basic">
+                    {console.log(event)}
                     {event.frontmatter.dateShort} <span className="d-none d-sm-inline">{event.frontmatter.name}</span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
                     {events.map((item, i) => (
-                        <Dropdown.Item onClick={() => updateEvent(item.node)} key={i}>
+                        <Dropdown.Item onClick={() => updateEvent(item.node.id)} key={i}>
                             {item.node.frontmatter.dateShort} {item.node.frontmatter.name}
                         </Dropdown.Item>
                     ))

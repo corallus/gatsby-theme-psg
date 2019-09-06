@@ -11,19 +11,24 @@ import '../../theme.scss'
 
 export const EventContext = React.createContext(null)
 
+
 function EventProvider ({ children }) {
   const events = useEventsQuery()
-  const [event, setEvent] = useState((typeof window !== 'undefined' && JSON.parse(localStorage.getItem('event'))) || events[0].node)
+  const [eventId, setEventId] = useState((typeof window !== 'undefined' && JSON.parse(localStorage.getItem('eventId'))) || events[0].node.id)
   useEffect(() => {
-    localStorage.setItem('event', JSON.stringify(event))
+    localStorage.setItem('eventId', JSON.stringify(eventId))
   });
+
+  function findEvent(item) { 
+    return item.node.id === eventId;
+  }
 
   return (
     <EventContext.Provider value={{
       events: events,
-      event: event,
+      event: events.find(findEvent).node,
       updateEvent: (value) => {
-        setEvent(value)
+        setEventId(value)
       }
     }}>
       {children}

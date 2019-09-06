@@ -17,6 +17,7 @@ const { allMarkdownRemark } = useStaticQuery(
                 templateKey
                 location
                 early_bird
+                status
                 date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
                 dateMedium: date(formatString: "MMMM YYYY", locale: "nl-NL")
                 dateShort: date(formatString: "DD MMM", locale: "nl-NL")
