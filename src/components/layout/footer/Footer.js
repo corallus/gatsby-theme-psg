@@ -1,13 +1,12 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
-import Social from '../../Social'
+import SocialMenu from '../../Social'
 import useSiteMetadata from '../../SiteMetadata'
 import Logo from './Logo'
 import './style.scss'
+import { PrimaryMenu } from '../navbar/Navbar'
 
 const Footer = () => {
-  const { menuItems, social, title } = useSiteMetadata()
+  const { title } = useSiteMetadata()
   return (
     <footer className="footer">
       <div className="footer-inner w-100 h-100 py-4">
@@ -19,19 +18,10 @@ const Footer = () => {
             <div className="col-12 col-lg-9 d-flex align-content-end px-4 flex-wrap">
               <div className="navigation mb-2 w-100 d-md-flex justify-content-between">
                 <ul className="nav main-menu justify-content-center">
-                  {menuItems.map((item, i) => (
-                    <li key={i} className="nav-item">
-                      {item.external
-                        ?
-                        <a href={item.link} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
-                        :
-                        <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
-                      }
-                    </li>
-                  ))}
+                  <PrimaryMenu />
                 </ul>
                 <ul className="nav social-menu justify-content-center">
-                  <Social social={social} />
+                  <SocialMenu />
                 </ul>
               </div>
               <p className="text-muted text-xs mb-0">

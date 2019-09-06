@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { EventContext } from '../../layout/Layout';
-import Ticket from './Ticket';
-import moment from 'moment';
-import { Button, Modal } from 'react-bootstrap';
-import { MdArrowForward } from 'react-icons/md';
-import Helmet from 'react-helmet'
+import React, { useContext, useState } from 'react'
+import { EventContext } from '../../layout/Layout'
+import Ticket from './Ticket'
+import moment from 'moment'
+import { Button, Modal } from 'react-bootstrap'
+import { MdArrowForward } from 'react-icons/md'
+import EventbriteButton from 'react-eventbrite-popup-checkout'
 
 export default () => {
   const { event } = useContext(EventContext)
@@ -15,22 +15,6 @@ export default () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    if (event.frontmatter.eventbrite) {
-      var exampleCallback = function () {
-        console.log('Order complete!')
-      };
-
-      window.EBWidgets.createWidget({
-        widgetType: 'checkout',
-        eventId: event.frontmatter.eventbrite,
-        modal: true,
-        modalTriggerElementId: 'eventbrite-widget-modal-trigger-' + event.frontmatter.eventbrite,
-        onOrderComplete: exampleCallback
-      });
-    }
-  }, []);
-
   return (
     <>
       <div className="row">
@@ -38,14 +22,9 @@ export default () => {
           <div className="col-md-4" key={i}>
             <Ticket ticket={ticket} early_bird={earlyBird}>
               {event.frontmatter.eventbrite ?
-                <>
-                  <Helmet>
-                    <script src="https://www.eventbrite.nl/static/widgets/eb_widgets.js"></script>
-                  </Helmet>
-                  <Button variant="ticket" id={'eventbrite-widget-modal-trigger-' + event.frontmatter.eventbrite}>
+                <EventbriteButton ebEventId={event.frontmatter.eventbrite}>
                     Koop ticket <MdArrowForward size={32} />
-                  </Button>
-                </>
+                </EventbriteButton>
                   :
                 <Button variant="ticket" onClick={() => handleShow()}></Button>
               }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import Social from "../../Social"
+import SocialMenu from "../../Social"
 import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
 import './style.scss'
@@ -23,10 +23,9 @@ const Toggler = () => {
 }
 
 const SecondaryMenu = () => {
-  const { social } = useSiteMetadata()
   return (
     <Nav as="ul" className="justify-content-center justify-content-lg-end align-items-center flex-row">
-      <Social social={social} />
+      <SocialMenu />
       <li className="nav-item">
         <span className="nav-link">
           <TicketButton />
@@ -36,21 +35,27 @@ const SecondaryMenu = () => {
   )
 }
 
-const CollapseMenu = () => {
+export const PrimaryMenu = () => {
   const { menuItems } = useSiteMetadata()
+  return (
+    menuItems.map((item, i) => (
+      <li key={i} className="nav-item">
+        {item.external
+          ?
+          <a href={item.link} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
+          :
+          <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
+        }
+      </li>
+    ))
+  )
+}
+
+const CollapseMenu = () => {
   return (
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav as="ul" className="main-menu">
-        {menuItems.map((item, i) => (
-          <li key={i} className="nav-item">
-            {item.external
-              ?
-              <a href={item.link} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
-              :
-              <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
-            }
-          </li>
-        ))}
+        <PrimaryMenu />
       </Nav>
       <div className="d-block d-lg-none">
         <SecondaryMenu />
@@ -77,7 +82,7 @@ export default ({ scrollOffset, isHome = false }) => {
   );
 
   return (
-    <Navbar variant={(scroll ? 'light': 'dark')} fixed="top" expand={null}>
+    <Navbar variant={(scroll ? 'light' : 'dark')} fixed="top" expand={null}>
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div className="d-flex align-items-center">
           <div className="d-none d-lg-inline-block">

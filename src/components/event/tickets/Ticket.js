@@ -1,10 +1,9 @@
 import React from 'react'
-import { Card, Col, Row, Badge, Button } from 'react-bootstrap';
-import { MdArrowForward } from 'react-icons/md';
+import { Card, Col, Row, Badge } from 'react-bootstrap';
 
 export default (props) => {
   const {ticket, early_bird} = props 
-  const { name, price, price_early, url } = ticket
+  const { name, price, price_early } = ticket
   const early_bird_price = early_bird && (price_early !== null)
   const currentPrice = (early_bird_price ? price_early : price).toFixed(2).split('.')
 

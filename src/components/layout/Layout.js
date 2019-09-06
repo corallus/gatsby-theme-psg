@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
 import useSiteMetadata from '../SiteMetadata'
