@@ -18,6 +18,8 @@ const { allMarkdownRemark } = useStaticQuery(
                 location
                 early_bird
                 status
+                eventbrite
+                url
                 date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
                 dateMedium: date(formatString: "MMMM YYYY", locale: "nl-NL")
                 dateShort: date(formatString: "DD MMM", locale: "nl-NL")
@@ -25,7 +27,6 @@ const { allMarkdownRemark } = useStaticQuery(
                   name
                   price
                   price_early
-                  url
                 }
               }
             }

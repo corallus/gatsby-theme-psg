@@ -44,7 +44,9 @@ export default function (config = {}) {
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'event' },
           { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string' },
           { label: 'Naam', name: 'name', widget: 'string', required: false },
-          { label: 'Status', name: 'status', widget: 'string', required: false },
+          { label: 'EventbriteId', name: 'eventbrite', widget: 'string', required: false },
+          { label: 'Url', name: 'url', widget: 'string', required: false },
+          { label: 'Status', name: 'status', widget: 'select', default: "In verkoop", options: ["In verkoop", "Binnenkort te koop", "Uitverkocht"] },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
@@ -54,7 +56,6 @@ export default function (config = {}) {
               { label: 'Naam', name: 'name', widget: 'string' },
               { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float' },
               { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
-              { label: 'Url', name: 'url', widget: 'string', required: false },
             ]
           },
         ]

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Card, Col, Row, Badge } from 'react-bootstrap';
-import Button from './Button'
+import { Card, Col, Row, Badge, Button } from 'react-bootstrap';
+import { MdArrowForward } from 'react-icons/md';
 
-export default ({ ticket, early_bird }) => {
+export default ({ ticket, early_bird, handleShow }) => {
   const { name, price, price_early, url } = ticket
   const early_bird_price = early_bird && (price_early !== null)
   const currentPrice = (early_bird_price ? price_early : price).toFixed(2).split('.')
@@ -32,7 +32,9 @@ export default ({ ticket, early_bird }) => {
           </Col>
         </Row>
         {url !== null &&
-          <Button url={url} />
+          <Button onClick={handleShow} className="btn btn-ticket">
+            Koop ticket <MdArrowForward size={32} />
+          </Button>
         }
       </Card.Body>
     </Card>
