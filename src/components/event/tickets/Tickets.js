@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { EventContext } from '../../layout/Layout'
-import Ticket from './Ticket'
-import moment from 'moment'
-import { Button, Modal } from 'react-bootstrap'
-import { MdArrowForward } from 'react-icons/md'
-import EventbriteButton from 'react-eventbrite-popup-checkout'
+import { EventContext } from '../../layout/Layout';
+import Ticket from './Ticket';
+import moment from 'moment';
+import { Button, Modal } from 'react-bootstrap';
+import { MdArrowForward } from 'react-icons/md';
+import EventbriteButton from './Button'
 
 export default () => {
   const { event } = useContext(EventContext)
@@ -22,10 +22,12 @@ export default () => {
           <div className="col-md-4" key={i}>
             <Ticket ticket={ticket} early_bird={earlyBird}>
               {event.frontmatter.eventbrite ?
-                <EventbriteButton ebEventId={event.frontmatter.eventbrite}>
+                <>
+                  <EventbriteButton ebEventId={event.frontmatter.eventbrite} className="btn btn-ticket">
                     Koop ticket <MdArrowForward size={32} />
-                </EventbriteButton>
-                  :
+                  </EventbriteButton>
+                </>
+                :
                 <Button variant="ticket" onClick={() => handleShow()}></Button>
               }
             </Ticket>
