@@ -2,7 +2,8 @@ import React from 'react'
 import { Card, Col, Row, Badge, Button } from 'react-bootstrap';
 import { MdArrowForward } from 'react-icons/md';
 
-export default ({ ticket, early_bird, handleShow }) => {
+export default (props) => {
+  const {ticket, early_bird} = props 
   const { name, price, price_early, url } = ticket
   const early_bird_price = early_bird && (price_early !== null)
   const currentPrice = (early_bird_price ? price_early : price).toFixed(2).split('.')
@@ -31,11 +32,7 @@ export default ({ ticket, early_bird, handleShow }) => {
             </span>
           </Col>
         </Row>
-        {url !== null &&
-          <Button onClick={handleShow} className="btn btn-ticket">
-            Koop ticket <MdArrowForward size={32} />
-          </Button>
-        }
+        {props.children}
       </Card.Body>
     </Card>
   )
