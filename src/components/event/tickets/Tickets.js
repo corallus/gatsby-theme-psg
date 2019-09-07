@@ -28,13 +28,14 @@ export default () => {
                   </EventbriteButton>
                 </>
                 :
-                <Button variant="ticket" onClick={() => handleShow()}></Button>
+                <Button variant="ticket" onClick={() => handleShow()}>
+                  Koop ticket <MdArrowForward size={32} />
+                </Button>
               }
             </Ticket>
           </div>
         ))}
       </div>
-      {!event.frontmatter.eventbrite && event.frontmatter.url &&
         <Modal size="xl" show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Tickets kopen</Modal.Title>
@@ -48,7 +49,6 @@ export default () => {
           </Button>
           </Modal.Footer>
         </Modal>
-      }
     </>
   )
 }
