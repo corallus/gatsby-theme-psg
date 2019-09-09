@@ -37,7 +37,7 @@ function EventProvider ({ children }) {
 }
 
 const TemplateWrapper = (props) => {
-  const { title, description, image, scrollOffset } = useSiteMetadata()
+  const { title, description, image, } = useSiteMetadata()
   const isHome = globalHistory.location.pathname === '/'
 
   return (
@@ -54,7 +54,7 @@ const TemplateWrapper = (props) => {
         <meta property="og:image" content={image} />
       </Helmet>
       <EventProvider>
-        <Navbar isHome={isHome} scrollOffset={scrollOffset} />
+        <Navbar isHome={isHome} />
         <main className="wrapper">
           {props.children}
         </main>

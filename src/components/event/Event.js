@@ -12,7 +12,7 @@ export default () => {
                 <div className="event">
                     <span className="h2">
                         {event.frontmatter.location} {event.frontmatter.status === 'Uitverkocht' &&
-                        <span className="text-danger">[Uiterkocht]</span>
+                        <span className="text-danger">[Uitverkocht]</span>
                         }
                     </span>
                     <Content content={event.html} className="lead" />

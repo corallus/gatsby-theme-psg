@@ -64,8 +64,8 @@ const CollapseMenu = () => {
   )
 }
 
-export default ({ scrollOffset, isHome = false }) => {
-  const { title } = useSiteMetadata()
+export default ({ isHome = false }) => {
+  const { title, scrollOffset } = useSiteMetadata()
 
   const [scroll, setScroll] = useState(false);
   const [showLogo, setShowLogo] = useState(false);

@@ -7,8 +7,6 @@ module.exports = themeOptions => {
       title: themeOptions.title,
       description: themeOptions.description,
       social: themeOptions.social,
-      navbarBackground: themeOptions.navbarBackground,
-      navbarVariant: themeOptions.navbarVariant,
       scrollOffset: themeOptions.scrollOffset,
       menuItems: themeOptions.menuItems
     },
@@ -57,12 +55,7 @@ module.exports = themeOptions => {
         resolve: 'gatsby-transformer-remark',
         options: {
           plugins: [
-            {
-              resolve: 'gatsby-remark-relative-images',
-              options: {
-                name: 'uploads',
-              },
-            },
+            'gatsby-remark-relative-images',
             {
               resolve: 'gatsby-remark-images',
               options: {
@@ -70,12 +63,6 @@ module.exports = themeOptions => {
                 // the content container as this plugin uses this as the
                 // base for generating different widths of each image.
                 maxWidth: 2048,
-              },
-            },
-            {
-              resolve: 'gatsby-remark-copy-linked-files',
-              options: {
-                destinationDir: 'static',
               },
             },
           ],
