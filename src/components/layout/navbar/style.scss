@@ -47,6 +47,10 @@
       transform: rotate(0);
     }
     &.collapsed {
+      color: $navbar-collapse-color !important;
+      .icon-bar {
+        background-color: $navbar-collapse-color !important;
+      }
       .top-bar {
         transform: rotate(45deg);
         transform-origin: 10% 10%;
@@ -69,6 +73,7 @@
     }
   }
   .navbar-collapse {
+    background-color: $navbar-collapse-bg;
     font-family: $menu-font-family;
     text-align: left;
     padding: 1rem;
@@ -86,6 +91,12 @@
     @include media-breakpoint-up(lg) { 
       height: 100vh !important;
       min-width: 350px;
+    }
+    .nav-link {
+      color: $navbar-collapse-color !important;
+      &:hover, &.active {
+        color: $navbar-collapse-hover-color !important;
+      }
     }
   }
 }
