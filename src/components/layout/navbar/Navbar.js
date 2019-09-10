@@ -11,14 +11,14 @@ import TicketButton from './TicketButton'
 
 const Toggler = () => {
   return (
-    <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left align-middle">
+    <>
       <span className="mr-2 d-inline-block align-middle bar">
         <span className="icon-bar top-bar"></span>
         <span className="icon-bar middle-bar"></span>
         <span className="icon-bar bottom-bar"></span>
       </span>
       <span className="d-none d-md-inline">MENU</span>
-    </Navbar.Toggle>
+    </>
   )
 }
 
@@ -53,14 +53,14 @@ export const PrimaryMenu = () => {
 
 const CollapseMenu = () => {
   return (
-    <Navbar.Collapse id="basic-navbar-nav">
+    <>
       <Nav as="ul" className="main-menu">
         <PrimaryMenu />
       </Nav>
       <div className="d-block d-lg-none">
         <SecondaryMenu />
       </div>
-    </Navbar.Collapse>
+    </>
   )
 }
 
@@ -69,6 +69,7 @@ export default ({ isHome = false }) => {
 
   const [scroll, setScroll] = useState(false);
   const [showLogo, setShowLogo] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   useEffect(
     () => {
@@ -82,11 +83,13 @@ export default ({ isHome = false }) => {
   );
 
   return (
-    <Navbar variant={(scroll ? 'light' : 'dark')} fixed="top" expand={null}>
+    <Navbar variant={(scroll ? 'light' : 'dark')} fixed="top" expand={null} className={(collapsed ? 'navbar-collapsed': 'navbar-expanded')} collapseOnSelect={true} onToggle={() => setCollapsed(!collapsed)}>
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div className="d-flex align-items-center">
           <div className="d-none d-lg-inline-block">
-            <Toggler />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left align-middle">
+              <Toggler />
+            </Navbar.Toggle>
           </div>
           <div className="d-inline">
             <EventToggler />
@@ -104,11 +107,15 @@ export default ({ isHome = false }) => {
             <SecondaryMenu />
           </div>
           <div className="d-block d-lg-none">
-            <Toggler />
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left align-middle">
+              <Toggler />
+            </Navbar.Toggle>
           </div>
         </div>
       </div>
-      <CollapseMenu />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <CollapseMenu />
+      </Navbar.Collapse>
     </Navbar>
   )
 }
