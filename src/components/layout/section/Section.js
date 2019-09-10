@@ -1,6 +1,5 @@
 import React from 'react'
 import Heading from './Heading';
-import './style.scss'
 import Button from './Button'
 
 export default ({title, linkName = null, className, children, link = null}) => {

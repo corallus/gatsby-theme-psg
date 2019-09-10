@@ -79,7 +79,7 @@ class Gallery extends React.Component {
               <div className="row">
                 {page.map((image, j) => (
                   <div key={j} onClick={() => this.handleOpen(j)} className="col-md-4" style={{ padding: '15px' }}>
-                    <Card>
+                    <Card className="impressie">
                       <Img className="card-img" fluid={image.image.childImageSharp.fluid} alt={image.alt} />
                     </Card>
                   </div>
