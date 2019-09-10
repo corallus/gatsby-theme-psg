@@ -55,7 +55,7 @@ const TemplateWrapper = (props) => {
       </Helmet>
       <EventProvider>
         <Navbar isHome={isHome} />
-        <main className="wrapper">
+        <main className={(isHome ? 'is-home': 'not-home')+' wrapper'}>
           {props.children}
         </main>
       </EventProvider>
