@@ -32,12 +32,8 @@ export default ({ act }) => {
 
 export const query = graphql`
   fragment ArtistFragment on MarkdownRemark {
-    excerpt(pruneLength: 400)
     id
-    fields {
-      slug
-    }
-    html
+    html 
     frontmatter {
       title
       templateKey

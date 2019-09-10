@@ -34,7 +34,7 @@ export default () => (
       query TimetableQuery {
         allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___time] }
-          filter: { frontmatter: { templateKey: { eq: "artist" } } }
+          filter: { frontmatter: { templateKey: { eq: "act" } } }
         ) {
           edges {
             node {
@@ -44,15 +44,10 @@ export default () => (
                 slug
               }
               frontmatter {
-                name
                 templateKey
                 time
-                image {
-                  childImageSharp {
-                    fluid(maxWidth: 800, maxHeight: 800, quality: 90) {
-                      ...GatsbyImageSharpFluid
-                    }
-                  }
+                artist {
+                  ...ArtistFragment
                 }
               }
             }
