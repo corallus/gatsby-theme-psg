@@ -8,7 +8,6 @@ export default () => (
             events.length > 1 &&
             <Dropdown className="event-selector">
                 <Dropdown.Toggle variant="link" size="sm" className="py-0" id="dropdown-basic">
-                    {console.log(event)}
                     {event.frontmatter.dateShort} <span className="d-none d-sm-inline">{event.frontmatter.name}</span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
