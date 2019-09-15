@@ -16,7 +16,7 @@ const EventContext = React.createContext(null)
 function EventProvider ({ children }) {
   const events = useEventsQuery()
 
-  const eventId = (typeof window !== 'undefined' && localStorage.getItem('event')) || events[0].node.id
+  const eventId = (typeof window !== 'undefined' && localStorage.getItem('ev')) || events[0].node.id
 
   const findEvent = (item) => {
     return item.node.id === eventId;
@@ -30,7 +30,7 @@ function EventProvider ({ children }) {
 
   useEffect(
     () => {
-      window.localStorage.setItem("event", state.event.id)
+      window.localStorage.setItem("ev", state.event.id)
     },
     [state.event.id]
   );
