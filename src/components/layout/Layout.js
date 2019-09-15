@@ -1,40 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
 import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import { globalHistory } from "@reach/router"
-import { useEventsQuery } from '../event/Query';
 import './style.scss'
 import '../../theme.scss'
-
-export const EventContext = React.createContext(null)
-
-
-function EventProvider ({ children }) {
-  const events = useEventsQuery()
-  const [eventId, setEventId] = useState((typeof window !== 'undefined' && JSON.parse(localStorage.getItem('eventId'))) || events[0].node.id)
-  useEffect(() => {
-    localStorage.setItem('eventId', JSON.stringify(eventId))
-  });
-
-  function findEvent(item) { 
-    return item.node.id === eventId;
-  }
-
-  return (
-    <EventContext.Provider value={{
-      events: events,
-      event: events.find(findEvent).node,
-      updateEvent: (value) => {
-        setEventId(value)
-      }
-    }}>
-      {children}
-    </EventContext.Provider>
-  )
-}
+import { EventProvider } from '../EventContext'
 
 const TemplateWrapper = (props) => {
   const { title, description, image, } = useSiteMetadata()
@@ -55,11 +28,11 @@ const TemplateWrapper = (props) => {
       </Helmet>
       <EventProvider>
         <Navbar isHome={isHome} />
-        <main className={(isHome ? 'is-home': 'not-home')+' wrapper'}>
+        <main className={(isHome ? 'is-home' : 'not-home') + ' wrapper'}>
           {props.children}
         </main>
+        <Footer />
       </EventProvider>
-      <Footer />
       <CookieConsent
         enableDeclineButton
         declineButtonText="Weigeren"

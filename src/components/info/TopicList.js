@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { Accordion } from 'react-bootstrap'
 import Topic from './Topic'
-import { EventContext } from '../layout/Layout';
+import EventContext from '../EventContext';
 
 export default ({ category }) => {
   const data = useStaticQuery(
@@ -22,7 +22,8 @@ export default ({ category }) => {
     `
   )
   const { edges: events } = data.allMarkdownRemark
-  const { event } = useContext(EventContext)
+  const { state } = useContext(EventContext)
+  const { event } = state
   const posts = events.filter(post => !post.node.frontmatter.events || (post.node.frontmatter.events.filter(ev => ev.id === event.id ).length))
 
   const [ activeKey, setActiveKey ] = useState("0") 

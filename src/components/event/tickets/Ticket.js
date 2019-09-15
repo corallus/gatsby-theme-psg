@@ -1,8 +1,7 @@
 import React from 'react'
 import { Card, Col, Row, Badge } from 'react-bootstrap';
 
-export default (props) => {
-  const {ticket, early_bird} = props 
+export default ({ticket, early_bird, children}) => {
   const { name, price, price_early } = ticket
   const early_bird_price = early_bird && (price_early !== null)
   const currentPrice = (early_bird_price ? price_early : price).toFixed(2).split('.')
@@ -31,7 +30,7 @@ export default (props) => {
             </span>
           </Col>
         </Row>
-        {props.children}
+        {children}
       </Card.Body>
     </Card>
   )

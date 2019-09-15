@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby';
 import { MdArrowForward } from 'react-icons/md';
-import { EventContext } from '../layout/Layout';
+import EventContext from '../EventContext';
 import Content from '../Content';
 
 export default () => {

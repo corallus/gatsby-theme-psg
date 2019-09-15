@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { EventContext } from '../../layout/Layout';
+import React, { useContext, useState, useEffect } from 'react'
+import EventContext from '../../EventContext';
 import Ticket from './Ticket';
 import moment from 'moment';
 import { Button, Modal } from 'react-bootstrap';
@@ -7,8 +7,16 @@ import { MdArrowForward } from 'react-icons/md';
 import EventbriteButton from './Button'
 
 export default () => {
-  const { event } = useContext(EventContext)
-  const earlyBird = moment().isBefore(moment(event.frontmatter.early_bird))
+  const { state } = useContext(EventContext)
+  const { event } = state
+
+  const [earlyBird, setEarlyBird] = useState(false)
+  useEffect(() => {
+      setEarlyBird(moment().isBefore(moment(event.frontmatter.early_bird)))
+  }, [])
+  useEffect(() => {
+    setEarlyBird(moment().isBefore(moment(event.frontmatter.early_bird)))
+  }, [state.event.id])
 
   const [show, setShow] = useState(false);
 
@@ -19,7 +27,7 @@ export default () => {
     <>
       <div className="row">
         {event.frontmatter.tickets.map((ticket, i) => (
-          <div className="col-md-4" key={i}>
+          <div className="col-md-4" key={event.id+i}>
             <Ticket ticket={ticket} early_bird={earlyBird}>
               {event.frontmatter.eventbrite ?
                 <>
