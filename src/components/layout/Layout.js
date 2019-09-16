@@ -9,27 +9,26 @@ import './style.scss'
 import '../../theme.scss'
 import { EventProvider } from '../EventContext'
 
-const TemplateWrapper = (props) => {
-  const { title, description, image, } = useSiteMetadata()
+const TemplateWrapper = ({title: pageTitle = null, description, template = null, children }) => {
+  const { title } = useSiteMetadata()
   const isHome = globalHistory.location.pathname === '/'
 
   return (
     <React.Fragment>
       <Helmet bodyAttributes={{
-        class: (props.template ? props.template : '')
+        class: (template ? template : '')
       }}>
         <html lang="nl" />
-        <title>{title}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
-        <meta property="og:image" content={image} />
       </Helmet>
       <EventProvider>
         <Navbar isHome={isHome} />
         <main className={(isHome ? 'is-home' : 'not-home') + ' wrapper'}>
-          {props.children}
+          {children}
         </main>
         <Footer />
       </EventProvider>

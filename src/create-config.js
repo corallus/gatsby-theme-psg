@@ -108,6 +108,7 @@ export default function (config = {}) {
                 default: 'index-page'
               },
               { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Plaatje', name: 'image', widget: 'image', required: false },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
               { label: 'Info 1', name: 'info1', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title', required: false },
@@ -127,6 +128,7 @@ export default function (config = {}) {
             fields: [
               { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'info-page' },
               { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Image', name: 'image', widget: 'image', required: false },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
@@ -138,6 +140,7 @@ export default function (config = {}) {
             fields: [
               { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'lineup-page' },
               { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Plaatje', name: 'image', widget: 'image', required: false },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
@@ -149,6 +152,7 @@ export default function (config = {}) {
             fields: [
               { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'lineup-page' },
               { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
           },

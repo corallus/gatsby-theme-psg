@@ -7,7 +7,6 @@ const useSiteMetadata = () => {
         site {
           siteMetadata {
             title
-            description
             social {
               facebook
               instagram
