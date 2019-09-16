@@ -9,6 +9,7 @@ export default ({highlighted=2, numItems=-1}) => {
   const { event } = state
   const acts = (event !== null ? data.filter(item => item.node.frontmatter.event.id === event.id): data)
 
+
   return (
     <React.Fragment>
       {acts && acts.length
@@ -19,7 +20,7 @@ export default ({highlighted=2, numItems=-1}) => {
               <Act act={post} />
             </div>
           ))}
-          {acts.slice(highlighted, numItems).map(({ node: post }) => (
+          {acts.slice(highlighted).map(({ node: post }) => (
             <div className="col-md-4" key={post.id}>
               <Act act={post} />
             </div>
