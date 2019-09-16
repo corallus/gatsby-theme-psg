@@ -4,8 +4,6 @@ module.exports = themeOptions => {
   return {
     siteMetadata: {
       siteUrl: themeOptions.siteUrl,
-      title: themeOptions.title,
-      description: themeOptions.description,
       social: themeOptions.social,
       scrollOffset: themeOptions.scrollOffset,
       menuItems: themeOptions.menuItems
