@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer } from "react"
 import { useEventsQuery } from "./event/Query";
+import moment from 'moment';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -15,8 +16,9 @@ const EventContext = React.createContext(null)
 
 function EventProvider ({ children }) {
   const events = useEventsQuery()
+  const futureEvents = events.filter(event => moment().isBefore(moment(event.node.frontmatter.date)))
 
-  const eventId = (typeof window !== 'undefined' && localStorage.getItem('ev')) || events[0].node.id
+  const eventId = (typeof window !== 'undefined' && localStorage.getItem('ev')) || futureEvents[0].node.id
 
   const findEvent = (item) => {
     return item.node.id === eventId;

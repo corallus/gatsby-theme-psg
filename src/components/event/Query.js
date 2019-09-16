@@ -20,7 +20,8 @@ const { allMarkdownRemark } = useStaticQuery(
                 status
                 eventbrite
                 url
-                date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
+                date
+                dateLong: date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
                 dateMedium: date(formatString: "MMMM YYYY", locale: "nl-NL")
                 dateShort: date(formatString: "DD MMM", locale: "nl-NL")
                 tickets {
