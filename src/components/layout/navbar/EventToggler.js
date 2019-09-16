@@ -11,7 +11,7 @@ const EventButton = ({ event }) => {
   }, [])
   useEffect(() => {
     setIsActive(state.event.id === event.id)
-  }, [state.event.id])
+  }, [state.event.id, event.id])
     return (
         <Dropdown.Item className={isActive && 'active'} onClick={() => dispatch({ type: 'changeEvent', payload: event })}>
             {event.frontmatter.dateShort} {event.frontmatter.name}

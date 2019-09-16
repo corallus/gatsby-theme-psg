@@ -11,7 +11,7 @@ const EventButton = ({event }) => {
   }, [])
   useEffect(() => {
     setIsActive(state.event.id === event.id)
-  }, [state.event.id])
+  }, [state.event.id, event.id])
   return (
     <Button
       variant="event-selector"

@@ -16,7 +16,7 @@ export default () => {
   }, [])
   useEffect(() => {
     setEarlyBird(moment().isBefore(moment(event.frontmatter.early_bird)))
-  }, [state.event.id])
+  }, [state.event.id, event.frontmatter.early_bird])
 
   const [show, setShow] = useState(false);
 
