@@ -24,10 +24,11 @@ const EventButton = ({event }) => {
 }
 
 export default () => {
-  const events = useEventsQuery()
+  const { state } = useContext(EventContext)
   return (
+    state.events.length > 1 &&
     <ButtonGroup aria-label="Events" size="sm" className="text-uppercase mx-auto">
-      {events.map(({ node: post}) => (
+      {state.events.map(({ node: post}) => (
         <EventButton event={post} key={post.id} />
       ))}
     </ButtonGroup>

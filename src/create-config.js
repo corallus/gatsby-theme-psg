@@ -50,6 +50,7 @@ export default function (config = {}) {
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
+          { label: 'Active', name: 'active', widget: 'boolean', default: true, required: false },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
           {
             label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [

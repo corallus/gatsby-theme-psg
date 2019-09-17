@@ -25,7 +25,8 @@ function EventProvider ({ children }) {
   }
 
   const initialState = {
-    event: events.find(findEvent).node,
+    event: (events.find(findEvent) || futureEvents[0]).node,
+    events: futureEvents
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
