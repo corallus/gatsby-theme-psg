@@ -55,6 +55,7 @@ export default function (config = {}) {
           {
             label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [
               { label: 'Naam', name: 'name', widget: 'string' },
+              { label: 'Url', name: 'url', widget: 'string', required: false },
               { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float' },
               { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
             ]

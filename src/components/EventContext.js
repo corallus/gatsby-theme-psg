@@ -5,7 +5,7 @@ import moment from 'moment';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'changeEvent':
-      return { event: action.payload }
+      return { ...state, event: action.payload }
 
     default:
       return state;

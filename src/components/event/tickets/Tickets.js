@@ -29,12 +29,15 @@ export default () => {
         {event.frontmatter.tickets.map((ticket, i) => (
           <div className="col-md-4" key={event.id+i}>
             <Ticket ticket={ticket} early_bird={earlyBird}>
-              {event.frontmatter.eventbrite ?
-                <>
+              {ticket.url ? 
+                <Button href={ticket.url} target="_blank" variant="ticket">
+                  Koop ticket <MdArrowForward size={32} />
+                </Button>
+                :
+                event.frontmatter.eventbrite ?
                   <EventbriteButton ebEventId={event.frontmatter.eventbrite} className="btn btn-ticket">
                     Koop ticket <MdArrowForward size={32} />
                   </EventbriteButton>
-                </>
                 :
                 <Button variant="ticket" onClick={() => handleShow()}>
                   Koop ticket <MdArrowForward size={32} />

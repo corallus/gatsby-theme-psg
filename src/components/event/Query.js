@@ -28,6 +28,7 @@ const { allMarkdownRemark } = useStaticQuery(
                   name
                   price
                   price_early
+                  url
                 }
               }
             }
