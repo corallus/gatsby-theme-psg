@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "Vincent van Bergen",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0",
+    "e2e:dev": "echo \"Error: no test specified\" && exit 0"
+  },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "gatsby-image": "^2.2.9",
@@ -37,14 +41,11 @@
     "react-image-lightbox": "^5.1.0",
     "uuid": "^3.2.1"
   },
-  "devDependencies": {
-    "gatsby": "^2.11.7",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4"
-  },
   "peerDependencies": {
     "gatsby": "^2.11.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
   }
 }

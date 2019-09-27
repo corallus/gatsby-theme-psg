@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { ButtonGroup, Button } from 'react-bootstrap'
 import EventContext from '../EventContext';
-import { useEventsQuery } from './Query';
 
 const EventButton = ({event }) => {
   const [isActive, setIsActive] = useState(false)
