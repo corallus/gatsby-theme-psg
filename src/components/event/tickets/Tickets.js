@@ -25,9 +25,9 @@ export default () => {
 
   return (
     <>
-      <div className="row">
+      <div className="row justify-content-center">
         {event.frontmatter.tickets.map((ticket, i) => (
-          <div className="col-md-4" key={event.id+i}>
+          <div className="col-sm-6 col-lg-4" key={event.id+i}>
             <Ticket ticket={ticket} early_bird={earlyBird}>
               {ticket.url ? 
                 <Button href={ticket.url} target="_blank" variant="ticket">

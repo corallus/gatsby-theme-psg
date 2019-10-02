@@ -9,9 +9,7 @@ export default ({title, linkName = null, className, children, link = null}) => {
         <Heading title={title} />
       </header>
       <div className="container">
-        <div className="mb-5">
-          {children}
-        </div>
+        {children}
         {link !== null && linkName !== null &&
           <footer className="section-footer">
             <Button link={link} text={linkName} />

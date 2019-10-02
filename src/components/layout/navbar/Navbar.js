@@ -24,7 +24,7 @@ const Toggler = () => {
 
 const SecondaryMenu = () => {
   return (
-    <Nav as="ul" className="justify-content-center justify-content-lg-end align-items-center flex-row">
+    <Nav as="ul" className="justify-content-center justify-content-lg-end align-items-center flex-row secondary-menu">
       <SocialMenu />
       <li className="nav-item">
         <span className="nav-link">

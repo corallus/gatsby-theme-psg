@@ -9,7 +9,7 @@
       flex: 1 1 0
     }
   }
-  .secondary-menu-navbar {
+  .secondary-menu {
     li {
       .nav-link {
         padding-left: 1rem;
@@ -94,9 +94,16 @@
     }
     .nav-link {
       color: $navbar-collapse-color !important;
-      &:hover, &.active {
+      &:hover {
         color: $navbar-collapse-hover-color !important;
       }
+      &.active {
+        color: $navbar-collapse-active-color !important;
+      }
+    }
+    .secondary-menu li:last-child {
+      float: none;
+      display: block
     }
   }
 }
