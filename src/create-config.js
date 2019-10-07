@@ -43,6 +43,7 @@ export default function (config = {}) {
         fields: [
           { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'event' },
           { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string' },
+          { label: 'Timetable', name: 'timetable', widget: 'image', required: false },
           { label: 'Naam', name: 'name', widget: 'string', required: false },
           { label: 'EventbriteId', name: 'eventbrite', widget: 'string', required: false },
           { label: 'Url', name: 'url', widget: 'string', required: false },

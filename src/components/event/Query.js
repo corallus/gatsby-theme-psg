@@ -24,6 +24,13 @@ const { allMarkdownRemark } = useStaticQuery(
                 dateLong: date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
                 dateMedium: date(formatString: "MMMM YYYY", locale: "nl-NL")
                 dateShort: date(formatString: "DD MMM", locale: "nl-NL")
+                timetable {
+                  childImageSharp {
+                    fluid(maxWidth: 1024, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
                 tickets {
                   name
                   price
