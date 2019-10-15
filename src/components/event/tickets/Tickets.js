@@ -30,18 +30,18 @@ export default () => {
           <div className="col-sm-6 col-lg-4" key={post.id}>
             <Ticket ticket={post} early_bird={earlyBird && post.frontmatter.price !== post.frontmatter.price_early}>
               {post.frontmatter.url ? 
-                <Button href={post.frontmatter.url} target="_blank" className="btn-ticket">
+                <a className="btn btn-ticket" href={post.frontmatter.url} target="_blank">
                   Koop ticket <MdArrowForward size={32} />
-                </Button>
+                </a>
                 :
                 event.frontmatter.eventbrite ?
                   <EventbriteButton ebEventId={event.frontmatter.eventbrite} className="btn btn-ticket">
                     Koop ticket <MdArrowForward size={32} />
                   </EventbriteButton>
                 :
-                <Button className="btn-ticket" onClick={() => handleShow()}>
+                <button className="btn btn-ticket" onClick={() => handleShow()}>
                   Koop ticket <MdArrowForward size={32} />
-                </Button>
+                </button>
               }
             </Ticket>
           </div>
