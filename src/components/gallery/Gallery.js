@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Carousel, Card } from 'react-bootstrap'
+import { Carousel } from 'react-bootstrap'
 import { FaArrowCircleLeft, FaArrowCircleRight } from 'react-icons/fa'
 import Lightbox from 'react-image-lightbox'
 import Img from 'gatsby-image'
@@ -46,7 +46,7 @@ class Gallery extends React.Component {
       pages.push(page);
     }
     return (
-      <div>
+      <>
         {isOpen && (
           <Lightbox
             mainSrc={images[imageIndex].image.childImageSharp.fluid.src}
@@ -78,17 +78,15 @@ class Gallery extends React.Component {
             <Carousel.Item key={i}>
               <div className="row">
                 {page.map((image, j) => (
-                  <div key={j} onClick={() => this.handleOpen(j)} className="col-md-4" style={{ padding: '15px' }}>
-                    <Card className="impressie">
-                      <Img className="card-img" fluid={image.image.childImageSharp.fluid} alt={image.alt} />
-                    </Card>
+                  <div key={j} onClick={() => this.handleOpen(j)} className="col-md-4" style={{padding: '15px'}}>
+                    <Img className="rounded" fluid={image.image.childImageSharp.fluid} alt={image.alt} />
                   </div>
                 ))}
               </div>
             </Carousel.Item>
           ))}
         </Carousel>
-      </div>
+      </>
     );
   }
 }

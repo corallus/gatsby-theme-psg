@@ -5,18 +5,18 @@ import moment from 'moment';
 import { Button, Modal } from 'react-bootstrap';
 import { MdArrowForward } from 'react-icons/md';
 import EventbriteButton from './Button'
+import { useTicketsQuery } from './Query';
 
 export default () => {
   const { state } = useContext(EventContext)
   const { event } = state
+  const data = useTicketsQuery()
+  const tickets = (event !== null ? data.filter(item => item.node.frontmatter.event.id === event.id): data)
 
   const [earlyBird, setEarlyBird] = useState(false)
   useEffect(() => {
-      setEarlyBird(moment().isBefore(moment(event.frontmatter.early_bird)))
-  }, [])
-  useEffect(() => {
     setEarlyBird(moment().isBefore(moment(event.frontmatter.early_bird)))
-  }, [state.event.id, event.frontmatter.early_bird])
+  }, [event.frontmatter.early_bird])
 
   const [show, setShow] = useState(false);
 
@@ -26,11 +26,11 @@ export default () => {
   return (
     <>
       <div className="row justify-content-center">
-        {event.frontmatter.tickets.map((ticket, i) => (
-          <div className="col-sm-6 col-lg-4" key={event.id+i}>
-            <Ticket ticket={ticket} early_bird={earlyBird}>
-              {ticket.url ? 
-                <Button href={ticket.url} target="_blank" variant="ticket">
+        {tickets.map(({ node: post }) => (
+          <div className="col-sm-6 col-lg-4" key={post.id}>
+            <Ticket ticket={post} early_bird={earlyBird && post.frontmatter.price !== post.frontmatter.price_early}>
+              {post.frontmatter.url ? 
+                <Button href={post.frontmatter.url} target="_blank" className="btn-ticket">
                   Koop ticket <MdArrowForward size={32} />
                 </Button>
                 :
@@ -39,7 +39,7 @@ export default () => {
                     Koop ticket <MdArrowForward size={32} />
                   </EventbriteButton>
                 :
-                <Button variant="ticket" onClick={() => handleShow()}>
+                <Button className="btn-ticket" onClick={() => handleShow()}>
                   Koop ticket <MdArrowForward size={32} />
                 </Button>
               }

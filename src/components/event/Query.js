@@ -31,12 +31,6 @@ const { allMarkdownRemark } = useStaticQuery(
                     }
                   }
                 }
-                tickets {
-                  name
-                  price
-                  price_early
-                  url
-                }
               }
             }
           }

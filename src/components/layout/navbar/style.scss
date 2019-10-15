@@ -24,6 +24,25 @@
     margin: 0;
     font-size: 0;
   }
+  &.navbar-expanded {
+    .navbar-toggler {
+      color: $navbar-collapse-color !important;
+      .icon-bar {
+        background-color: $navbar-collapse-color !important;
+      }
+      .top-bar {
+        transform: rotate(45deg);
+        transform-origin: 10% 10%;
+      }
+      .middle-bar {
+        opacity: 0;
+      }
+      .bottom-bar {
+        transform: rotate(-45deg);
+        transform-origin: 10% 90%;
+      }
+    }
+  }
   .navbar-toggler {
     border: 0;
     padding-left: 0;
@@ -45,23 +64,6 @@
     }
     .bottom-bar {
       transform: rotate(0);
-    }
-    &.collapsed {
-      color: $navbar-collapse-color !important;
-      .icon-bar {
-        background-color: $navbar-collapse-color !important;
-      }
-      .top-bar {
-        transform: rotate(45deg);
-        transform-origin: 10% 10%;
-      }
-      .middle-bar {
-        opacity: 0;
-      }
-      .bottom-bar {
-        transform: rotate(-45deg);
-        transform-origin: 10% 90%;
-      }
     }
   }
   &.navbar-light {

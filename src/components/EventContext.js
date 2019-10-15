@@ -5,6 +5,7 @@ import moment from 'moment';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'changeEvent':
+      window.localStorage.setItem("ev", action.payload.id)
       return { ...state, event: action.payload }
 
     default:
@@ -18,25 +19,21 @@ function EventProvider ({ children }) {
   const events = useEventsQuery()
   const futureEvents = events.filter(event => moment().isBefore(moment(event.node.frontmatter.date)))
 
-  const eventId = (typeof window !== 'undefined' && localStorage.getItem('ev')) || futureEvents[0].node.id
-
-  const findEvent = (item) => {
-    return item.node.id === eventId;
-  }
-
   const initialState = {
-    event: (events.find(findEvent) || futureEvents[0]).node,
+    event: futureEvents[0].node,
     events: futureEvents
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  useEffect(
-    () => {
-      window.localStorage.setItem("ev", state.event.id)
-    },
-    [state.event.id]
-  );
+  useEffect(() => {
+    if (typeof window !== 'undefined' && localStorage.getItem('ev')) {
+      let browserEvent = futureEvents.find(item => item.node.id === localStorage.getItem('ev'))
+      if (browserEvent) {
+        dispatch({ type: 'changeEvent', payload: browserEvent.node })
+      }
+    }
+  }, []);
 
   return (
     <EventContext.Provider value={{

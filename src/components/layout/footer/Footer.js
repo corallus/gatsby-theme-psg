@@ -17,10 +17,10 @@ const Footer = () => {
             </div>
             <div className="col-12 col-lg-9 d-flex align-content-end px-4 flex-wrap">
               <div className="navigation mb-2 w-100 d-md-flex justify-content-between">
-                <ul className="nav main-menu justify-content-center">
+                <ul className="nav main-menu justify-content-center justify-content-md-start">
                   <PrimaryMenu />
                 </ul>
-                <ul className="nav social-menu justify-content-center">
+                <ul className="nav social-menu justify-content-center justify-content-md-end">
                   <SocialMenu />
                 </ul>
               </div>

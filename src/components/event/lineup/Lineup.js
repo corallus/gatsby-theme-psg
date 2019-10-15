@@ -9,7 +9,6 @@ export default ({highlighted=2, numItems=null}) => {
   const { event } = state
   const acts = (event !== null ? data.filter(item => item.node.frontmatter.event.id === event.id): data)
 
-
   return (
     <React.Fragment>
       {acts && acts.length

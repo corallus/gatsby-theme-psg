@@ -8,9 +8,6 @@ const EventButton = ({ event }) => {
 
     useEffect(() => {
         setIsActive(state.event.id === event.id);
-    }, [])
-    useEffect(() => {
-        setIsActive(state.event.id === event.id)
     }, [state.event.id, event.id])
 
     return (

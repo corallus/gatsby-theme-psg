@@ -57,10 +57,29 @@ export default function (config = {}) {
             label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [
               { label: 'Naam', name: 'name', widget: 'string' },
               { label: 'Url', name: 'url', widget: 'string', required: false },
-              { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float' },
+              { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float', required: false },
               { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
             ]
           },
+        ]
+      },
+      {
+        name: 'tickets',
+        label: 'Tickets',
+        folder: 'src/content/tickets',
+        create: true,
+        slug: '{{title}}-{{event}}',
+        identifier_field: 'artist',
+        summary: "{{title}} ({{event}})",
+        fields: [
+          { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'ticket' },
+          { label: 'Titel', name: 'title', widget: 'string', required: true },
+          { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
+          { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
+          { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int', required: false },
+          { label: 'Url', name: 'url', widget: 'string', required: false },
+          { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float', required: false },
+          { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
         ]
       },
       {
