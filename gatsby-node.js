@@ -9,6 +9,21 @@ exports.onCreateDevServer = ({ app }) => {
   fsMiddlewareAPI(app);
 };
 
+exports.sourceNodes = ({ actions, schema }) => {
+  const { createTypes } = actions
+  createTypes(`
+    type MarkdownRemarkFrontmatter {
+      timetable: File
+      price_early: Float
+      price: Float
+    }
+
+    type MarkdownRemark implements Node {
+      frontmatter: MarkdownRemarkFrontmatter
+    }
+  `)
+}
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 

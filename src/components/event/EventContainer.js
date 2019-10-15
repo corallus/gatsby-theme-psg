@@ -11,7 +11,7 @@ const EventButton = ({ event }) => {
   return (
     <Button
       variant="event-selector"
-      className={isActive && ' active'}
+      className={isActive && 'active'}
       onClick={() => dispatch({ type: 'changeEvent', payload: event })}
     >
       {event.frontmatter.dateShort} <span className="d-none d-sm-inline">{event.frontmatter.name}</span>
