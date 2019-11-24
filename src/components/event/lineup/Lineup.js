@@ -7,7 +7,7 @@ export default ({highlighted=2, numItems=null}) => {
   const data = useLineupQuery()
   const { state } = useContext(EventContext)
   const { event } = state
-  const acts = (event !== null ? data.filter(item => item.node.frontmatter.event.id === event.id): data)
+  const acts = (event !== null ? data.filter(item => item.node.frontmatter.event && (item.node.frontmatter.event.id === event.id)): data)
 
   return (
     <React.Fragment>
