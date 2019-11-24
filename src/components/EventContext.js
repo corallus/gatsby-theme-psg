@@ -16,7 +16,7 @@ const EventContext = React.createContext(null)
 
 function EventProvider ({ children }) {
   const events = useEventsQuery()
-  const activeEvents = events.filter(event => !event.node.frontmatter.active)
+  const activeEvents = events.filter(event => event.node.frontmatter.active)
 
   const initialState = {
     event: activeEvents[0].node,
