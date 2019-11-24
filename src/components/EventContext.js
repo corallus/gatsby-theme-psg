@@ -1,6 +1,5 @@
 import React, { useEffect, useReducer } from "react"
 import { useEventsQuery } from "./event/Query";
-import moment from 'moment';
 
 const reducer = (state, action) => {
   switch (action.type) {
