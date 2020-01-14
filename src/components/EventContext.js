@@ -17,7 +17,7 @@ const EventContext = React.createContext(null)
 
 function EventProvider ({ children }) {
   const events = useEventsQuery()
-  const futureEvents = events.filter(event => moment().isBefore(moment(event.node.frontmatter.date)))
+  const futureEvents = events
 
   const initialState = {
     event: futureEvents[0].node,
