@@ -1,27 +1,20 @@
 const _ = require('lodash')
 const path = require('path')
+const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 
 exports.onCreateDevServer = ({ app }) => {
-  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs');
-  fsMiddlewareAPI(app);
-};
+  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs')
+  fsMiddlewareAPI(app)
+}
 
 exports.sourceNodes = ({ actions, schema }) => {
   const { createTypes } = actions
-  createTypes(`
-    type MarkdownRemarkFrontmatter {
-      timetable: File
-      price_early: Float
-      price: Float
-    }
-
-    type MarkdownRemark implements Node {
-      frontmatter: MarkdownRemarkFrontmatter
-    }
-  `)
+  const graphqlschema = fs.readFileSync(path.resolve(__dirname, 'schema.gql'), 'utf8')
+  console.log('creating schema')
+  createTypes(graphqlschema)
 }
 
 exports.createPages = ({ actions, graphql }) => {
