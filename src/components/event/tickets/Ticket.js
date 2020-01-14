@@ -11,7 +11,7 @@ export default ({ ticket, early_bird, children }) => {
   return (
     <Card className="ticket h-100">
       <Card.Body className="d-flex flex-column">
-        <h3 className="mb-auto">{title}</h3>
+        <h3>{title}</h3>
         {currentPrice &&
           <Row className={'price my-2 ' + (early_bird_price ? 'early' : 'regular')}>
             {early_bird_price &&
@@ -34,7 +34,9 @@ export default ({ ticket, early_bird, children }) => {
             </Col>
           </Row>
         }
-        <Content content={ticket.html} /> 
+        <div className="mb-auto">
+          <Content content={ticket.html} />
+        </div>
         {children}
       </Card.Body>
     </Card>
