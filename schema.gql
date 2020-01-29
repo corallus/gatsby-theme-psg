@@ -29,12 +29,18 @@ type MarkdownRemarkFrontmatter @derivedTypes {
   name: String
   eventbrite: String
   url: String
+  links: [MarkdownRemarkFrontmatterLinks]
   status: String
   date: Date @dateformat
   early_bird: Date @dateformat
   active: Boolean
   category: String
   events: [MarkdownRemark] @link(by: "frontmatter.title")
+}
+
+type MarkdownRemarkFrontmatterLinks {
+  name: String
+  url: String
 }
 
 type MarkdownRemarkFrontmatterImages {

@@ -10,7 +10,7 @@ exports.onCreateDevServer = ({ app }) => {
   fsMiddlewareAPI(app)
 }
 
-exports.sourceNodes = ({ actions, schema }) => {
+exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
   const graphqlschema = fs.readFileSync(path.resolve(__dirname, 'schema.gql'), 'utf8')
   console.log('creating schema')
