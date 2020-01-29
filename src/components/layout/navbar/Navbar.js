@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Link } from "gatsby"
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import EventContext from '../../EventContext';
 import SocialMenu from "../../Social"
 import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
@@ -37,8 +38,11 @@ const SecondaryMenu = () => {
 
 export const PrimaryMenu = () => {
   const { menuItems } = useSiteMetadata()
+  const { state } = useContext(EventContext)
+  const { event } = state
   return (
-    menuItems.map((item, i) => (
+    <>
+      {menuItems.map((item, i) => (
       <li key={i} className="nav-item">
         {item.external
           ?
@@ -47,7 +51,13 @@ export const PrimaryMenu = () => {
           <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
         }
       </li>
-    ))
+    ))}
+    {event.frontmatter.links && event.frontmatter.links.map((item, i) => (
+      <li key={i} className="nav-item">
+          <a href={item.url} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
+      </li>
+    ))}
+    </>
   )
 }
 

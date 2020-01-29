@@ -20,6 +20,10 @@ const { allMarkdownRemark } = useStaticQuery(
                 status
                 eventbrite
                 url
+                links {
+                  name
+                  url
+                }
                 date
                 active
                 dateLong: date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")

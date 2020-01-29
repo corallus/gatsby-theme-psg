@@ -46,7 +46,11 @@ export default function (config = {}) {
           { label: 'Timetable', name: 'timetable', widget: 'image', required: false },
           { label: 'Naam', name: 'name', widget: 'string', required: false },
           { label: 'EventbriteId', name: 'eventbrite', widget: 'string', required: false },
-          { label: 'Url', name: 'url', widget: 'string', required: false },
+          { label: 'Tickets url (if no eventbrite)', name: 'url', widget: 'string', required: false },
+          { label: 'Links', name: 'links', widget: 'list', collapsed: false, fields: [
+            { label: 'Name', name: 'name', widget: 'string'},
+            { label: 'Url', name: 'url', widget: 'string'},
+          ]},
           { label: 'Status', name: 'status', widget: 'select', default: "In verkoop", options: ["In verkoop", "Binnenkort te koop", "Uitverkocht"] },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
