@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react'
-import EventContext from '../../EventContext';
-import Ticket from './Ticket';
-import moment from 'moment';
-import { Button, Modal } from 'react-bootstrap';
-import { MdArrowForward } from 'react-icons/md';
-import EventbriteButton from './Button'
-import { useTicketsQuery } from './Query';
+import EventContext from '../../EventContext'
+import Ticket from './Ticket'
+import moment from 'moment'
+import { Button, Modal } from 'react-bootstrap'
+import { MdArrowForward } from 'react-icons/md'
+import { useTicketsQuery } from './Query'
+import Helmet from 'react-helmet'
 
 export default () => {
   const { state } = useContext(EventContext)
@@ -18,10 +18,10 @@ export default () => {
     setEarlyBird(moment().isBefore(moment(event.frontmatter.early_bird)))
   }, [event.frontmatter.early_bird])
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false)
+  const handleShow = () => setShow(true)
 
   return (
     <>
@@ -35,9 +35,27 @@ export default () => {
                 </a>
                 :
                 event.frontmatter.eventbrite ?
-                  <EventbriteButton ebEventId={event.frontmatter.eventbrite} className="btn btn-ticket">
-                    Koop ticket <MdArrowForward size={32} />
-                  </EventbriteButton>
+                  <>
+                    <Helmet>
+                      <script src="https://www.eventbrite.nl/static/widgets/eb_widgets.js" />
+                      <script>
+                        {`
+                        var exampleCallback = function() { console.log("Order complete!")};
+                      
+                        window.EBWidgets.createWidget({
+                          widgetType: "checkout",
+                          eventId: "${event.frontmatter.eventbrite}",
+                          modal: true,
+                          modalTriggerElementId: "widget-trigger",
+                          onOrderComplete: exampleCallback
+                        });
+                        `}
+                      </script>
+                    </Helmet>
+                    <Button id="widget-trigger" className="btn btn-ticket" type="button">
+                      Koop ticket <MdArrowForward size={32} />
+                    </Button>
+                  </>
                   :
                   <button className="btn btn-ticket" onClick={() => handleShow()}>
                     Koop ticket <MdArrowForward size={32} />
