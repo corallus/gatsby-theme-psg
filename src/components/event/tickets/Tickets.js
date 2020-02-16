@@ -37,7 +37,7 @@ export default () => {
                 event.frontmatter.eventbrite ?
                   <>
                     <Helmet>
-                      <script src="https://www.eventbrite.nl/static/widgets/eb_widgets.js" />
+                      <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js" />
                       <script>
                         {`
                         var exampleCallback = function() { console.log("Order complete!")};
