@@ -13,6 +13,15 @@ const { allMarkdownRemark } = useStaticQuery(
               id
               html
               frontmatter {
+                stages {
+                  name
+                  acts {
+                    artist {
+                      ...Artist
+                    } 
+                    announced
+                  }
+                }
                 name
                 templateKey
                 location

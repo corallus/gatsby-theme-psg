@@ -1,14 +1,8 @@
-const _ = require('lodash')
 const path = require('path')
 const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
-
-exports.onCreateDevServer = ({ app }) => {
-  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs')
-  fsMiddlewareAPI(app)
-}
 
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions

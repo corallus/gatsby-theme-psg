@@ -17,22 +17,18 @@ export default function (config = {}) {
         ]
       },
       {
-        name: 'acts',
-        label: 'Acts',
-        folder: 'src/content/acts',
+        name: 'stages',
+        label: 'Stages',
+        folder: 'src/content/stages',
         create: true,
-        slug: '{{artist}}-{{event}}',
-        identifier_field: 'artist',
-        summary: "{{artist}} ({{event}})",
+        slug: '{{event}}-{{title}}',
+        identifier_field: 'title',
+        summary: "{{even}} ({{title}})",
         fields: [
-          { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'act' },
-          { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
+          { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'stage' },
+          { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string', required: true },
+          { label: 'Naam', name: 'title', widget: 'string', required: true },
           { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
-          { label: 'Tijd', name: 'time', widget: 'datetime', default: '', format: 'hh:mm', required: false },
-          { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true },
-          { label: 'In lineup', name: 'lineup', widget: 'boolean', default: true },
-          { label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int' },
-          { label: 'Tekst', name: 'body', widget: 'markdown', required: false }
         ]
       },
       {
@@ -57,6 +53,13 @@ export default function (config = {}) {
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
           { label: 'Active', name: 'active', widget: 'boolean', default: true, required: false },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
+          { label: 'Stages', name: 'stages', widget: 'list', required: false, fields: [
+            { label: 'Naam', name: 'name', widget: 'string', required: false },
+            { label: 'Acts', name: 'acts', widget: 'list', required: false, fields: [
+              { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
+              { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true },
+            ]},
+          ]}
         ]
       },
       {

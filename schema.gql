@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-01-14T20:49:13.128Z ###
+### Type definitions saved at 2020-02-27T22:30:05.435Z ###
 
 type MarkdownRemark implements Node @childOf(mimeTypes: ["text/markdown", "text/x-markdown"], types: [], many: false) @derivedTypes @dontInfer {
   frontmatter: MarkdownRemarkFrontmatter
@@ -9,9 +9,6 @@ type MarkdownRemark implements Node @childOf(mimeTypes: ["text/markdown", "text/
 }
 
 type MarkdownRemarkFrontmatter @derivedTypes {
-  timetable: File @fileByRelativePath
-  price_early: Float
-  price: Float
   title: String
   templateKey: String
   description: String
@@ -20,12 +17,6 @@ type MarkdownRemarkFrontmatter @derivedTypes {
   info2: MarkdownRemark @link(by: "frontmatter.title")
   images: [MarkdownRemarkFrontmatterImages]
   location: String
-  artist: MarkdownRemark @link(by: "frontmatter.title")
-  event: MarkdownRemark @link(by: "frontmatter.title")
-  time: String
-  announced: Boolean
-  lineup: Boolean
-  order: Int
   name: String
   eventbrite: String
   url: String
@@ -34,13 +25,14 @@ type MarkdownRemarkFrontmatter @derivedTypes {
   date: Date @dateformat
   early_bird: Date @dateformat
   active: Boolean
+  stages: [MarkdownRemarkFrontmatterStages]
+  timetable: File @fileByRelativePath
   category: String
+  order: Int
   events: [MarkdownRemark] @link(by: "frontmatter.title")
-}
-
-type MarkdownRemarkFrontmatterLinks {
-  name: String
-  url: String
+  event: MarkdownRemark @link(by: "frontmatter.title")
+  price: Float
+  price_early: Float
 }
 
 type MarkdownRemarkFrontmatterImages {
@@ -48,6 +40,25 @@ type MarkdownRemarkFrontmatterImages {
   image: File @fileByRelativePath
 }
 
+type MarkdownRemarkFrontmatterLinks {
+  name: String
+  url: String
+}
+
+type MarkdownRemarkFrontmatterStages @derivedTypes {
+  name: String
+  acts: [MarkdownRemarkFrontmatterStagesActs]
+}
+
+type MarkdownRemarkFrontmatterStagesActs {
+  artist: MarkdownRemark @link(by: "frontmatter.title")
+  announced: Boolean
+}
+
 type MarkdownRemarkFields {
   slug: String
 }
+
+type MarkdownRemarkFrontmatterImages {
+  alt: String
+  image: File @fileByRelativePath

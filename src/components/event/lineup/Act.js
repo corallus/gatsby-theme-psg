@@ -4,10 +4,10 @@ import { graphql } from 'gatsby'
 import { Card } from 'react-bootstrap';
 
 export default ({ act }) => {
-  const artist = act.frontmatter.artist
+  const artist = act.artist
   return (
     <Card className="artist" style={{ backgroundColor: '#d8d8d8' }}>
-      {act.frontmatter.announced && artist.frontmatter.image
+      {act.announced && artist.frontmatter.image
         ?
         <Img fluid={artist.frontmatter.image.childImageSharp.fluid}
           alt={artist.frontmatter.title}
@@ -18,7 +18,7 @@ export default ({ act }) => {
       }
       <Card.ImgOverlay>
         <div className="card-footer">
-          {act.frontmatter.announced
+          {act.announced
             ?
             artist.frontmatter.title
             :
@@ -31,7 +31,7 @@ export default ({ act }) => {
 }
 
 export const query = graphql`
-  fragment ArtistFragment on MarkdownRemark {
+  fragment Artist on MarkdownRemark {
     id
     html 
     frontmatter {

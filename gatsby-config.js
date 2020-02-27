@@ -9,6 +9,13 @@ module.exports = themeOptions => {
       menuItems: themeOptions.menuItems
     },
     plugins: [
+      {
+        resolve: `gatsby-plugin-schema-snapshot`,
+        options: {
+          path: `schema.gql`,
+          update: false,
+        },
+      },
       'gatsby-plugin-react-helmet',
       {
         resolve: `gatsby-plugin-sass`,
@@ -93,13 +100,6 @@ module.exports = themeOptions => {
         },
       },
       {
-        // This is only needed temporarily. Themes will automatically be transpiled in later versions.
-        resolve: 'gatsby-plugin-compile-es6-packages',
-        options: {
-          modules: ['gatsby-theme-psg']
-        }
-      },
-      {
         resolve: `gatsby-plugin-manifest`,
         options: {
           name: themeOptions.title,
@@ -119,6 +119,7 @@ module.exports = themeOptions => {
       'MarkdownRemark.frontmatter.events': `MarkdownRemark.frontmatter.title`,
       'MarkdownRemark.frontmatter.info1': `MarkdownRemark.frontmatter.title`,
       'MarkdownRemark.frontmatter.info2': `MarkdownRemark.frontmatter.title`,
+      'MarkdownRemark.frontmatter.stages.acts.artist': `MarkdownRemark.frontmatter.title`,
     },
   }
 }

@@ -1,34 +1,40 @@
-import React, {useContext} from 'react'
-import Act from './Act';
-import { useLineupQuery } from './Query'
-import EventContext from '../../EventContext';
+import React, { useContext, useState } from 'react'
+import EventContext from '../../EventContext'
+import { Tab, ButtonGroup, Nav } from 'react-bootstrap'
+import Stage from './Stage'
+import { Button } from 'react-bootstrap'
 
-export default ({highlighted=2, numItems=null}) => {
-  const data = useLineupQuery()
+export default ({ highlighted = 2, numItems = null }) => {
   const { state } = useContext(EventContext)
   const { event } = state
-  const acts = (event !== null ? data.filter(item => item.node.frontmatter.event && (item.node.frontmatter.event.id === event.id)): data)
+  const { stages } = event.frontmatter
+  const [key, setKey] = useState("0");
 
   return (
     <React.Fragment>
-      {acts && acts.length
-        ?
-        <div className="row">
-          {acts.slice(0, highlighted).map(({ node: post }) => (
-            <div className="col-md-6 artist-highlighted" key={post.id}>
-              <Act act={post} />
-            </div>
-          ))}
-          {acts.slice(highlighted, numItems ? numItems : acts.length ).map(({ node: post }) => (
-            <div className="col-md-4" key={post.id}>
-              <Act act={post} />
-            </div>
-          ))}
-        </div>
+      {stages && stages.length > 1 ?
+        <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
+          <ButtonGroup className="mb-5" aria-label="Stages" size="sm">
+          {stages.map((stage, index) => (
+            <Button as={Nav.Link} eventKey={index} variant="event-selector" active={index==key}>
+              {stage.name}
+            </Button>
+          ))
+          }
+          </ButtonGroup>
+          <Tab.Content>
+          {stages.map((stage, index) => (
+            <Tab.Pane eventKey={index}>
+              <Stage highlighted={highlighted} numItems={numItems} acts={stage.acts} />
+            </Tab.Pane>
+          ))
+          }
+          </Tab.Content>
+        </Tab.Container>
         :
-        <h3 className="text-center">To be announced</h3>
+        stages && stages.length > 0 &&
+        <Stage highlighted={highlighted} numItems={numItems} acts={stages[0].acts} />
       }
-
     </React.Fragment>
   )
 }
