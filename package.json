@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-psg",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "main": "index.js",
   "author": "Vincent van Bergen",
   "license": "MIT",
@@ -18,6 +18,7 @@
     "gatsby-plugin-sass": "^2.1.0",
     "gatsby-plugin-sharp": "^2.2.1",
     "gatsby-plugin-sitemap": "^2.2.0",
+    "gatsby-plugin-schema-snapshot": "^1.0.0",
     "gatsby-remark-images": "^3.1.2",
     "gatsby-remark-relative-images": "^0.2.1",
     "gatsby-source-filesystem": "^2.1.1",
@@ -36,8 +37,5 @@
     "gatsby": "^2.11.7",
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
-  },
-  "devDependencies": {
-    "gatsby-plugin-schema-snapshot": "^1.0.0"
   }
 }
