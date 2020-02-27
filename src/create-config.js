@@ -17,21 +17,6 @@ export default function (config = {}) {
         ]
       },
       {
-        name: 'stages',
-        label: 'Stages',
-        folder: 'src/content/stages',
-        create: true,
-        slug: '{{event}}-{{title}}',
-        identifier_field: 'title',
-        summary: "{{even}} ({{title}})",
-        fields: [
-          { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'stage' },
-          { label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string', required: true },
-          { label: 'Naam', name: 'title', widget: 'string', required: true },
-          { label: 'Event', name: 'event', widget: 'relation', collection: 'events', searchFields: ['title'], valueField: 'title', required: true },
-        ]
-      },
-      {
         name: 'events',
         label: 'Evenementen',
         folder: 'src/content/events',
