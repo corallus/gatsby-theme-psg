@@ -62,3 +62,4 @@ type MarkdownRemarkFields {
 type MarkdownRemarkFrontmatterImages {
   alt: String
   image: File @fileByRelativePath
+}
