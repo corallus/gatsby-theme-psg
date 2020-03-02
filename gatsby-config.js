@@ -9,13 +9,15 @@ module.exports = themeOptions => {
       menuItems: themeOptions.menuItems
     },
     plugins: [
+      /*
       {
         resolve: `gatsby-plugin-schema-snapshot`,
         options: {
           path: `schema.gql`,
-          update: false,
+          update: true,
         },
       },
+      */
       'gatsby-plugin-react-helmet',
       {
         resolve: `gatsby-plugin-sass`,

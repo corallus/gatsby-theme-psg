@@ -41,7 +41,7 @@ export default function (config = {}) {
           { label: 'Stages', name: 'stages', widget: 'list', required: false, fields: [
             { label: 'Naam', name: 'name', widget: 'string', required: false },
             { label: 'Acts', name: 'acts', widget: 'list', required: false, fields: [
-              { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title' },
+              { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title', required: true },
               { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true },
             ]},
           ]}

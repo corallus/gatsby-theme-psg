@@ -16,7 +16,7 @@ export default ({ highlighted = 2, numItems = null }) => {
         <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
           <ButtonGroup className="mb-5" aria-label="Stages" size="sm">
           {stages.map((stage, index) => (
-            <Button as={Nav.Link} eventKey={index} variant="event-selector" active={index==key}>
+            <Button as={Nav.Link} key={index} eventKey={index} variant="event-selector" active={index==key}>
               {stage.name}
             </Button>
           ))
@@ -24,7 +24,7 @@ export default ({ highlighted = 2, numItems = null }) => {
           </ButtonGroup>
           <Tab.Content>
           {stages.map((stage, index) => (
-            <Tab.Pane eventKey={index}>
+            <Tab.Pane key={index} eventKey={index}>
               <Stage highlighted={highlighted} numItems={numItems} acts={stage.acts} />
             </Tab.Pane>
           ))
