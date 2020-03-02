@@ -6,6 +6,7 @@ const EventButton = ({ event }) => {
   const { state, dispatch } = useContext(EventContext)
   return (
     <Button
+      // @ts-ignore
       variant="event-selector"
       active={state.event.id===event.id}
       onClick={() => dispatch({ type: 'changeEvent', payload: event })}

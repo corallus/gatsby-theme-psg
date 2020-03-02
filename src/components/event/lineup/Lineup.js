@@ -16,7 +16,9 @@ export default ({ highlighted = 2, numItems = null }) => {
         <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
           <ButtonGroup className="mb-5" aria-label="Stages" size="sm">
           {stages.map((stage, index) => (
-            <Button as={Nav.Link} key={index} eventKey={index} variant="event-selector" active={index==key}>
+            <Button as={Nav.Link} key={index} eventKey={index} 
+            // @ts-ignore
+            variant="event-selector" active={index==key}>
               {stage.name}
             </Button>
           ))

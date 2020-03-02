@@ -5,7 +5,6 @@ import { Card } from 'react-bootstrap';
 
 export default ({ act }) => {
   const artist = act.artist
-  console.log(artist)
   return (
     <Card className="artist" style={{ backgroundColor: '#d8d8d8' }}>
       {act.announced && artist.frontmatter.image

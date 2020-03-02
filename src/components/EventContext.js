@@ -29,6 +29,7 @@ function EventProvider ({ children }) {
     if (typeof window !== 'undefined' && localStorage.getItem('ev')) {
       let browserEvent = activeEvents.find(item => item.node.id === localStorage.getItem('ev'))
       if (browserEvent) {
+        // @ts-ignore
         dispatch({ type: 'changeEvent', payload: browserEvent.node })
       }
     }
