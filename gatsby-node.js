@@ -4,12 +4,14 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
 
+/*
 exports.sourceNodes = ({ actions }) => {
   const { createTypes } = actions
   const graphqlschema = fs.readFileSync(path.resolve(__dirname, 'schema.gql'), 'utf8')
   console.log('creating schema')
   createTypes(graphqlschema)
 }
+*/
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions

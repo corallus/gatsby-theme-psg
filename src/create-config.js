@@ -32,7 +32,7 @@ export default function (config = {}) {
             { label: 'Name', name: 'name', widget: 'string'},
             { label: 'Url', name: 'url', widget: 'string'},
           ]},
-          { label: 'Status', name: 'status', widget: 'select', default: "In verkoop", options: ["In verkoop", "Binnenkort te koop", "Uitverkocht"] },
+          { label: 'Status', name: 'status', widget: 'select', default: "In verkoop", options: ["In verkoop", "Uitverkocht", "Afgelast", "Verplaatst"] },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
@@ -94,6 +94,24 @@ export default function (config = {}) {
               { label: 'Plaatje', name: 'image', widget: 'image' },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
               { label: 'Locatie', name: 'location', widget: 'map' }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'popup',
+        label: 'Popup',
+        files: [
+          {
+            file: 'src/content/popup.md',
+            label: 'Popup',
+            name: 'popup',
+            fields: [
+              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'popup' },
+              { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Datetime', name: 'datetime', widget: 'datetime' },
+              { label: 'Active', name: 'active', widget: 'boolean' },
+              { label: 'Tekst', name: 'body', widget: 'markdown' },
             ]
           }
         ]
