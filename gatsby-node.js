@@ -11,7 +11,7 @@ exports.sourceNodes = ({ actions }) => {
   console.log('creating schema')
   createTypes(graphqlschema)
 }
-*/
+ */
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
