@@ -55,7 +55,7 @@ const TemplateWrapper = ({title: pageTitle = null, description, template = null,
     useEffect(() => {
         const last_seen = localStorage.getItem('last_seen');
         const new_date = data.markdownRemark.frontmatter.datetime
-        if ((!last_seen || last_seen < new_date) && data.frontmatter.active) {
+        if ((!last_seen || last_seen < new_date) && data.markdownRemark.frontmatter.active) {
             setModalShow(true)
             localStorage.setItem('last_seen', data.markdownRemark.frontmatter.datetime);
         }
