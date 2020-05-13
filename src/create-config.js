@@ -181,7 +181,7 @@ export default function (config = {}) {
             label: 'Timetable',
             name: 'timetable',
             fields: [
-              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'lineup-page' },
+              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'timetable-page' },
               { label: 'Titel', name: 'title', widget: 'string' },
               { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
@@ -189,10 +189,10 @@ export default function (config = {}) {
           },
           {
             file: 'src/pages/tickets/index.md',
-            label: 'Timetable',
-            name: 'timetable',
+            label: 'Tickets',
+            name: 'tickets',
             fields: [
-              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'lineup-page' },
+              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'tickets-page' },
               { label: 'Titel', name: 'title', widget: 'string' },
               { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
