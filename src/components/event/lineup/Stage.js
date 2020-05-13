@@ -1,23 +1,24 @@
 import React from 'react'
 import Act from './Act';
+import {Row, Col} from 'react-bootstrap'
 
 export default ({highlighted=2, numItems=null, acts}) => {
   return (
     <React.Fragment>
       {acts && acts.length
         ?
-        <div className="row">
+        <Row>
           {acts.slice(0, highlighted).map(( act, index ) => (
-            <div className="col-md-6 artist-highlighted" key={index}>
+            <Col md={6} className="artist-highlighted" key={index}>
               <Act act={act} />
-            </div>
+            </Col>
           ))}
           {acts.slice(highlighted, numItems ? numItems : acts.length ).map(( act, index ) => (
-            <div className="col-md-4" key={index}>
+            <Col md={4} key={index}>
               <Act act={act} />
-            </div>
+            </Col>
           ))}
-        </div>
+        </Row>
         :
         <h3 className="text-center">To be announced</h3>
       }

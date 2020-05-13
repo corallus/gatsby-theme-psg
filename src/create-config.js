@@ -38,6 +38,13 @@ export default function (config = {}) {
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
           { label: 'Active', name: 'active', widget: 'boolean', default: true, required: false },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
+          { label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [
+              { label: 'Titel', name: 'title', widget: 'string', required: true },
+              { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
+              { label: 'Url', name: 'url', widget: 'string', required: false },
+              { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float', required: false },
+              { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
+            ]},
           { label: 'Stages', name: 'stages', widget: 'list', required: false, fields: [
             { label: 'Naam', name: 'name', widget: 'string', required: false },
             { label: 'Acts', name: 'acts', widget: 'list', required: false, fields: [
