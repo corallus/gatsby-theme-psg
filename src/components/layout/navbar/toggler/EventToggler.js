@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
-import EventContext from '../../EventContext';
+import EventContext from '../../../EventContext';
 import { Dropdown } from 'react-bootstrap';
+import Button from './Button'
 
 const EventButton = ({ event }) => {
     const [isActive, setIsActive] = useState(false)
@@ -17,15 +18,14 @@ const EventButton = ({ event }) => {
     )
 }
 
+
 export default () => {
     const { state } = useContext(EventContext)
     const { event, events } = state
     return (
         events.length > 1 &&
         <Dropdown className="event-selector">
-            <Dropdown.Toggle variant="link" size="sm" className="py-0" id="dropdown-basic">
-                {event.frontmatter.dateShort} <span className="d-none d-sm-inline">{event.frontmatter.name}</span>
-            </Dropdown.Toggle>
+            <Button event={event} />
             <Dropdown.Menu>
                 {events.map(({ node: post }) => (
                     <EventButton event={post} key={post.id} />

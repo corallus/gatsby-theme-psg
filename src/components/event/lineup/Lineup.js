@@ -18,7 +18,7 @@ export default ({ highlighted = 2, numItems = null }) => {
           {stages.map((stage, index) => (
             <Button as={Nav.Link} key={index} eventKey={index} 
             // @ts-ignore
-            variant="event-selector" active={index==key}>
+            variant="event-selector" active={index === key}>
               {stage.name}
             </Button>
           ))

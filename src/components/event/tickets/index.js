@@ -2,10 +2,10 @@ import React, { useContext, useState, useEffect } from 'react'
 import EventContext from '../../EventContext'
 import Ticket from './Ticket'
 import moment from 'moment'
-import { Button, Modal } from 'react-bootstrap'
-import { MdArrowForward } from 'react-icons/md'
+import { Button, Modal, Row, Col } from 'react-bootstrap'
 import { useTicketsQuery } from './Query'
 import { Helmet } from 'react-helmet'
+import Knop from '../../Button'
 
 export default () => {
   const { state } = useContext(EventContext)
@@ -25,14 +25,14 @@ export default () => {
 
   return (
       <>
-        <div className="row justify-content-center">
+        <Row className="row justify-content-center tickets">
           {tickets.map(({ node: post }) => (
-              <div className="col-sm-6 col-lg-4" key={post.id}>
-                <Ticket ticket={post} early_bird={earlyBird && post.frontmatter.price !== post.frontmatter.price_early}>
+              <Col sm={6} lg={4} className={"py-3"} key={post.id}>
+                <Ticket ticket={post} early_bird={earlyBird && post.price_early}>
                   {post.frontmatter.url ?
-                      <a className="btn btn-ticket" href={post.frontmatter.url} target="_blank" rel="noopener noreferrer">
-                        Koop ticket <MdArrowForward size={32} />
-                      </a>
+                      <Knop as={"a"} variant="ticket" href={post.frontmatter.url} target="_blank" rel="noopener noreferrer">
+                        Koop ticket
+                      </Knop>
                       :
                       event.frontmatter.eventbrite ?
                           <>
@@ -52,19 +52,19 @@ export default () => {
                         `}
                               </script>
                             </Helmet>
-                            <Button id="widget-trigger" className="btn btn-ticket" type="button">
-                              Koop ticket <MdArrowForward size={32} />
-                            </Button>
+                            <Knop id="widget-trigger" variant="ticket" type="button">
+                              Koop ticket
+                            </Knop>
                           </>
                           :
-                          <button className="btn btn-ticket" onClick={() => handleShow()}>
-                            Koop ticket <MdArrowForward size={32} />
-                          </button>
+                          <Knop variant="ticket" onClick={() => handleShow()}>
+                            Koop ticket
+                          </Knop>
                   }
                 </Ticket>
-              </div>
+              </Col>
           ))}
-        </div>
+        </Row>
         {event.frontmatter.url &&
         <Modal size="xl" show={show} onHide={handleClose}>
           <Modal.Header closeButton>

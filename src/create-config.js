@@ -29,29 +29,31 @@ export default function (config = {}) {
           { label: 'EventbriteId', name: 'eventbrite', widget: 'string', required: false },
           { label: 'Tickets url (if no eventbrite)', name: 'url', widget: 'string', required: false },
           { label: 'Links', name: 'links', widget: 'list', collapsed: false, fields: [
-            { label: 'Name', name: 'name', widget: 'string'},
-            { label: 'Url', name: 'url', widget: 'string'},
-          ]},
+              { label: 'Name', name: 'name', widget: 'string'},
+              { label: 'Url', name: 'url', widget: 'string'},
+            ]},
           { label: 'Status', name: 'status', widget: 'select', default: "In verkoop", options: ["In verkoop", "Uitverkocht", "Afgelast", "Verplaatst"] },
           { label: 'Locatie', name: 'location', widget: 'string' },
           { label: 'Datum', name: 'date', widget: 'date', required: true },
           { label: 'Early bird', name: 'early_bird', widget: 'date', required: false },
           { label: 'Active', name: 'active', widget: 'boolean', default: true, required: false },
           { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
-          { label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [
-              { label: 'Titel', name: 'title', widget: 'string', required: true },
-              { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
-              { label: 'Url', name: 'url', widget: 'string', required: false },
-              { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float', required: false },
-              { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
-            ]},
+          /*
+        { label: 'Tickets', name: 'tickets', widget: 'list', required: false, fields: [
+            { label: 'Titel', name: 'title', widget: 'string', required: true },
+            { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
+            { label: 'Url', name: 'url', widget: 'string', required: false },
+            { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float', required: false },
+            { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
+          ]},
+           */
           { label: 'Stages', name: 'stages', widget: 'list', required: false, fields: [
-            { label: 'Naam', name: 'name', widget: 'string', required: false },
-            { label: 'Acts', name: 'acts', widget: 'list', required: false, fields: [
-              { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title', required: true },
-              { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true },
-            ]},
-          ]}
+              { label: 'Naam', name: 'name', widget: 'string', required: false },
+              { label: 'Acts', name: 'acts', widget: 'list', required: false, fields: [
+                  { label: 'Artiest', name: 'artist', widget: 'relation', collection: 'artists', searchFields: ['title'], valueField: 'title', required: true },
+                  { label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true },
+                ]},
+            ]}
         ]
       },
       {
@@ -142,8 +144,6 @@ export default function (config = {}) {
               { label: 'Description', name: 'description', widget: 'text' },
               { label: 'Plaatje', name: 'image', widget: 'image', required: false },
               { label: 'Tekst', name: 'body', widget: 'markdown' },
-              { label: 'Info 1', name: 'info1', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title', required: false },
-              { label: 'Info 2', name: 'info2', widget: 'relation', collection: 'info', searchFields: ['title'], valueField: 'title', required: false },
               {
                 label: 'Fotos', name: 'images', widget: 'list', required: false, fields: [
                   { label: 'Plaatje', name: 'image', widget: 'image' },
@@ -178,6 +178,17 @@ export default function (config = {}) {
           },
           {
             file: 'src/pages/timetable/index.md',
+            label: 'Timetable',
+            name: 'timetable',
+            fields: [
+              { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'lineup-page' },
+              { label: 'Titel', name: 'title', widget: 'string' },
+              { label: 'Description', name: 'description', widget: 'text' },
+              { label: 'Tekst', name: 'body', widget: 'markdown' },
+            ]
+          },
+          {
+            file: 'src/pages/tickets/index.md',
             label: 'Timetable',
             name: 'timetable',
             fields: [

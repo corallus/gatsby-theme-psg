@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'gatsby';
-import { MdArrowForward } from 'react-icons/md';
+import Knop from '../../Button'
 
 export default () => {
     return (
-        <Link to="/tickets" className="btn btn-tickets">
-            TICKETS <MdArrowForward size={32} />
-        </Link>
+        <Knop as={Link} to="/tickets">
+            TICKETS
+        </Knop>
     )
 }

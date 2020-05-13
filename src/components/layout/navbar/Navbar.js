@@ -7,16 +7,16 @@ import SocialMenu from "../../Social"
 import useSiteMetadata from "../../SiteMetadata";
 import Logo from "./Logo";
 import './style.scss'
-import EventToggler from "./EventToggler";
+import EventToggler from "./toggler/EventToggler";
 import TicketButton from './TicketButton'
 
 const Toggler = () => {
   return (
     <>
       <span className="mr-2 d-inline-block align-middle bar">
-        <span className="icon-bar top-bar"></span>
-        <span className="icon-bar middle-bar"></span>
-        <span className="icon-bar bottom-bar"></span>
+        <span className="icon-bar top-bar"/>
+        <span className="icon-bar middle-bar"/>
+        <span className="icon-bar bottom-bar"/>
       </span>
       <span className="d-none d-md-inline">MENU</span>
     </>
@@ -43,19 +43,19 @@ export const PrimaryMenu = () => {
   return (
     <>
       {menuItems.map((item, i) => (
-      <li key={i} className="nav-item">
+      <Nav.Item key={i}>
         {item.external
           ?
-          <a href={item.link} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
+          <Nav.Link as={"a"} href={item.link} rel="noopener noreferrer" target="_blank">{item.name}</Nav.Link>
           :
-          <Link to={item.link} className="nav-link" activeClassName="active">{item.name}</Link>
+          <Nav.Link as={Link} to={item.link} activeClassName="active">{item.name}</Nav.Link>
         }
-      </li>
+      </Nav.Item>
     ))}
     {event.frontmatter.links && event.frontmatter.links.map((item, i) => (
-      <li key={i} className="nav-item">
-          <a href={item.url} rel="noopener noreferrer" className="nav-link" target="_blank">{item.name}</a>
-      </li>
+      <Nav.Item key={i} className="nav-item">
+          <Nav.Link href={item.url} rel="noopener noreferrer" target="_blank">{item.name}</Nav.Link>
+      </Nav.Item>
     ))}
     </>
   )
@@ -96,8 +96,8 @@ export default ({ isHome = false }) => {
     <Navbar variant={(scroll ? 'light' : 'dark')} fixed="top" expand={null} className={(collapsed ? 'navbar-collapsed': 'navbar-expanded')} collapseOnSelect={true} onToggle={() => setCollapsed(!collapsed)}>
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div className="d-flex align-items-center">
-          <div className="d-none d-lg-inline-block">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left align-middle">
+          <div className="d-none d-lg-inline-block mr-3">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left">
               <Toggler />
             </Navbar.Toggle>
           </div>

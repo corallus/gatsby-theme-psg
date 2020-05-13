@@ -2,20 +2,20 @@ import React from 'react'
 import Heading from './Heading';
 import Button from './Button'
 
-export default ({title, linkName = null, className, children, link = null}) => {
+export default ({title, linkName = null, children, link = null, ...props}) => {
   return (
-    <section className={'section '+className}>
+    <section {...props}>
       <header>
         <Heading title={title} />
       </header>
-      <div className="container">
+      <Container>
         {children}
-        {link !== null && linkName !== null &&
+        {link && linkName &&
           <footer className="section-footer">
             <Button link={link} text={linkName} />
           </footer>
         }
-      </div>
+      </Container>
     </section>
   )
 }
