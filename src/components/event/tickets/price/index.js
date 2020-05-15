@@ -17,17 +17,17 @@ const Price = ({ticket, earlyBird}) => {
         <Row className={'price my-2 ' + (earlyBird ? 'early' : 'regular')}>
             {earlyBird &&
             <Col className="col-auto">
-                <EarlyBirdPrice price={ticket.price_early} />
+                <EarlyBirdPrice price={ticket.frontmatter.price_early} />
             </Col>
             }
-            {ticket.price &&
+            {ticket.frontmatter.price &&
             <Col>
-                earlyBird ?
+                {earlyBird ?
                 <del>
-                    <RegularPrice price={ticket.price}/>
+                    <RegularPrice price={ticket.frontmatter.price}/>
                 </del>
                 :
-                <RegularPrice price={ticket.price}/>
+                <RegularPrice price={ticket.frontmatter.price}/>
                 }
             </Col>
             }
@@ -37,7 +37,7 @@ const Price = ({ticket, earlyBird}) => {
 
 const RegularPrice = ({price}) => {
     return (
-        <span className={`current-price`}><small>€</small>€{price.toFixed(2)}</span>
+        <span className={`current-price`}><small>€</small> {price.toFixed(2)}</span>
     )
 }
 

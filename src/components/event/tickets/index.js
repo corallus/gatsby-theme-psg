@@ -25,21 +25,11 @@ export default () => {
 
   return (
       <>
-        <Row className="row justify-content-center tickets">
-          {tickets.map(({ node: post }) => (
-              <Col sm={6} lg={4} className={"py-3"} key={post.id}>
-                <Ticket ticket={post} early_bird={earlyBird && post.price_early}>
-                  {post.frontmatter.url ?
-                      <Knop as={"a"} variant="ticket" href={post.frontmatter.url} target="_blank" rel="noopener noreferrer">
-                        Koop ticket
-                      </Knop>
-                      :
-                      event.frontmatter.eventbrite ?
-                          <>
-                            <Helmet>
-                              <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js" />
-                              <script>
-                                {`
+        {event.frontmatter.eventbrite &&
+        <Helmet>
+          <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"/>
+          <script>
+            {`
                         var exampleCallback = function() { console.log("Order complete!")};
                       
                         window.EBWidgets.createWidget({
@@ -50,12 +40,22 @@ export default () => {
                           onOrderComplete: exampleCallback
                         });
                         `}
-                              </script>
-                            </Helmet>
-                            <Knop id="widget-trigger" variant="ticket" type="button">
-                              Koop ticket
-                            </Knop>
-                          </>
+          </script>
+        </Helmet>
+        }
+        <Row className="row justify-content-center tickets">
+          {tickets.map(({ node: post }) => (
+              <Col sm={6} lg={4} className={"py-3"} key={post.id}>
+                <Ticket ticket={post} early_bird={earlyBird && post.price_early}>
+                  {post.frontmatter.url ?
+                      <Knop as={"a"} variant="ticket" href={post.frontmatter.url} target="_blank" rel="noopener noreferrer">
+                        Koop ticket
+                      </Knop>
+                      :
+                      event.frontmatter.eventbrite ?
+                          <Knop id="widget-trigger" variant="ticket" type="button">
+                            Koop ticket
+                          </Knop>
                           :
                           <Knop variant="ticket" onClick={() => handleShow()}>
                             Koop ticket
