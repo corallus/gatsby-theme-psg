@@ -321,13 +321,12 @@ type MarkdownRemarkFrontmatter {
   early_bird: Date @dateformat
   active: Boolean
   stages: [MarkdownRemarkFrontmatterStages]
+  tickets: [MarkdownRemarkFrontmatterTickets]
   timetable: File @fileByRelativePath
   category: String
   order: Int
   events: [MarkdownRemark] @link(by: "frontmatter.title")
   event: MarkdownRemark @link(by: "frontmatter.title")
-  price: Float
-  price_early: Float
   artist: MarkdownRemark @link(by: "frontmatter.title")
   time: String
   announced: Boolean
@@ -347,6 +346,12 @@ type MarkdownRemarkFrontmatterLinks {
 type MarkdownRemarkFrontmatterStages {
   name: String
   acts: [MarkdownRemarkFrontmatterStagesActs]
+}
+
+type MarkdownRemarkFrontmatterTickets {
+  title: String
+  price: Float
+  price_early: Float
 }
 
 type MarkdownRemarkFrontmatterStagesActs {

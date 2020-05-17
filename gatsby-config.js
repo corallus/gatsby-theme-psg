@@ -13,7 +13,7 @@ module.exports = themeOptions => {
         resolve: `gatsby-plugin-schema-snapshot`,
         options: {
           path: `schema.gql`,
-          update: false,
+          update: true,
         },
       },
       'gatsby-plugin-react-helmet',
@@ -22,7 +22,7 @@ module.exports = themeOptions => {
         options: {
           data: '@import "variables.scss";',
           includePaths: [
-            path.resolve('./src/style'),
+            path.resolve('./src'),
           ],
         },
       },
@@ -65,7 +65,7 @@ module.exports = themeOptions => {
               resolve: 'gatsby-remark-images',
               options: {
                 // It's important to specify the maxWidth (in pixels) of
-                // the content container as this plugin uses this as the
+                // the content Switcher as this plugin uses this as the
                 // base for generating different widths of each image.
                 maxWidth: 2048,
               },
