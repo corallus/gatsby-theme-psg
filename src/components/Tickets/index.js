@@ -4,10 +4,10 @@ import Ticket from './Ticket'
 import moment from 'moment'
 import {Button, Col, Modal, Row} from 'react-bootstrap'
 import {Helmet} from 'react-helmet'
-import Knop from '../Button'
+import TicketButton from './Ticket/Button'
 import './style.scss'
 
-const Tickets = () => {
+const Tickets = ({...props}) => {
     const {state} = useContext(Context)
     const {event} = state
     const tickets = event.frontmatter.tickets
@@ -44,22 +44,15 @@ const Tickets = () => {
             }
             <Row className="row justify-content-center tickets">
                 {tickets.map((ticket, index) => (
-                    <Col sm={6} lg={4} className={"py-3"} key={index}>
+                    <Col {...props} key={index} className={"mb-4 ticket-col"}>
                         <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early}>
                             {ticket.url ?
-                                <Knop as={"a"} variant="ticket" href={ticket.url} target="_blank"
-                                      rel="noopener noreferrer">
-                                    Koop ticket
-                                </Knop>
+                                <TicketButton as={"a"} href={ticket.url} target="_blank" rel="noopener noreferrer" />
                                 :
                                 event.frontmatter.eventbrite ?
-                                    <Knop id="widget-trigger" variant="ticket" type="button">
-                                        Koop ticket
-                                    </Knop>
+                                    <TicketButton id="widget-trigger" type="button" />
                                     :
-                                    <Knop variant="ticket" onClick={() => handleShow()}>
-                                        Koop ticket
-                                    </Knop>
+                                    <TicketButton onClick={() => handleShow()} />
                             }
                         </Ticket>
                     </Col>

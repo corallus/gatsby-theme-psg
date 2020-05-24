@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-psg",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "index.js",
   "author": "Vincent van Bergen",
   "license": "MIT",
@@ -31,6 +31,7 @@
     "react-helmet": "^6.0.0",
     "react-icons": "^3.7.0",
     "react-image-lightbox": "^5.1.0",
+    "showdown": "^1.9.1",
     "uuid": "^7.0.3"
   },
   "peerDependencies": {

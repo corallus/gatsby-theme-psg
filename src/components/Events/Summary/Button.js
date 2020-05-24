@@ -1,10 +1,11 @@
 import React from 'react'
-import Button from '../Button'
+import Button from '../../Button'
 
 export default ({children, ...props}) => {
     return (
         <Button {...props}>
-            {children}
+            Koop je tickets
         </Button>
     )
 }
+

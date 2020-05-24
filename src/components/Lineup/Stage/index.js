@@ -1,5 +1,5 @@
 import React from 'react'
-import Act from '../Act';
+import Act from './Act';
 import {Col, Row} from 'react-bootstrap'
 import './style.scss'
 
@@ -8,14 +8,14 @@ const Stage = ({highlighted = 2, numItems = null, acts}) => {
         <React.Fragment>
             {acts && acts.length
                 ?
-                <Row>
+                <Row className={"acts"}>
                     {acts.slice(0, highlighted).map((act, index) => (
-                        <Col md={6} className="artist-highlighted" key={index}>
+                        <Col md={6} className="artist-highlighted act-col" key={index}>
                             <Act act={act}/>
                         </Col>
                     ))}
                     {acts.slice(highlighted, numItems ? numItems : acts.length).map((act, index) => (
-                        <Col md={4} key={index}>
+                        <Col md={4} className={"act-col"} key={index}>
                             <Act act={act}/>
                         </Col>
                     ))}

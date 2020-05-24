@@ -2,7 +2,6 @@ import React from 'react'
 import {Col, Row} from 'react-bootstrap';
 import RegularPrice from "./Regular";
 import EarlyBirdPrice from "./EarlyBird";
-import './style.scss'
 
 const Price = ({ticket, earlyBird}) => {
     return (

@@ -1,25 +1,26 @@
 import React from 'react'
-import Heading from './Heading';
+import {Link} from 'gatsby'
+import Heading from './Heading'
 import Button from './Button'
-import Container from "react-bootstrap/Container";
+import {Container} from 'react-bootstrap'
 import './style.scss'
 
-const Section = ({title, linkName = null, children, link = null, ...props}) => {
-    return (
-        <section {...props}>
-            <header>
-                <Heading title={title}/>
-            </header>
-            <Container>
-                {children}
-                {link && linkName &&
-                <footer className="section-footer">
-                    <Button link={link} text={linkName}/>
-                </footer>
-                }
-            </Container>
-        </section>
-    )
+export default ({title, linkName = null, className, children, link = null}) => {
+  return (
+    <section className={'section py-5 '+className}>
+      <header>
+        <Heading title={title} />
+      </header>
+      <Container>
+        {children}
+        {link !== null && linkName !== null &&
+          <footer className="text-center my-5">
+              <Button as={Link} to={link}>
+                  {linkName}
+              </Button>
+          </footer>
+        }
+      </Container>
+    </section>
+  )
 }
-
-export default Section

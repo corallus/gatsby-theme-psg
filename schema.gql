@@ -1,4 +1,4 @@
-### Type definitions saved at 2020-04-20T20:17:17.437Z ###
+### Type definitions saved at 2020-05-17T19:11:39.907Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -136,7 +136,7 @@ input Potrace {
   background: String
 }
 
-type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
+type ImageSharp implements Node @childOf(mimeTypes: [], types: ["File"], many: false) @dontInfer {
   fixed(width: Int, height: Int, base64Width: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, grayscale: Boolean = false, duotone: DuotoneGradient, traceSVG: Potrace, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int = 0, trim: Float = 0): ImageSharpFixed
   resolutions(width: Int, height: Int, base64Width: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, grayscale: Boolean = false, duotone: DuotoneGradient, traceSVG: Potrace, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, toFormat: ImageFormat = NO_CHANGE, toFormatBase64: ImageFormat = NO_CHANGE, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int = 0, trim: Float = 0): ImageSharpResolutions @deprecated(reason: "Resolutions was deprecated in Gatsby v2. It's been renamed to \"fixed\" https://example.com/write-docs-and-fix-this-example-link")
   fluid(
@@ -269,6 +269,7 @@ type ImageSharpResize {
 }
 
 type MarkdownHeading {
+  id: String
   value: String
   depth: Int
 }
@@ -307,8 +308,6 @@ type MarkdownRemarkFrontmatter {
   templateKey: String
   description: String
   image: File @fileByRelativePath
-  info1: MarkdownRemark @link(by: "frontmatter.title")
-  info2: MarkdownRemark @link(by: "frontmatter.title")
   images: [MarkdownRemarkFrontmatterImages]
   location: String
   name: String
@@ -327,6 +326,8 @@ type MarkdownRemarkFrontmatter {
   order: Int
   events: [MarkdownRemark] @link(by: "frontmatter.title")
   event: MarkdownRemark @link(by: "frontmatter.title")
+  price: Float
+  price_early: Float
   artist: MarkdownRemark @link(by: "frontmatter.title")
   time: String
   announced: Boolean
@@ -348,15 +349,17 @@ type MarkdownRemarkFrontmatterStages {
   acts: [MarkdownRemarkFrontmatterStagesActs]
 }
 
+type MarkdownRemarkFrontmatterStagesActs {
+  artist: MarkdownRemark @link(by: "frontmatter.title")
+  announced: Boolean
+}
+
 type MarkdownRemarkFrontmatterTickets {
   title: String
   price: Float
   price_early: Float
-}
-
-type MarkdownRemarkFrontmatterStagesActs {
-  artist: MarkdownRemark @link(by: "frontmatter.title")
-  announced: Boolean
+  url: String
+  body: String
 }
 
 type MarkdownRemarkFields {

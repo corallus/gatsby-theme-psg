@@ -13,7 +13,7 @@ module.exports = themeOptions => {
         resolve: `gatsby-plugin-schema-snapshot`,
         options: {
           path: `schema.gql`,
-          update: true,
+          update: false,
         },
       },
       'gatsby-plugin-react-helmet',
