@@ -24,7 +24,7 @@ const Footer = () => {
                                     <SocialMenu/>
                                 </ul>
                             </div>
-                            <p className="text-muted text-xs mb-0">
+                            <p className="text-xs mb-0">
                                 <small>© Copyright 2019, All Rights Reserved. <a href="/algemenevoorwaarden.pdf">General
                                     Conditions of {title}</a> apply to this event.</small>
                             </p>

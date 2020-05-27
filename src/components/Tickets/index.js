@@ -44,7 +44,7 @@ const Tickets = ({...props}) => {
             }
             <Row className="row justify-content-center tickets">
                 {tickets.map((ticket, index) => (
-                    <Col {...props} key={index} className={"mb-4 ticket-col"}>
+                    <Col xs={12} sm={6} md={4} lg={3} {...props} key={index} className={"mb-4 ticket-col"}>
                         <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early}>
                             {ticket.url ?
                                 <TicketButton as={"a"} href={ticket.url} target="_blank" rel="noopener noreferrer" />

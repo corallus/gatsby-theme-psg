@@ -18,7 +18,7 @@ export default () => {
             <h2 className="">
                 Antwoord niet gevonden?
             </h2>
-            <HTMLContent className="content" content={data.markdownRemark.html}/>
+            <HTMLContent content={data.markdownRemark.html}/>
         </React.Fragment>
     )
 }
