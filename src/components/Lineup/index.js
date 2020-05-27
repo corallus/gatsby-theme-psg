@@ -14,16 +14,16 @@ const Lineup = ({highlighted = 2, numItems = null}) => {
         <React.Fragment>
             {stages && stages.length > 1 ?
                 <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
-                    <ButtonGroup className="mb-5" aria-label="Stages" size="sm">
+                    <Nav className="justify-content-center my-5" aria-label="Stages" size="sm">
                         {stages.map((stage, index) => (
                             <Button as={Nav.Link} key={index} eventKey={index}
                                 // @ts-ignore
-                                    variant="event-selector" active={index === key}>
+                                    variant="primary" active={index === key}>
                                 {stage.name}
                             </Button>
                         ))
                         }
-                    </ButtonGroup>
+                    </Nav>
                     <Tab.Content>
                         {stages.map((stage, index) => (
                             <Tab.Pane key={index} eventKey={index}>
