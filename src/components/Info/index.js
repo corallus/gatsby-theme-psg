@@ -31,7 +31,7 @@ export default ({category}) => {
 
     return (
         <Accordion defaultActiveKey="0">
-            <div className="row">
+            <div className="row text-left">
                 <div className="col-md-6">
                     {posts.filter(post => post.node.frontmatter.category === category).map((item, i) => (
                         i % 2 ?

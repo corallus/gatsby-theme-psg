@@ -5,7 +5,7 @@ import EarlyBirdPrice from "./EarlyBird";
 
 const Price = ({ticket, earlyBird}) => {
     return (
-        <Row className={'Price my-2 ' + (earlyBird ? 'early' : 'regular')}>
+        <Row className={'price my-2 ' + (earlyBird ? 'early' : 'regular')}>
             {earlyBird &&
             <Col className="col-auto">
                 <EarlyBirdPrice price={ticket.price_early}/>

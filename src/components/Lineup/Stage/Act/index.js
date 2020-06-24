@@ -31,7 +31,7 @@ const Act = ({act}) => {
     )
 }
 
-const query = graphql`
+export const query = graphql`
     fragment Artist on MarkdownRemark {
         id
         html

@@ -1,6 +1,5 @@
 import React from 'react'
 import {Badge} from 'react-bootstrap';
-import './style.scss'
 
 const EarlyBirdPrice = ({price}) => {
     return (

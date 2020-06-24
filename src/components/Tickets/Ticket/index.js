@@ -13,7 +13,7 @@ const Ticket = ({ticket, early_bird, children}) => {
                 <h3>{ticket.title}</h3>
                 <Price ticket={ticket} earlyBird={early_bird}/>
                 <div className="mb-auto">
-                    <Content content={ticket.body}/>
+                    <Content content={converter.makeHtml(ticket.body)}/>
                 </div>
                 {children}
             </Card.Body>
