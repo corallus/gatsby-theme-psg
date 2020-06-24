@@ -43,7 +43,7 @@ const Tickets = ({...props}) => {
             </Helmet>
             }
             <Row className="row justify-content-center tickets">
-                {tickets.map((ticket, index) => (
+                {tickets && tickets.map((ticket, index) => (
                     <Col xs={12} sm={6} md={4} lg={3} {...props} key={index} className={"mb-4 ticket-col"}>
                         <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early}>
                             {ticket.url ?
