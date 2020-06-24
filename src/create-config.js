@@ -50,7 +50,7 @@ export default function (config = {}) {
                             { label: 'Titel', name: 'title', widget: 'string', required: true },
                             { label: 'Tekst', name: 'body', widget: 'markdown', required: false },
                             { label: 'Url', name: 'url', widget: 'string', required: false },
-                            { label: 'Prijs', name: 'Price', widget: 'number', valueType: 'float', required: false },
+                            { label: 'Prijs', name: 'price', widget: 'number', valueType: 'float', required: false },
                             { label: 'Prijs early bird', name: 'price_early', widget: 'number', valueType: 'float', required: false },
                         ]},
                     {
