@@ -11,7 +11,6 @@ import {EventProvider} from '../Events/Context'
 import {graphql, useStaticQuery} from "gatsby";
 import NewsFlash from "./NewsFlash";
 
-
 const Layout = ({title: pageTitle = null, description, template = null, children}) => {
     const {title} = useSiteMetadata()
     const [modalShow, setModalShow] = React.useState(false);

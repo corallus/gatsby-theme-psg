@@ -44,7 +44,7 @@ export const PrimaryMenu = () => {
     return (
         <>
             {menuItems.map((item, i) => (
-                <Nav.Item key={i}>
+                <Nav.Item as={"li"} key={i}>
                     {item.external
                         ?
                         <Nav.Link as={"a"} href={item.link} rel="noopener noreferrer"
@@ -55,7 +55,7 @@ export const PrimaryMenu = () => {
                 </Nav.Item>
             ))}
             {event.frontmatter.links && event.frontmatter.links.map((item, i) => (
-                <Nav.Item key={i} className="nav-item">
+                <Nav.Item as={"li"} key={i}>
                     <Nav.Link href={item.url} rel="noopener noreferrer" target="_blank">{item.name}</Nav.Link>
                 </Nav.Item>
             ))}

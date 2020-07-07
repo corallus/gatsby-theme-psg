@@ -1,7 +1,6 @@
 import React from 'react'
 import Act from './Act';
 import {Col, Row} from 'react-bootstrap'
-import './style.scss'
 
 const Stage = ({highlighted = 2, numItems = null, acts}) => {
     return (

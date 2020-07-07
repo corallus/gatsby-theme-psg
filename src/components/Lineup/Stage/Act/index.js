@@ -2,7 +2,6 @@ import React from 'react'
 import Img from 'gatsby-image'
 import {graphql} from 'gatsby'
 import {Card} from 'react-bootstrap';
-import './style.scss'
 
 const Act = ({act}) => {
     const artist = act.artist
@@ -10,9 +9,8 @@ const Act = ({act}) => {
         <Card className="artist" style={{backgroundColor: '#d8d8d8'}}>
             {act.announced && artist.frontmatter.image
                 ?
-                <Img fluid={artist.frontmatter.image.childImageSharp.fluid}
+                <Card.Img as={Img} fluid={artist.frontmatter.image.childImageSharp.fluid}
                      alt={artist.frontmatter.title}
-                     className="card-img"
                 />
                 :
                 <div style={{width: '100%', paddingBottom: '80%'}}/>

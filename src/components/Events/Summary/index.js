@@ -15,11 +15,13 @@ const Summary = () => {
                             {state.event.frontmatter.location}
                         </span>
                     </div>
+                    {state.events.length < 2 &&
                     <div className={"my-4 date"}>
                         <span>
                         {state.event.frontmatter.dateLong}
                         </span>
                     </div>
+                    }
                     <Content content={state.event.html} className="lead"/>
                     {state.event.frontmatter.status === 'In verkoop' ?
                         <Button as={Link} to={"/tickets"}>

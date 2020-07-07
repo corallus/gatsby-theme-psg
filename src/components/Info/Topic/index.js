@@ -3,12 +3,12 @@ import {Accordion, Card} from 'react-bootstrap'
 import HTMLContent from '../../Content'
 import {graphql} from 'gatsby'
 import {MdArrowDownward, MdArrowUpward} from 'react-icons/md';
-import '../style.scss'
+import {background} from './params'
 
 export default ({item, eventKey, handleClick, active}) => (
-    <Card style={{marginBottom: '15px'}} className={"card-info"}>
+    <Card style={{marginBottom: '15px'}} bg={background}>
         <Card.Header className="border-0">
-            <Accordion.Toggle as={'h4'} onClick={active ? () => handleClick(null) : () => handleClick(eventKey)}
+            <Accordion.Toggle as={"strong"} onClick={active ? () => handleClick(null) : () => handleClick(eventKey)}
                               eventKey={eventKey}
                               className={'mb-0 d-flex align-items-center justify-content-between' + (active ? ' active' : '')}>
                 {item.frontmatter.title}

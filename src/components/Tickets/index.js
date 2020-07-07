@@ -5,9 +5,10 @@ import moment from 'moment'
 import {Button, Col, Modal, Row} from 'react-bootstrap'
 import {Helmet} from 'react-helmet'
 import TicketButton from './Ticket/Button'
+import {cols} from './params'
 import './style.scss'
 
-const Tickets = ({...props}) => {
+const Tickets = () => {
     const {state} = useContext(Context)
     const {event} = state
     const tickets = event.frontmatter.tickets
@@ -44,7 +45,7 @@ const Tickets = ({...props}) => {
             }
             <Row className="row justify-content-center tickets">
                 {tickets && tickets.map((ticket, index) => (
-                    <Col xs={12} sm={6} md={4} lg={3} {...props} key={index} className={"mb-4 ticket-col"}>
+                    <Col {...cols} key={index} className={"mb-4 ticket-col"}>
                         <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early}>
                             {ticket.url ?
                                 <TicketButton as={"a"} href={ticket.url} target="_blank" rel="noopener noreferrer" />
