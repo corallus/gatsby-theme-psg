@@ -52,7 +52,7 @@ export const lineupParams = {
     artist: {
         cardProps: {
             className: 'artist',
-            style: "backgroundColor: '#d8d8d8'"
+            style: {backgroundColor: '#d8d8d8'}
         },
         emptyText: 'To be announced'
     },
