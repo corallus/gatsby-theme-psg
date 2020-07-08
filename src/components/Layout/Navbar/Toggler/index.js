@@ -11,7 +11,7 @@ export default () => {
     return (
         events.length > 1 &&
         <Dropdown className="event-selector">
-            <Button event={event}/>
+            <Button event={event} id="dropdown-basic" className={"py-0"} />
             <Dropdown.Menu>
                 {events.map(({node: post}) => (
                     <Item event={post} key={post.id}/>

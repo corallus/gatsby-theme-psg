@@ -3,6 +3,7 @@ import Context from '../Events/Context'
 import {Button, Nav, Tab} from 'react-bootstrap'
 import Stage from './Stage'
 import './style.scss'
+import {lineupParams} from "../../params";
 
 const Lineup = ({highlighted = 2, numItems = null}) => {
     const {state} = useContext(Context)
@@ -16,9 +17,7 @@ const Lineup = ({highlighted = 2, numItems = null}) => {
                 <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
                     <Nav className="justify-content-center my-5" aria-label="Stages" size="sm">
                         {stages.map((stage, index) => (
-                            <Button as={Nav.Link} key={index} eventKey={index}
-                                // @ts-ignore
-                                    variant="primary" active={index === key}>
+                            <Button {...lineupParams.stage.buttonProps} as={Nav.Link} key={index} eventKey={index} active={index === key}>
                                 {stage.name}
                             </Button>
                         ))

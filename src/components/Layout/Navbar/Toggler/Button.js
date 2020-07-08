@@ -1,9 +1,10 @@
 import React from 'react'
 import {Dropdown} from "react-bootstrap";
+import {navbarParams} from "../../../../params";
 
-const Button = ({event}) => {
+const Button = ({event, ...props}) => {
     return (
-        <Dropdown.Toggle variant="link" size="sm" className="py-0" id="dropdown-basic">
+        <Dropdown.Toggle {...props} {...navbarParams.togglerProps}>
             {event.frontmatter.dateShort} <span className="d-none d-sm-inline">{event.frontmatter.name}</span>
         </Dropdown.Toggle>
     )

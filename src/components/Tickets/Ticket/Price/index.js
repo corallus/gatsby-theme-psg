@@ -13,7 +13,7 @@ const Price = ({ticket, earlyBird}) => {
             </Col>
             }
             {ticket.price &&
-            <Col className={"price"}>
+            <Col className={"current-price"}>
                 €{priceSplit[0]} <span className={"decimals"}>{priceSplit[1]}</span>
             </Col>
             }

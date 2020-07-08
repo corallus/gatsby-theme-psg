@@ -10,7 +10,9 @@ const Ticket = ({ticket, early_bird, children}) => {
     return (
         <Card className={"h-100 ticket"}>
             <Card.Body className="d-flex flex-column">
-                <h3>{ticket.title}</h3>
+                <header className={"ticket-header"}>
+                    <h3>{ticket.title}</h3>
+                </header>
                 <Price ticket={ticket} earlyBird={early_bird}/>
                 <div className="mb-auto">
                     <Content content={converter.makeHtml(ticket.body)}/>

@@ -2,11 +2,12 @@ import React from 'react'
 import Img from 'gatsby-image'
 import {graphql} from 'gatsby'
 import {Card} from 'react-bootstrap';
+import {lineupParams} from "../../../../params";
 
 const Act = ({act}) => {
     const artist = act.artist
     return (
-        <Card className="artist" style={{backgroundColor: '#d8d8d8'}}>
+        <Card {...lineupParams.artist.cardProps}>
             {act.announced && artist.frontmatter.image
                 ?
                 <Card.Img as={Img} fluid={artist.frontmatter.image.childImageSharp.fluid}
@@ -16,14 +17,14 @@ const Act = ({act}) => {
                 <div style={{width: '100%', paddingBottom: '80%'}}/>
             }
             <Card.ImgOverlay>
-                <div className="card-footer">
+                <Card.Footer>
                     {act.announced
                         ?
                         artist.frontmatter.title
                         :
-                        'To be announced'
+                        lineupParams.artist.emptyText
                     }
-                </div>
+                </Card.Footer>
             </Card.ImgOverlay>
         </Card>
     )

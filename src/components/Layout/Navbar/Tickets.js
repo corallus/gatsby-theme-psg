@@ -1,11 +1,11 @@
 import React from 'react'
-import {Link} from 'gatsby';
 import Knop from '../../Button'
+import {navbarParams} from "../../../params";
 
-export default () => {
+export default ({...props}) => {
     return (
-        <Knop as={Link} to="/tickets">
-            TICKETS
+        <Knop {...props} {...navbarParams.ticketButton.props}>
+            {navbarParams.ticketButton.text}
         </Knop>
     )
 }

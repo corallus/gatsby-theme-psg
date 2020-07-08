@@ -1,11 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import {Carousel} from 'react-bootstrap'
 import {FaArrowCircleLeft, FaArrowCircleRight} from 'react-icons/fa'
 import Lightbox from 'react-image-lightbox'
 import Img from 'gatsby-image'
 import 'react-image-lightbox/style.css'
 import './style.scss'
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import {galleryParams} from "../../params";
 
 class Index extends React.Component {
     constructor(props, context) {
@@ -76,30 +78,20 @@ class Index extends React.Component {
 
                     {pages.map((page, i) => (
                         <Carousel.Item key={i}>
-                            <div className="row">
+                            <Row>
                                 {page.map((image, j) => (
-                                    <div key={j} onClick={() => this.handleOpen(j)} className="col-md-4"
-                                         style={{padding: '15px'}}>
+                                    <Col {...galleryParams.colProps} key={j} onClick={() => this.handleOpen(j)} style={{padding: '15px'}}>
                                         <Img className="rounded" fluid={image.image.childImageSharp.fluid}
                                              alt={image.alt}/>
-                                    </div>
+                                    </Col>
                                 ))}
-                            </div>
+                            </Row>
                         </Carousel.Item>
                     ))}
                 </Carousel>
             </>
         );
     }
-}
-
-Index.propTypes = {
-    images: PropTypes.arrayOf(
-        PropTypes.shape({
-            image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-            alt: PropTypes.string,
-        })
-    ),
 }
 
 export default Index

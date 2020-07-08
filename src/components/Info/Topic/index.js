@@ -3,10 +3,10 @@ import {Accordion, Card} from 'react-bootstrap'
 import HTMLContent from '../../Content'
 import {graphql} from 'gatsby'
 import {MdArrowDownward, MdArrowUpward} from 'react-icons/md';
-import {background} from './params'
+import {topicProps} from '../../../params'
 
 export default ({item, eventKey, handleClick, active}) => (
-    <Card style={{marginBottom: '15px'}} bg={background}>
+    <Card style={{marginBottom: '15px'}} {...topicProps}>
         <Card.Header className="border-0">
             <Accordion.Toggle as={"strong"} onClick={active ? () => handleClick(null) : () => handleClick(eventKey)}
                               eventKey={eventKey}

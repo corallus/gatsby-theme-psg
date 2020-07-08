@@ -30,7 +30,7 @@ const SecondaryMenu = () => {
             <SocialMenu/>
             <li className="nav-item">
         <span className="nav-link">
-          <TicketButton/>
+          <TicketButton as={Link} to="/tickets" />
         </span>
             </li>
         </Nav>
