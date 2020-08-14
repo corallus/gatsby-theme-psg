@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-psg",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "main": "index.js",
   "author": "Vincent van Bergen",
   "license": "MIT",
@@ -15,6 +15,7 @@
     "gatsby-plugin-netlify-cms": "^4.0.1",
     "gatsby-plugin-offline": "^3.1.4",
     "gatsby-plugin-react-helmet": "^3.1.0",
+    "gatsby-plugin-robots-txt": "^1.5.1",
     "gatsby-plugin-sass": "^2.1.0",
     "gatsby-plugin-schema-snapshot": "^1.0.0",
     "gatsby-plugin-sharp": "^2.2.1",

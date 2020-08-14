@@ -26,7 +26,7 @@ const Footer = () => {
                             </div>
                             <p className="text-xs mb-0">
                                 <small>© Copyright 2019, All Rights Reserved. <a href="/algemenevoorwaarden.pdf">General
-                                    Conditions of {title}</a> apply to this event.</small>
+                                    Conditions of {title}</a> apply to this event</small> | <small><a href="/privacy-statement.pdf">Privacy statement</a></small>
                             </p>
                         </div>
                     </div>

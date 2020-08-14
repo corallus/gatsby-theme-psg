@@ -18,6 +18,14 @@ module.exports = themeOptions => {
       },
       'gatsby-plugin-react-helmet',
       {
+        resolve: 'gatsby-plugin-robots-txt',
+        options: {
+          host: themeOptions.siteUrl,
+          sitemap: `${themeOptions.siteUrl}/sitemap.xml`,
+          policy: [{ userAgent: '*', allow: '/' }]
+        }
+      },
+      {
         resolve: `gatsby-plugin-sass`,
         options: {
           data: '@import "variables.scss";',
