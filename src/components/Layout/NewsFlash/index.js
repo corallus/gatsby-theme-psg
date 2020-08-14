@@ -10,9 +10,10 @@ const NewsFlash = (props) => {
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             scrollable
+            className={"text-dark"}
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
+                <Modal.Title className={"text-dark"} id="contained-modal-title-vcenter">
                     {props.title}
                 </Modal.Title>
             </Modal.Header>

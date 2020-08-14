@@ -36,7 +36,7 @@ const Tickets = () => {
                           widgetType: "checkout",
                           eventId: "${event.frontmatter.eventbrite}",
                           modal: true,
-                          modalTriggerElementId: "widget-trigger",
+                          modalTriggerElementId: "widget-trigger-${event.frontmatter.eventbrite}",
                           onOrderComplete: exampleCallback
                         });
                         `}
@@ -51,7 +51,7 @@ const Tickets = () => {
                                 <TicketButton as={"a"} href={ticket.url} target="_blank" rel="noopener noreferrer" />
                                 :
                                 event.frontmatter.eventbrite ?
-                                    <TicketButton id="widget-trigger" type="button" />
+                                    <TicketButton id={`widget-trigger-${event.frontmatter.eventbrite}`} type="button" />
                                     :
                                     <TicketButton onClick={() => handleShow()} />
                             }
