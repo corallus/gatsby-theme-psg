@@ -30,7 +30,7 @@ export default ({category}) => {
     const [activeKey, setActiveKey] = useState(null)
 
     return (
-        <Accordion defaultActiveKey="0">
+        <Accordion>
             <div className="row text-left">
                 <div className="col-md-6">
                     {posts.filter(post => post.node.frontmatter.category === category).map((item, i) => (
