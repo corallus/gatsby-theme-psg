@@ -8,7 +8,7 @@ import {topicProps} from '../../../params'
 export default ({item, eventKey, handleClick, active}) => (
     <Card style={{marginBottom: '15px'}} {...topicProps}>
         <Card.Header className="border-0">
-            <Accordion.Toggle as={"strong"} onClick={active ? () => handleClick(null) : () => handleClick(eventKey)}
+            <Accordion.Toggle as={"strong"} onClick={() => handleClick(active ? null : eventKey)}
                               eventKey={eventKey}
                               className={'mb-0 d-flex align-items-center justify-content-between' + (active ? ' active' : '')}>
                 {item.frontmatter.title}
