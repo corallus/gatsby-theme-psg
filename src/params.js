@@ -9,14 +9,11 @@ export const switcherParams = {
 }
 
 export const summaryParams = {
-    locationProps: {
-    },
-    dateProps: {
-    },
+    locationProps: {},
+    dateProps: {},
     ticketButton: {
         text: 'Koop tickets',
-        props: {
-        }
+        props: {}
     }
 }
 

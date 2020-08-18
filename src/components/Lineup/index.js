@@ -17,7 +17,8 @@ const Lineup = ({highlighted = 2, numItems = null}) => {
                 <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
                     <Nav className="justify-content-center my-5" aria-label="Stages" size="sm">
                         {stages.map((stage, index) => (
-                            <Button {...lineupParams.stage.buttonProps} as={Nav.Link} key={index} eventKey={index} active={index === key}>
+                            <Button {...lineupParams.stage.buttonProps} as={Nav.Link} key={index} eventKey={index}
+                                    active={index === key}>
                                 {stage.name}
                             </Button>
                         ))

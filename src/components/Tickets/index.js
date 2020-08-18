@@ -48,12 +48,12 @@ const Tickets = () => {
                     <Col {...ticketParams.colProps} key={index} className={"mb-4 ticket-col"}>
                         <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early}>
                             {ticket.url ?
-                                <TicketButton as={"a"} href={ticket.url} target="_blank" rel="noopener noreferrer" />
+                                <TicketButton as={"a"} href={ticket.url} target="_blank" rel="noopener noreferrer"/>
                                 :
                                 event.frontmatter.eventbrite ?
-                                    <TicketButton id={`widget-trigger-${event.frontmatter.eventbrite}`} type="button" />
+                                    <TicketButton id={`widget-trigger-${event.frontmatter.eventbrite}`} type="button"/>
                                     :
-                                    <TicketButton onClick={() => handleShow()} />
+                                    <TicketButton onClick={() => handleShow()}/>
                             }
                         </Ticket>
                     </Col>

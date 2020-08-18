@@ -1,5 +1,5 @@
 import React from 'react'
-import {Col, Row, Badge} from 'react-bootstrap';
+import {Badge, Col, Row} from 'react-bootstrap';
 
 const Price = ({ticket, earlyBird}) => {
     const currentPrice = (earlyBird && ticket.price_early) ? ticket.price_early : ticket.price

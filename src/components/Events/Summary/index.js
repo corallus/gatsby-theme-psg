@@ -14,7 +14,7 @@ const Summary = () => {
                 <>
                     {state.events.length > 1 &&
                     <div className="my-3">
-                        <EventContainer />
+                        <EventContainer/>
                     </div>
                     }
                     <div className="event">
@@ -32,7 +32,7 @@ const Summary = () => {
                         }
                         <Content content={state.event.html} className="lead"/>
                         {state.event.frontmatter.status === 'In verkoop' ?
-                            <Button as={Link} to={"/tickets"} />
+                            <Button as={Link} to={"/tickets"}/>
                             :
                             <span className="text-danger status">[{state.event.frontmatter.status}]</span>
                         }

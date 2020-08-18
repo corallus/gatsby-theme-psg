@@ -11,7 +11,7 @@ const Act = ({act}) => {
             {act.announced && artist.frontmatter.image
                 ?
                 <Card.Img as={Img} fluid={artist.frontmatter.image.childImageSharp.fluid}
-                     alt={artist.frontmatter.title}
+                          alt={artist.frontmatter.title}
                 />
                 :
                 <div style={{width: '100%', paddingBottom: '80%'}}/>

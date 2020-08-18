@@ -80,7 +80,8 @@ class Index extends React.Component {
                         <Carousel.Item key={i}>
                             <Row>
                                 {page.map((image, j) => (
-                                    <Col {...galleryParams.colProps} key={j} onClick={() => this.handleOpen(j)} style={{padding: '15px'}}>
+                                    <Col {...galleryParams.colProps} key={j} onClick={() => this.handleOpen(j)}
+                                         style={{padding: '15px'}}>
                                         <Img className="rounded" fluid={image.image.childImageSharp.fluid}
                                              alt={image.alt}/>
                                     </Col>
