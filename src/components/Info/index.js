@@ -27,22 +27,22 @@ export default ({category}) => {
     const {event} = state
     const posts = events.filter(post => !post.node.frontmatter.events || (post.node.frontmatter.events.filter(ev => ev.id === event.id).length))
 
-    const [activeKey, setActiveKey] = useState(0)
+    const [activeKey, setActiveKey] = useState(null)
 
     return (
-        <Accordion defaultActiveKey={0}>
+        <Accordion>
             <div className="row text-left">
                 <div className="col-md-6">
                     {posts.filter(post => post.node.frontmatter.category === category).map((item, i) => (
                         i % 2 === 0 &&
-                        <Topic handleClick={setActiveKey} item={item.node} eventKey={i} active={i === activeKey}
+                        <Topic handleClick={setActiveKey} item={item.node} eventKey={`${i}`} active={`${i}` === activeKey}
                                key={i}/>
                     ))}
                 </div>
                 <div className="col-md-6">
                     {posts.filter(post => post.node.frontmatter.category === category).map((item, i) => (
                         i % 2 !== 0 &&
-                        <Topic handleClick={setActiveKey} item={item.node} eventKey={i} active={i === activeKey}
+                        <Topic handleClick={setActiveKey} item={item.node} eventKey={`${i}`} active={`${i}` === activeKey}
                                key={i}/>
                     ))}
                 </div>
