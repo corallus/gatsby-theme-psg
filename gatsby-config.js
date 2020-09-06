@@ -68,7 +68,14 @@ module.exports = themeOptions => {
         resolve: 'gatsby-transformer-remark',
         options: {
           plugins: [
-            'gatsby-remark-relative-images',
+            {
+              resolve: 'gatsby-remark-relative-images',
+              options: {
+                // [Optional] The root of "media_folder" in your config.yml
+                // Defaults to "static"
+                staticFolderName: 'static',
+              }
+            },
             {
               resolve: 'gatsby-remark-images',
               options: {
