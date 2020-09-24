@@ -30,11 +30,11 @@ const Summary = () => {
                         </span>
                         </div>
                         }
-                        <Content content={state.event.html} className="lead"/>
+                        <Content content={state.event.html} />
                         {state.event.frontmatter.status === 'In verkoop' ?
                             <Button as={Link} to={"/tickets"}/>
                             :
-                            <span className="text-danger status">[{state.event.frontmatter.status}]</span>
+                            <span className="text-danger status h2">[{state.event.frontmatter.status}]</span>
                         }
                     </div>
                 </>

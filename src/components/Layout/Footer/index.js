@@ -7,6 +7,7 @@ import {PrimaryMenu} from '../Navbar/index'
 
 const Footer = () => {
     const {title} = useSiteMetadata()
+    const year = new Date().getFullYear()
     return (
         <footer className="footer">
             <div className="footer-inner w-100 h-100 py-4">
@@ -25,7 +26,7 @@ const Footer = () => {
                                 </ul>
                             </div>
                             <p className="text-xs mb-0">
-                                <small>© Copyright 2019, All Rights Reserved. <a href="/algemenevoorwaarden.pdf">General
+                                <small>© Copyright {year}, All Rights Reserved. <a href="/algemenevoorwaarden.pdf">General
                                     Conditions of {title}</a> apply to this event</small> | <small><a
                                 href="/privacy-statement.pdf">Privacy statement</a></small>
                             </p>
