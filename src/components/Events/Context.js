@@ -14,7 +14,7 @@ const reducer = (state, action) => {
 
 const Context = React.createContext(null)
 
-function EventProvider({children}) {
+export const EventProvider = ({children}) => {
     const events = useEventsQuery()
     const activeEvents = events.filter(event => event.node.frontmatter.active)
 
@@ -33,7 +33,7 @@ function EventProvider({children}) {
                 dispatch({type: 'changeEvent', payload: browserEvent.node})
             }
         }
-    }, []);
+    }, [activeEvents]);
 
     return (
         <Context.Provider value={{
@@ -45,4 +45,3 @@ function EventProvider({children}) {
 }
 
 export default Context
-export {EventProvider}

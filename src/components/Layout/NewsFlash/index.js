@@ -20,14 +20,15 @@ const NewsFlash = (props) => {
         }`
     )
 
+    const {datetime, active} = data.markdownRemark.frontmatter
+
     useEffect(() => {
         const last_seen = localStorage.getItem('last_seen');
-        const new_date = data.markdownRemark.frontmatter.datetime
-        if ((!last_seen || last_seen < new_date) && data.markdownRemark.frontmatter.active) {
+        if ((!last_seen || last_seen < datetime) && active) {
             setModalShow(true)
-            localStorage.setItem('last_seen', data.markdownRemark.frontmatter.datetime);
+            localStorage.setItem('last_seen', datetime);
         }
-    }, []);
+    }, [datetime, active]);
 
 
     return (

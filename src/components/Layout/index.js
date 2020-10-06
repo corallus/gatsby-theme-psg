@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import {Helmet} from 'react-helmet'
 import Footer from './Footer/index'
 import Navbar from './Navbar/index'
@@ -15,7 +15,7 @@ const Layout = ({title: pageTitle = null, description, template = null, children
     const isHome = globalHistory.location.pathname === '/'
 
     return (
-        <React.Fragment>
+        <>
             <Helmet bodyAttributes={{
                 class: (template ? template : '')
             }}>
@@ -48,7 +48,7 @@ const Layout = ({title: pageTitle = null, description, template = null, children
             >
                 <small>Wij gebruiken cookies volgens onze <a href="/cookie-policy.pdf">Cookie Policy</a></small>
             </CookieConsent>
-        </React.Fragment>
+        </>
     )
 }
 
