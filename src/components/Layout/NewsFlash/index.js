@@ -1,12 +1,41 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Modal from "react-bootstrap/Modal"
 import Button from "react-bootstrap/Button"
 import './style.scss'
+import {graphql, useStaticQuery} from "gatsby";
 
 const NewsFlash = (props) => {
+    const [modalShow, setModalShow] = React.useState(false);
+
+    const data = useStaticQuery(graphql`
+        query PopupQuery {
+            markdownRemark(frontmatter: {templateKey: {eq: "popup"}}) {
+                html
+                frontmatter {
+                    title
+                    active
+                    datetime
+                }
+            }
+        }`
+    )
+
+    useEffect(() => {
+        const last_seen = localStorage.getItem('last_seen');
+        const new_date = data.markdownRemark.frontmatter.datetime
+        if ((!last_seen || last_seen < new_date) && data.markdownRemark.frontmatter.active) {
+            setModalShow(true)
+            localStorage.setItem('last_seen', data.markdownRemark.frontmatter.datetime);
+        }
+    }, []);
+
+
     return (
         <Modal
-            {...props}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            title={data.markdownRemark.frontmatter.title}
+            html={data.markdownRemark.html}
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             scrollable

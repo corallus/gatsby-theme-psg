@@ -8,34 +8,11 @@ import {globalHistory} from "@reach/router"
 import './style.scss'
 import '../../theme.scss'
 import {EventProvider} from '../Events/Context'
-import {graphql, useStaticQuery} from "gatsby";
 import NewsFlash from "./NewsFlash";
 
 const Layout = ({title: pageTitle = null, description, template = null, children}) => {
     const {title} = useSiteMetadata()
-    const [modalShow, setModalShow] = React.useState(false);
     const isHome = globalHistory.location.pathname === '/'
-    const data = useStaticQuery(graphql`
-        query PopupQuery {
-            markdownRemark(frontmatter: {templateKey: {eq: "popup"}}) {
-                html
-                frontmatter {
-                    title
-                    active
-                    datetime
-                }
-            }
-        }`
-    )
-
-    useEffect(() => {
-        const last_seen = localStorage.getItem('last_seen');
-        const new_date = data.markdownRemark.frontmatter.datetime
-        if ((!last_seen || last_seen < new_date) && data.markdownRemark.frontmatter.active) {
-            setModalShow(true)
-            localStorage.setItem('last_seen', data.markdownRemark.frontmatter.datetime);
-        }
-    }, []);
 
     return (
         <React.Fragment>
@@ -53,12 +30,7 @@ const Layout = ({title: pageTitle = null, description, template = null, children
                 <Navbar isHome={isHome}/>
                 <main className={(isHome ? 'is-home' : 'not-home') + ' wrapper'}>
                     {children}
-                    <NewsFlash
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                        title={data.markdownRemark.frontmatter.title}
-                        html={data.markdownRemark.html}
-                    />
+                    <NewsFlash />
                 </main>
                 <Footer/>
             </EventProvider>
