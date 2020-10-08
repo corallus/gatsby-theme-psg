@@ -187,7 +187,7 @@ export default function (config = {}) {
                         ]
                     },
                     {
-                        file: 'src/pages/Lineup/index.md',
+                        file: 'src/pages/lineup/index.md',
                         label: 'Line-Up',
                         name: 'Lineup',
                         fields: [
@@ -210,7 +210,7 @@ export default function (config = {}) {
                         ]
                     },
                     {
-                        file: 'src/pages/Tickets/index.md',
+                        file: 'src/pages/tickets/index.md',
                         label: 'Tickets',
                         name: 'Tickets',
                         fields: [
