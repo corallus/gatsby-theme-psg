@@ -44,14 +44,13 @@ const NewsFlash = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title className={"text-dark"} id="contained-modal-title-vcenter">
-                    {props.title}
+                    {data.markdownRemark.frontmatter.title}
                 </Modal.Title>
             </Modal.Header>
-            <Modal.Body dangerouslySetInnerHTML={{__html: props.html}}>
-
+            <Modal.Body dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={() => setModalShow(false)}>Close</Button>
             </Modal.Footer>
         </Modal>
     )
