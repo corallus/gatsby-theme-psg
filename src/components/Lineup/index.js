@@ -34,8 +34,10 @@ const Lineup = ({highlighted = 2, numItems = null}) => {
                     </Tab.Content>
                 </Tab.Container>
                 :
-                stages && stages.length > 0 &&
-                <Stage highlighted={highlighted} numItems={numItems} acts={stages[0].acts}/>
+                stages && stages.length > 0 ?
+                    <Stage highlighted={highlighted} numItems={numItems} acts={stages[0].acts}/>
+                    :
+                    <span className="h3 text-center">{lineupParams.emptyText}</span>
             }
         </React.Fragment>
     )
