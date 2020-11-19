@@ -43,7 +43,7 @@ export const useEventsQuery = () => {
                                 date
                                 active
                                 dateLong: date(formatString: "dddd DD MMMM YYYY", locale: "nl-NL")
-                                dateMedium: date(formatString: "MMMM YYYY", locale: "nl-NL")
+                                dateMedium: date(formatString: "DD MMMM YYYY", locale: "nl-NL")
                                 dateShort: date(formatString: "DD MMM", locale: "nl-NL")
                                 timetable {
                                     childImageSharp {
