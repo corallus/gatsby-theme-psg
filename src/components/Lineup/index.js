@@ -37,7 +37,7 @@ const Lineup = ({highlighted = 2, numItems = null}) => {
                 stages && stages.length > 0 ?
                     <Stage highlighted={highlighted} numItems={numItems} acts={stages[0].acts}/>
                     :
-                    <span className="h3 text-center">{lineupParams.emptyText}</span>
+                    <h3 className="text-center">{lineupParams.emptyText}</h3>
             }
         </React.Fragment>
     )

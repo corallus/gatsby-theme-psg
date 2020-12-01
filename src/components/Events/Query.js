@@ -34,7 +34,7 @@ export const useEventsQuery = () => {
                                 location
                                 early_bird
                                 status
-                                eventbrite
+                                eventix
                                 url
                                 links {
                                     name

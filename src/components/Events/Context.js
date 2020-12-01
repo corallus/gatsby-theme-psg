@@ -33,7 +33,7 @@ export const EventProvider = ({children}) => {
                 dispatch({type: 'changeEvent', payload: browserEvent.node})
             }
         }
-    }, [activeEvents]);
+    }, []);
 
     return (
         <Context.Provider value={{

@@ -78,5 +78,6 @@ export const ticketParams = {
         props: {
             variant: "primary"
         }
-    }
+    },
+    emptyText: 'Not yet available',
 }
