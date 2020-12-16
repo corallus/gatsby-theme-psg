@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 import Context from "../../Events/Context";
 import {ticketParams} from "../../../params";
@@ -6,8 +6,6 @@ import {ticketParams} from "../../../params";
 const Tickets = () => {
     const {state} = useContext(Context)
     const {event} = state
-
-    const [count, setCount] = useState(0);
 
     useEffect(() => {
         document.querySelectorAll('iframe').forEach(
