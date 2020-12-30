@@ -1,6 +1,7 @@
 import React from 'react'
 import {graphql, useStaticQuery} from 'gatsby'
 import HTMLContent from 'gatsby-theme-psg/src/components/Content'
+import { ResponseForm } from "./Form";
 
 export default () => {
     const data = useStaticQuery(graphql`
@@ -19,6 +20,10 @@ export default () => {
                 Antwoord niet gevonden?
             </h2>
             <HTMLContent content={data.markdownRemark.html}/>
+
+            <div style={{maxWidth: '450px'}} className={'mx-auto'}>
+                <ResponseForm website={'test.html'} />
+            </div>
         </React.Fragment>
     )
 }

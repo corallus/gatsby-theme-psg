@@ -4,6 +4,7 @@ module.exports = themeOptions => {
   return {
     siteMetadata: {
       siteUrl: themeOptions.siteUrl,
+      domain: themeOptions.domain,
       social: themeOptions.social,
       scrollOffset: themeOptions.scrollOffset,
       menuItems: themeOptions.menuItems
