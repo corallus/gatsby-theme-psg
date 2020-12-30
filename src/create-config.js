@@ -162,7 +162,7 @@ export default function (config = {}) {
                                 default: 'index-page'
                             },
                             {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'text'},
+                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have between 12 and 160 characters"]},
                             {label: 'Plaatje', name: 'image', widget: 'image', required: false},
                             {label: 'Tekst', name: 'body', widget: 'markdown'},
                             {
@@ -180,7 +180,7 @@ export default function (config = {}) {
                         fields: [
                             {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'info-page'},
                             {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'text'},
+                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have between 12 and 160 characters"]},
                             {label: 'Image', name: 'image', widget: 'image', required: false},
                             {label: 'Tekst', name: 'body', widget: 'markdown'},
                         ]
@@ -192,7 +192,7 @@ export default function (config = {}) {
                         fields: [
                             {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'Lineup-page'},
                             {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'text'},
+                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
                             {label: 'Plaatje', name: 'image', widget: 'image', required: false},
                             {label: 'Tekst', name: 'body', widget: 'markdown'},
                         ]
@@ -204,7 +204,7 @@ export default function (config = {}) {
                         fields: [
                             {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'timetable-page'},
                             {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'text'},
+                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
                             {label: 'Tekst', name: 'body', widget: 'markdown'},
                         ]
                     },
@@ -215,7 +215,7 @@ export default function (config = {}) {
                         fields: [
                             {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'Tickets-page'},
                             {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'text'},
+                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
                             {label: 'Tekst', name: 'body', widget: 'markdown'},
                         ]
                     },
