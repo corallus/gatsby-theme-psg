@@ -48,7 +48,7 @@ export const useEventsQuery = () => {
                                 timetable {
                                     childImageSharp {
                                         fluid(maxWidth: 1024, quality: 100) {
-                                            ...GatsbyImageSharpFluid
+                                            ...GatsbyImageSharpFluid_withWebp
                                         }
                                     }
                                 }
