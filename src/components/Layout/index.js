@@ -9,6 +9,7 @@ import './style.scss'
 import '../../theme.scss'
 import {EventProvider} from '../Events/Context'
 import NewsFlash from "./NewsFlash";
+import EventMeta from "./EventMeta";
 
 const Layout = ({title: pageTitle = null, description, template = null, children}) => {
     const {title} = useSiteMetadata()
@@ -27,6 +28,7 @@ const Layout = ({title: pageTitle = null, description, template = null, children
                 <meta property="og:url" content="/"/>
             </Helmet>
             <EventProvider>
+                <EventMeta />
                 <Navbar isHome={isHome}/>
                 <main className={(isHome ? 'is-home' : 'not-home') + ' wrapper'}>
                     {children}
