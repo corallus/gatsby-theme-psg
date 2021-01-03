@@ -5,6 +5,25 @@ import Context from "../Events/Context";
 const EventMeta = () => {
     const {state} = useContext(Context)
     const {event} = state
+
+    let eventStatus
+    switch(event.frontmatter.status) {
+        case 'In verkoop':
+            eventStatus = 'EventScheduled'
+            break
+        case 'Uitverkocht':
+            eventStatus = 'EventScheduled'
+            break
+        case 'Afgelast':
+            eventStatus = 'EventCancelled'
+            break
+        case 'Verplaatst':
+            eventStatus = 'EventPostponed'
+            break
+        default:
+            eventStatus = 'EventScheduled'
+    }
+
     return (
         <Helmet>
             <script type="application/ld+json">{`
@@ -15,13 +34,11 @@ const EventMeta = () => {
                     "startDate": "${event.frontmatter.date}",
                     "endDate": "${event.frontmatter.date}",
                     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                    "eventStatus": "https://schema.org/EventScheduled",
+                    "eventStatus": "https://schema.org/${eventStatus}",
                     "location": {
                         "@type": "Place",
                         "name": "${event.frontmatter.location}",
                     },
-                    "image": [
-                    ],
                     "description": "${event.frontmatter.description}",
                     "organizer": {
                         "@type": "Organization",
