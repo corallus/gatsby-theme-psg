@@ -24,28 +24,27 @@ const EventMeta = () => {
             eventStatus = 'EventScheduled'
     }
 
+    const data = {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": event.frontmatter.title,
+        "startDate": event.frontmatter.date,
+        "endDate": event.frontmatter.date,
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "eventStatus": `https://schema.org/${eventStatus}`,
+        "location": {
+            "@type": "Place",
+            "name": event.frontmatter.location,
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "PSG Concerts B.V.",
+        }
+    }
+
     return (
         <Helmet>
-            <script type="application/ld+json">{`
-                {
-                    "@context": "https://schema.org",
-                    "@type": "Event",
-                    "name": "${event.frontmatter.title}",
-                    "startDate": "${event.frontmatter.date}",
-                    "endDate": "${event.frontmatter.date}",
-                    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-                    "eventStatus": "https://schema.org/${eventStatus}",
-                    "location": {
-                        "@type": "Place",
-                        "name": "${event.frontmatter.location}",
-                    },
-                    "description": "${event.frontmatter.description}",
-                    "organizer": {
-                        "@type": "Organization",
-                        "name": "PSG Concerts B.V.",
-                    }
-                }
-            `}</script>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(data)}} />
         </Helmet>
     )
 }
