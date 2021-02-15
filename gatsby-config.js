@@ -10,13 +10,6 @@ module.exports = themeOptions => {
       menuItems: themeOptions.menuItems
     },
     plugins: [
-      {
-        resolve: `gatsby-plugin-schema-snapshot`,
-        options: {
-          path: `schema.gql`,
-          update: false,
-        },
-      },
       'gatsby-plugin-react-helmet',
       {
         resolve: 'gatsby-plugin-robots-txt',

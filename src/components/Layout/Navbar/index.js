@@ -95,9 +95,14 @@ export default ({isHome = false}) => {
     );
 
     return (
-        <Navbar variant={(scroll ? 'light' : 'dark')} fixed="top" expand={null}
-                className={(collapsed ? 'navbar-collapsed' : 'navbar-expanded')} collapseOnSelect={true}
-                onToggle={() => setCollapsed(!collapsed)}>
+        <Navbar
+            variant={(scroll ? 'light' : 'dark')}
+            fixed="top"
+            expand={null}
+            className={(collapsed ? 'navbar-collapsed' : 'navbar-expanded')}
+            collapseOnSelect={true}
+            onToggle={() => setCollapsed(!collapsed)}
+        >
             <div className="d-flex w-100 justify-content-between align-items-center">
                 <div className="d-flex align-items-center">
                     <div className="d-none d-lg-inline-block mr-3">

@@ -7,7 +7,7 @@ import './style.scss'
 
 export default ({title, linkName = null, className, children, link = null}) => {
     return (
-        <section className={'section py-5 ' + className}>
+        <section className={'section my-5 ' + className}>
             <header>
                 <Heading title={title}/>
             </header>
