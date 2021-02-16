@@ -5,9 +5,9 @@ import Button from './Button'
 import {Container} from 'react-bootstrap'
 import './style.scss'
 
-export default ({title, linkName = null, className, children, link = null}) => {
+export default ({title, linkName = null, name = null, children, link = null}) => {
     return (
-        <section className={'section my-5 ' + className}>
+        <section className={`section my-5 section-${name ? name : 'default'}`}>
             <header>
                 <Heading title={title}/>
             </header>

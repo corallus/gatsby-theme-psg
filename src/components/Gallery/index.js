@@ -72,8 +72,6 @@ class Index extends React.Component {
                     dir={direction}
                     onSelect={this.handleSelect}
                     interval={null}
-                    nextIcon={<FaArrowCircleRight color="black"/>}
-                    prevIcon={<FaArrowCircleLeft color="black"/>}
                 >
 
                     {pages.map((page, i) => (
