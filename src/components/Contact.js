@@ -16,13 +16,13 @@ export default () => {
     )
     return (
         <React.Fragment>
-            <h2 className="">
-                Antwoord niet gevonden?
+            <h2>
+                <span>Antwoord niet gevonden?</span>
             </h2>
             <HTMLContent content={data.markdownRemark.html}/>
 
             <div style={{maxWidth: '450px'}} className={'mx-auto'}>
-                <ResponseForm website={'test.html'} />
+                <ResponseForm />
             </div>
         </React.Fragment>
     )

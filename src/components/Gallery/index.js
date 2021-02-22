@@ -1,6 +1,5 @@
 import React from 'react'
 import {Carousel} from 'react-bootstrap'
-import {FaArrowCircleLeft, FaArrowCircleRight} from 'react-icons/fa'
 import Lightbox from 'react-image-lightbox'
 import Img from 'gatsby-image'
 import 'react-image-lightbox/style.css'
