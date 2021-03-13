@@ -2,7 +2,6 @@ import React, {useContext, useState} from 'react'
 import Context from '../Events/Context'
 import {Button, Nav, Tab} from 'react-bootstrap'
 import Stage from './Stage'
-import './style.scss'
 import {lineupParams} from "../../params";
 
 const Lineup = ({highlighted = 2, numItems = null}) => {

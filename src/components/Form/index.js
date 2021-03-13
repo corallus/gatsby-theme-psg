@@ -6,7 +6,6 @@ import Recaptcha from "react-recaptcha"
 import axios from 'axios'
 import FieldWrapper from './FieldWrapper'
 import { Helmet } from 'react-helmet';
-import './style.css'
 import useSiteMetadata from "../SiteMetadata";
 
 const TextAreaField = (props) => {

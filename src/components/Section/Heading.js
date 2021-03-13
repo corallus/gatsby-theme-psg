@@ -1,9 +1,10 @@
 import React from 'react'
+import {Typography} from "@material-ui/core";
 
 export default ({title}) => {
     return (
-        <h2 className="text-center">
+        <Typography component={'h2'} variant={'h2'}>
             {title}
-        </h2>
+        </Typography>
     )
 }

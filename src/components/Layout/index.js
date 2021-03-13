@@ -5,37 +5,57 @@ import Navbar from './Navbar/index'
 import useSiteMetadata from '../SiteMetadata'
 import CookieConsent from "react-cookie-consent"
 import {globalHistory} from "@reach/router"
-import './style.scss'
-import '../../theme.scss'
-import {EventProvider} from '../Events/Context'
 import NewsFlash from "./NewsFlash";
 import EventMeta from "./EventMeta";
+import {makeStyles} from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh'
+    },
+    appBarSpacer: theme.mixins.toolbar,
+    main: {
+    },
+    footer: {
+        marginTop: 'auto',
+    }
+}));
 const Layout = ({title: pageTitle = null, description, template = null, children}) => {
+    const classes = useStyles();
     const {title} = useSiteMetadata()
     const isHome = globalHistory.location.pathname === '/'
 
     return (
-        <>
-            <Helmet bodyAttributes={{
-                class: (template ? template : '')
-            }}>
-                <html lang="nl"/>
+        <div className={classes.root}>
+            <Helmet
+                bodyAttributes={{
+                    class: (template ? template : '')
+                }}
+                htmlAttributes={{
+                    lang: 'nl',
+                }}
+            >
                 <title>{pageTitle}</title>
                 <meta name="description" content={description}/>
-                <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no"
+                />
                 <meta property="og:title" content={title}/>
                 <meta property="og:url" content="/"/>
             </Helmet>
-            <EventProvider>
-                <EventMeta />
-                <Navbar isHome={isHome}/>
-                <main className={(isHome ? 'is-home' : 'not-home') + ' wrapper'}>
-                    {children}
-                    <NewsFlash />
-                </main>
-                <Footer/>
-            </EventProvider>
+            <EventMeta />
+            <Navbar isHome={isHome}/>
+            <main className={classes.main}>
+                <div className={classes.appBarSpacer} />
+                {children}
+                <NewsFlash />
+            </main>
+            <footer className={classes.footer}>
+                <Footer />
+            </footer>
             <CookieConsent
                 enableDeclineButton
                 declineButtonText="Weigeren"
@@ -50,7 +70,7 @@ const Layout = ({title: pageTitle = null, description, template = null, children
             >
                 <small>Wij gebruiken cookies volgens onze <a href="/cookie-policy.pdf">Cookie Policy</a></small>
             </CookieConsent>
-        </>
+        </div>
     )
 }
 

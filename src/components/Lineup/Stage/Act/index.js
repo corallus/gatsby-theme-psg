@@ -1,5 +1,5 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image";
 import {graphql} from 'gatsby'
 import {Card} from 'react-bootstrap';
 import {lineupParams} from "../../../../params";
@@ -10,7 +10,7 @@ const Act = ({act}) => {
         <Card {...lineupParams.artist.cardProps}>
             {act.announced && artist.frontmatter.image
                 ?
-                <Card.Img as={Img} fluid={artist.frontmatter.image.childImageSharp.fluid}
+                <Card.Img as={GatsbyImage} fluid={artist.frontmatter.image.childImageSharp.gatsbyImageData}
                           alt={artist.frontmatter.title}
                 />
                 :
@@ -27,25 +27,22 @@ const Act = ({act}) => {
                 </Card.Footer>
             </Card.ImgOverlay>
         </Card>
-    )
+    );
 }
 
-export const query = graphql`
-    fragment Artist on MarkdownRemark {
-        id
-        html
-        frontmatter {
-            title
-            templateKey
-            image {
-                childImageSharp {
-                    fluid(maxWidth: 800, maxHeight: 600, quality: 100) {
-                        ...GatsbyImageSharpFluid_withWebp
-                    }
-                }
-            }
-        }
+export const query = graphql`fragment Artist on MarkdownRemark {
+  id
+  html
+  frontmatter {
+    title
+    templateKey
+    image {
+      childImageSharp {
+        gatsbyImageData(width: 800, height: 600, quality: 100, layout: CONSTRAINED)
+      }
     }
+  }
+}
 `
 
 export default Act

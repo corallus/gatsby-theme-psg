@@ -16,21 +16,18 @@ const Context = React.createContext(null)
 
 export const EventProvider = ({children}) => {
     const events = useEventsQuery()
-    const activeEvents = events.filter(event => event.node.frontmatter.active)
+    const activeEvents = events.filter(event => event.frontmatter.active)
 
-    const initialState = {
-        event: activeEvents[0].node,
+    const [state, dispatch] = useReducer(reducer, {
+        event: activeEvents[0],
         events: activeEvents
-    }
-
-    const [state, dispatch] = useReducer(reducer, initialState)
+    })
 
     useEffect(() => {
         if (typeof window !== 'undefined' && localStorage.getItem('ev')) {
-            let browserEvent = activeEvents.find(item => item.node.id === localStorage.getItem('ev'))
+            let browserEvent = activeEvents.find(item => item.id === localStorage.getItem('ev'))
             if (browserEvent) {
-                // @ts-ignore
-                dispatch({type: 'changeEvent', payload: browserEvent.node})
+                dispatch({type: 'changeEvent', payload: browserEvent})
             }
         }
     }, []);

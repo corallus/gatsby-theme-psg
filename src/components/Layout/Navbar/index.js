@@ -1,40 +1,206 @@
-import React, {useContext, useEffect, useState} from "react"
-import {Link} from "gatsby"
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
-import Context from '../../Events/Context';
-import SocialMenu from "../../Social"
+import React, {useContext} from 'react';
+import clsx from 'clsx';
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Link from '@material-ui/core/Link';
+import MenuIcon from '@material-ui/icons/Menu';
 import useSiteMetadata from "../../SiteMetadata";
+import Context from "../../Events/Context";
+import {Button, Hidden, List, ListItem} from "@material-ui/core";
 import Logo from "./Logo";
-import './style.scss'
 import EventToggler from "./Toggler";
-import TicketButton from './Tickets'
+import {Close, Facebook, Instagram} from "@material-ui/icons";
 
-const Toggler = () => {
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+    toolbar: {
+    },
+    toolbarSide: {
+    },
+    toolbarIcon: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        padding: '0 8px',
+        ...theme.mixins.toolbar,
+    },
+    appBar: {
+        zIndex: theme.zIndex.drawer + 1,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+    },
+    appBarShift: {
+        marginLeft: drawerWidth,
+        width: `calc(100% - ${drawerWidth}px)`,
+        transition: theme.transitions.create(['width', 'margin'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    menuButton: {
+        marginRight: 36,
+    },
+    menuButtonHidden: {
+        display: 'none',
+    },
+    title: {
+        flexGrow: '1',
+        alignContent: 'center'
+    },
+    drawerPaper: {
+        position: 'relative',
+        whiteSpace: 'nowrap',
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+            width: drawerWidth,
+        },
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    },
+    drawerPaperClose: {
+        overflowX: 'hidden',
+        transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        width: theme.spacing(0),
+    },
+    paper: {
+        padding: theme.spacing(2),
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
+    },
+}));
+
+export default function Index() {
+    const classes = useStyles();
+    const {title, social} = useSiteMetadata()
+
+    const [open, setOpen] = React.useState(false);
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
     return (
         <>
-      <span className="mr-2 d-inline-block align-middle bar">
-        <span className="icon-bar top-bar"/>
-        <span className="icon-bar middle-bar"/>
-        <span className="icon-bar bottom-bar"/>
-      </span>
-            <span className="d-none d-md-inline">MENU</span>
-        </>
-    )
-}
+            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+                <Toolbar
+                    className={classes.toolbar}
+                >
+                    <IconButton
+                        edge="start"
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={handleDrawerOpen}
+                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Hidden smDown implementation="css">
+                        <EventToggler/>
+                    </Hidden>
+                    <div className={classes.title}>
+                        <Logo title={title}/>
+                    </div>
+                    <Hidden smDown implementation="css">
+                        {social.facebook &&
+                        <IconButton aria-label="facebook" color="inherit">
+                            <Facebook />
+                        </IconButton>
+                        }
+                        {social.instagram &&
+                        <IconButton aria-label="facebook" color="inherit">
+                            <Instagram />
+                        </IconButton>
+                        }
+                        <Button href="#" color="inherit" variant="outlined">
+                            Tickets
+                        </Button>
+                    </Hidden>
+                </Toolbar>
+            </AppBar>
+            <nav className={classes.drawer}>
+                <Hidden smUp implementation="css">
+                    <Drawer
+                        variant="temporary"
+                        open={open}
+                        onClose={handleDrawerClose}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        ModalProps={{
+                            keepMounted: true, // Better open performance on mobile.
+                        }}
+                    >
+                        <div className={classes.toolbarIcon}>
+                            <Hidden smUp>
+                                <EventToggler/>
+                            </Hidden>
+                            <IconButton onClick={handleDrawerClose}>
+                                <Close />
+                            </IconButton>
+                        </div>
+                        <List>
+                            <PrimaryMenu/>
+                            <ListItem button>
+                                <Link
+                                    to={"/tickets"}
+                                >
+                                    Tickets
+                                </Link>
+                            </ListItem>
+                            <ListItem button>
+                                <IconButton
+                                    as={"a"}
+                                    href={social.instagram} rel="noopener noreferrer"
+                                    target="_blank"
+                                >
+                                    <Facebook />
+                                </IconButton>
+                                {social.instagram &&
+                                <IconButton
+                                    as={"a"}
+                                    href={social.instagram}
+                                    rel="noopener noreferrer"
 
-const SecondaryMenu = () => {
-    return (
-        <Nav as="ul"
-             className="justify-content-center justify-content-lg-end align-items-center flex-row secondary-menu">
-            <SocialMenu/>
-            <li className="nav-item">
-        <span className="nav-link">
-          <TicketButton as={Link} to="/tickets"/>
-        </span>
-            </li>
-        </Nav>
-    )
+                                    target="_blank"
+                                >
+                                    <Instagram />
+                                </IconButton>
+                                }
+                            </ListItem>
+                        </List>
+                    </Drawer>
+                </Hidden>
+                <Hidden xsDown implementation="css">
+                    <Drawer
+                        className={classes.drawer}
+                        variant="temporary"
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        <div className={classes.toolbar} />
+                        <List>
+                            <PrimaryMenu />
+                        </List>
+                    </Drawer>
+                </Hidden>
+            </nav>
+        </>
+    );
 }
 
 export const PrimaryMenu = () => {
@@ -44,98 +210,37 @@ export const PrimaryMenu = () => {
     return (
         <>
             {menuItems.map((item, i) => (
-                <Nav.Item as={"li"} key={i}>
+                <ListItem button key={i}>
                     {item.external
                         ?
-                        <Nav.Link as={"a"} href={item.link} rel="noopener noreferrer"
-                                  target="_blank">{item.name}</Nav.Link>
+                        <Link
+                            as={"a"}
+                            href={item.link}
+                            rel="noopener noreferrer"
+                            target="_blank"
+                        >
+                            {item.name}
+                        </Link>
                         :
-                        <Nav.Link as={Link} to={item.link} activeClassName="active">{item.name}</Nav.Link>
+                        <Link
+                            to={item.link}
+                        >
+                            {item.name}
+                        </Link>
                     }
-                </Nav.Item>
+                </ListItem>
             ))}
             {event.frontmatter.links && event.frontmatter.links.map((item, i) => (
-                <Nav.Item as={"li"} key={i}>
-                    <Nav.Link href={item.url} rel="noopener noreferrer" target="_blank">{item.name}</Nav.Link>
-                </Nav.Item>
+                <ListItem button key={i}>
+                    <Link
+                        href={item.url}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
+                        {item.name}
+                    </Link>
+                </ListItem>
             ))}
         </>
-    )
-}
-
-const CollapseMenu = () => {
-    return (
-        <>
-            <Nav as="ul" className="main-menu">
-                <PrimaryMenu/>
-            </Nav>
-            <div className="d-block d-lg-none">
-                <SecondaryMenu/>
-            </div>
-        </>
-    )
-}
-
-export default ({isHome = false}) => {
-    const {title, scrollOffset} = useSiteMetadata()
-
-    const [scroll, setScroll] = useState(false);
-    const [showLogo, setShowLogo] = useState(false);
-    const [collapsed, setCollapsed] = useState(true);
-
-    useEffect(
-        () => {
-            const handleScroll = () => {
-                setShowLogo(window.scrollY > scrollOffset);
-                setScroll(window.scrollY > 0);
-            }
-            window.addEventListener("scroll", handleScroll);
-            return () => window.removeEventListener('scroll', handleScroll)
-        },
-    );
-
-    return (
-        <Navbar
-            variant={(scroll ? 'light' : 'dark')}
-            fixed="top"
-            expand={null}
-            className={(collapsed ? 'navbar-collapsed' : 'navbar-expanded')}
-            collapseOnSelect={true}
-            onToggle={() => setCollapsed(!collapsed)}
-        >
-            <div className="d-flex w-100 justify-content-between align-items-center">
-                <div className="d-flex align-items-center">
-                    <div className="d-none d-lg-inline-block mr-3">
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" className="text-right text-lg-left">
-                            <Toggler/>
-                        </Navbar.Toggle>
-                    </div>
-                    <div className="d-inline">
-                        <EventToggler/>
-                    </div>
-                </div>
-                {!isHome || showLogo
-                    ?
-                    <Link to="/" className="navbar-brand">
-                        <Logo title={title}/>
-                    </Link>
-                    : ''
-                }
-                <div className="text-right">
-                    <div className="d-none d-lg-block secondary-menu-navbar">
-                        <SecondaryMenu/>
-                    </div>
-                    <div className="d-block d-lg-none">
-                        <Navbar.Toggle aria-controls="basic-navbar-nav"
-                                       className="text-right text-lg-left align-middle">
-                            <Toggler/>
-                        </Navbar.Toggle>
-                    </div>
-                </div>
-            </div>
-            <Navbar.Collapse id="basic-navbar-nav">
-                <CollapseMenu/>
-            </Navbar.Collapse>
-        </Navbar>
     )
 }

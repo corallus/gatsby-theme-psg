@@ -1,25 +1,25 @@
 import React from 'react'
 import Act from './Act';
-import {Col, Row} from 'react-bootstrap'
 import {lineupParams} from "../../../params";
+import {Grid} from "@material-ui/core";
 
 const Stage = ({highlighted = 2, numItems = null, acts}) => {
     return (
         <React.Fragment>
             {acts && acts.length
                 ?
-                <Row className={"acts"}>
+                <Grid>
                     {acts.slice(0, highlighted).map((act, index) => (
-                        <Col {...lineupParams.highlightedColProps} key={index}>
+                        <Grid item xs={3} {...lineupParams.highlightedColProps} key={index}>
                             <Act act={act}/>
-                        </Col>
+                        </Grid>
                     ))}
                     {acts.slice(highlighted, numItems ? numItems : acts.length).map((act, index) => (
-                        <Col {...lineupParams.colProps} key={index}>
+                        <Grid item xs={3} {...lineupParams.colProps} key={index}>
                             <Act act={act}/>
-                        </Col>
+                        </Grid>
                     ))}
-                </Row>
+                </Grid>
                 :
                 <h3 className="text-center">{lineupParams.emptyText}</h3>
             }

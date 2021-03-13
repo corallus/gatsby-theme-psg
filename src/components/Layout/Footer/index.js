@@ -1,41 +1,37 @@
 import React from 'react'
-import SocialMenu from '../../Social'
 import useSiteMetadata from '../../SiteMetadata'
-import Logo from './Logo'
-import './style.scss'
-import {PrimaryMenu} from '../Navbar/index'
+import {Container, Link, makeStyles, Typography} from "@material-ui/core";
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: theme.palette.background.paper,
+        padding: theme.spacing(6, 0),
+    },
+}));
 const Footer = () => {
-    const {title} = useSiteMetadata()
-    const year = new Date().getFullYear()
+    const classes = useStyles();
     return (
-        <footer className="footer">
-            <div className="footer-inner w-100 h-100 py-4">
-                <div className="container text-center text-md-left">
-                    <div className="row">
-                        <div className="col-auto mx-auto mx-lg-0 pl-0">
-                            <Logo/>
-                        </div>
-                        <div className="col-12 col-lg-9 d-flex align-content-end px-4 flex-wrap">
-                            <div className="navigation mb-2 w-100 d-md-flex justify-content-between">
-                                <ul className="nav main-menu justify-content-center justify-content-md-start">
-                                    <PrimaryMenu/>
-                                </ul>
-                                <ul className="nav social-menu justify-content-center justify-content-md-end">
-                                    <SocialMenu/>
-                                </ul>
-                            </div>
-                            <p className="text-xs mb-0">
-                                <small>© Copyright {year}, All Rights Reserved. <a href="/algemenevoorwaarden.pdf">General
-                                    Conditions of {title}</a> apply to this event</small> | <small><a
-                                href="/privacy-statement.pdf">Privacy statement</a></small>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <div className={classes.root}>
+            <Container maxWidth={'lg'}>
+                <Copyright />
+            </Container>
+        </div>
     )
+}
+
+function Copyright() {
+    const {title} = useSiteMetadata()
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            © Copyright {new Date().getFullYear()}, All Rights Reserved.{' '}
+            <Link color="inherit" href="/algemene-voorwaarden.pdf">
+            General conditions of {title}
+            </Link> apply to this event{' | '}
+            <Link color="inherit" href="/privacy-statement.pdf">
+                Privacy statement
+            </Link>{' '}
+        </Typography>
+    );
 }
 
 export default Footer

@@ -1,20 +1,29 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import Heading from './Heading'
-import Button from './Button'
-import {Container} from 'react-bootstrap'
-import './style.scss'
+import {Button, Container, createStyles, makeStyles} from "@material-ui/core";
 
-export default ({title, linkName = null, name = null, children, link = null}) => {
+const useStyles = makeStyles((theme) =>
+    createStyles({
+        root: {
+            padding: theme.spacing(8, 0)
+        },
+        header: {
+            padding: theme.spacing(3, 0)
+        },
+    }),
+);
+const Section = ({title, linkName = null, name = null, children, link = null}) => {
+    const classes = useStyles();
     return (
-        <section className={`section my-5 section-${name ? name : 'default'}`}>
-            <header>
-                <Heading title={title}/>
-            </header>
+        <section className={classes.root}>
             <Container>
+                <header className={classes.header}>
+                    <Heading title={title}/>
+                </header>
                 {children}
                 {link !== null && linkName !== null &&
-                <footer className="text-center my-5">
+                <footer>
                     <Button as={Link} to={link}>
                         {linkName}
                     </Button>
@@ -24,3 +33,5 @@ export default ({title, linkName = null, name = null, children, link = null}) =>
         </section>
     )
 }
+
+export default Section

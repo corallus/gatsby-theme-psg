@@ -1,30 +1,51 @@
 import React from 'react'
-import {Card} from 'react-bootstrap'
 import Content from '../../Content'
 import Price from './Price'
 import showdown from 'showdown'
-import TicketButton from "./Button";
 import {Link} from "gatsby";
+import {
+    Button,
+    Card,
+    CardActions,
+    CardContent,
+    CardHeader,
+    createStyles,
+    makeStyles,
+    Typography
+} from "@material-ui/core";
 
 const converter = new showdown.Converter()
 
+const useStyles = makeStyles((theme) =>
+    createStyles({
+        root: {
+            height: '100%'
+        },
+        content: {
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'end'
+        }
+    }),
+);
 const Ticket = ({ticket, early_bird}) => {
+    const classes = useStyles();
+
     return (
-        <Card className={"h-100 ticket"}>
-            <Card.Body className="d-flex flex-column">
-                <header className={"ticket-header"}>
-                    <h3>{ticket.title}</h3>
-                </header>
+        <Card className={classes.root}>
+            <CardHeader
+                title={ticket.title}
+            />
+            <CardContent className={classes.content}>
                 <Price ticket={ticket} earlyBird={early_bird}/>
-                <div className="mb-auto">
+                <Typography variant="body2" color="textSecondary" component="p">
                     <Content content={converter.makeHtml(ticket.body)}/>
-                </div>
-                {ticket.url ?
-                    <TicketButton as={'a'} href={ticket.url} target={'_blank'}/>
-                    :
-                    <TicketButton as={Link} to={'/tickets'}/>
-                }
-            </Card.Body>
+                </Typography>
+            </CardContent>
+            <CardActions disableSpacing>
+                <Button as={Link} to={'/tickets'}/>
+            </CardActions>
         </Card>
     )
 }

@@ -1,23 +1,50 @@
 import React, {useContext} from 'react'
 import Context from '../../../Events/Context';
-import {Dropdown} from 'react-bootstrap';
-import Button from './Button'
-import Item from './Item'
-import './style.scss'
+import {Button, Menu, MenuItem } from "@material-ui/core";
+import {ArrowDropDown} from "@material-ui/icons";
 
 export default () => {
-    const {state} = useContext(Context)
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (e) => {
+        setAnchorEl(e.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const {state, dispatch} = useContext(Context)
     const {event, events} = state
+
     return (
         events.length > 1 &&
-        <Dropdown className="event-selector">
-            <Button event={event} id="dropdown-basic" className={"py-0"}/>
-            <Dropdown.Menu>
-                {events.map(({node: post}) => (
-                    <Item event={post} key={post.id}/>
-                ))
-                }
-            </Dropdown.Menu>
-        </Dropdown>
+        <div>
+            <Button
+                aria-controls="event-selector"
+                aria-haspopup="true"
+                onClick={handleClick}
+                color={'inherit'}
+                endIcon={<ArrowDropDown/>}
+            >
+                {event.frontmatter.dateShort} {event.frontmatter.name}
+            </Button>
+            <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+            >
+                {events.map(post => (
+                    <MenuItem
+                        key={post.id}
+                        onClick={() => dispatch({type: 'changeEvent', payload: post})}
+                    >
+                        {post.frontmatter.dateShort} {post.frontmatter.name}
+                    </MenuItem>
+                ))}
+            </Menu>
+        </div>
     )
 }

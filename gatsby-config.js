@@ -19,15 +19,7 @@ module.exports = themeOptions => {
           policy: [{ userAgent: '*', allow: '/' }]
         }
       },
-      {
-        resolve: `gatsby-plugin-sass`,
-        options: {
-          data: '@import "variables.scss";',
-          includePaths: [
-            path.resolve('./src'),
-          ],
-        },
-      },
+      'gatsby-plugin-material-ui',
       {
         // keep as first gatsby-source-filesystem plugin for gatsby image support
         resolve: 'gatsby-source-filesystem',
