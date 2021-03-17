@@ -1,20 +1,17 @@
 import React from 'react'
-import { Field, useFormikContext, ErrorMessage } from 'formik'
-import { Form } from 'react-bootstrap'
+import { useFormikContext } from 'formik'
+import {TextField} from "@material-ui/core";
 
-export default ({ label, name, type, component = Field }) => {
+export default ({ label, id, name, type }) => {
     const { errors, touched } = useFormikContext()
     return (
-        <Form.Group>
-            <Form.Label>{label}</Form.Label>
-            <Form.Control
-                name={name}
-                type={type}
-                as={component}
-                isValid={touched[name] && !errors[name]}
-                isInvalid={touched[name] && errors[name]}
-            />
-            <ErrorMessage name={name} component={Form.Control.Feedback} />
-        </Form.Group>
+        <TextField
+            name={name}
+            id={id}
+            label={label}
+            type={type}
+            error={touched[name] && Boolean(errors[name])}
+            helperText={touched[name] && errors[name]}
+        />
     )
 }

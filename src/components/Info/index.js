@@ -1,51 +1,90 @@
-import React, {useContext, useState} from 'react'
-import {graphql, useStaticQuery} from 'gatsby'
-import {Accordion} from 'react-bootstrap'
-import Topic from './Topic'
+import React, {useContext} from 'react'
 import Context from '../Events/Context';
+import {
+    Accordion,
+    AccordionDetails,
+    createStyles,
+    Grid,
+    makeStyles,
+    Typography, withStyles
+} from "@material-ui/core";
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Content from "../Content";
 
-export default ({category}) => {
-    const data = useStaticQuery(
-        graphql`
-            query TopicsQuery {
-                allMarkdownRemark(
-                    sort: { order: ASC, fields: [frontmatter___order] }
-                    filter: { frontmatter: { templateKey: { eq: "info" } } }
-                ) {
-                    edges {
-                        node {
-                            ...Topic
-                        }
-                    }
-                }
-            }
-        `
-    )
-    const {edges: events} = data.allMarkdownRemark
+const AccordionSummary = withStyles({
+    root: {
+        backgroundColor: 'rgba(0, 0, 0, .03)',
+    },
+    content: {
+    },
+    expanded: {},
+})(MuiAccordionSummary);
+
+const useStyles = makeStyles((theme) =>
+    createStyles({
+        root: {
+            width: '100%',
+        },
+    }))
+export default ({items}) => {
+    const classes = useStyles();
+
     const {state} = useContext(Context)
     const {event} = state
-    const posts = events.filter(post => !post.node.frontmatter.events || (post.node.frontmatter.events.filter(ev => ev.id === event.id).length))
+    const posts = items.filter(post => !post.frontmatter.events || (post.frontmatter.events.filter(ev => ev?.id === event.id).length))
 
-    const [activeKey, setActiveKey] = useState(null)
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+    };
 
     return (
-        <Accordion>
-            <div className="row text-left">
-                <div className="col-md-6">
-                    {posts.filter(post => post.node.frontmatter.category === category).map((item, i) => (
+            <Grid container spacing={3}>
+                <Grid item md={6}>
+                    {posts.map((item, i) => (
                         i % 2 === 0 &&
-                        <Topic handleClick={setActiveKey} item={item.node} eventKey={`${i}`} active={`${i}` === activeKey}
-                               key={i}/>
+                        <Accordion
+                            className={classes.root}
+                            expanded={expanded === i}
+                            onChange={handleChange(i)} key={i}
+                        >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls={`panel${i}d-content`}
+                                id={`panel${i}d-header`}
+                            >
+                                <Typography>{item.frontmatter.title}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Content dangerouslySetInnerHTML={{__html: item.html}} />
+                            </AccordionDetails>
+
+                        </Accordion>
                     ))}
-                </div>
-                <div className="col-md-6">
-                    {posts.filter(post => post.node.frontmatter.category === category).map((item, i) => (
+                </Grid>
+                <Grid item md={6}>
+                    {posts.map((item, i) => (
                         i % 2 !== 0 &&
-                        <Topic handleClick={setActiveKey} item={item.node} eventKey={`${i}`} active={`${i}` === activeKey}
-                               key={i}/>
+                        <Accordion
+                            className={classes.root}
+                            expanded={expanded === i}
+                            onChange={handleChange(i)} key={i}
+                        >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls={`panel${i}d-content`}
+                                id={`panel${i}d-header`}
+                            >
+                                <Typography>{item.frontmatter.title}</Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <Content dangerouslySetInnerHTML={{__html: item.html}} />
+                            </AccordionDetails>
+                        </Accordion>
                     ))}
-                </div>
-            </div>
-        </Accordion>
+                </Grid>
+            </Grid>
     )
 }

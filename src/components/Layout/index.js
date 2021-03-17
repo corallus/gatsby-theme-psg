@@ -7,21 +7,8 @@ import CookieConsent from "react-cookie-consent"
 import {globalHistory} from "@reach/router"
 import NewsFlash from "./NewsFlash";
 import EventMeta from "./EventMeta";
-import {makeStyles} from "@material-ui/core/styles";
+import {useStyles} from "./style";
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        minHeight: '100vh'
-    },
-    appBarSpacer: theme.mixins.toolbar,
-    main: {
-    },
-    footer: {
-        marginTop: 'auto',
-    }
-}));
 const Layout = ({title: pageTitle = null, description, template = null, children}) => {
     const classes = useStyles();
     const {title} = useSiteMetadata()
@@ -48,8 +35,8 @@ const Layout = ({title: pageTitle = null, description, template = null, children
             </Helmet>
             <EventMeta />
             <Navbar isHome={isHome}/>
+            <div className={classes.appBarSpacer} />
             <main className={classes.main}>
-                <div className={classes.appBarSpacer} />
                 {children}
                 <NewsFlash />
             </main>

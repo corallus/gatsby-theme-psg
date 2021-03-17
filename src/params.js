@@ -12,7 +12,7 @@ export const summaryParams = {
     locationProps: {},
     dateProps: {},
     ticketButton: {
-        text: 'Koop tickets',
+        text: 'Get your tickets',
         props: {}
     }
 }
@@ -55,14 +55,14 @@ export const lineupParams = {
     },
     stage: {
         buttonProps: {
-            variant: 'primary'
+            variant: "outlined"
         }
     }
 }
 
 export const sectionParams = {
     buttonProps: {
-        variant: 'info'
+        variant: "outlined"
     }
 }
 
@@ -76,7 +76,7 @@ export const ticketParams = {
     button: {
         text: "Koop ticket",
         props: {
-            variant: "primary"
+            variant: "outlined"
         }
     },
     emptyText: 'Not yet available',

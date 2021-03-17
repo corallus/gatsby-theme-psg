@@ -80,7 +80,7 @@ class Index extends React.Component {
                                     <GatsbyImage
                                         image={image.image.childImageSharp.gatsbyImageData}
                                         className="rounded"
-                                        alt={image.alt} />
+                                        alt={image.alt | ''} />
                                 </Col>
                             ))}
                         </Row>

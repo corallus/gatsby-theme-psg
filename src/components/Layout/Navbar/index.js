@@ -1,15 +1,15 @@
 import React, {useContext} from 'react';
+import {Link} from 'gatsby';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import useSiteMetadata from "../../SiteMetadata";
 import Context from "../../Events/Context";
-import {Button, Hidden, List, ListItem} from "@material-ui/core";
+import {Button, Hidden, List, ListItem, ListItemText} from "@material-ui/core";
 import Logo from "./Logo";
 import EventToggler from "./Toggler";
 import {Close, Facebook, Instagram} from "@material-ui/icons";
@@ -193,9 +193,7 @@ export default function Index() {
                         }}
                     >
                         <div className={classes.toolbar} />
-                        <List>
-                            <PrimaryMenu />
-                        </List>
+                        <PrimaryMenu />
                     </Drawer>
                 </Hidden>
             </nav>
@@ -208,39 +206,45 @@ export const PrimaryMenu = () => {
     const {state} = useContext(Context)
     const {event} = state
     return (
-        <>
+        <List>
             {menuItems.map((item, i) => (
-                <ListItem button key={i}>
-                    {item.external
-                        ?
-                        <Link
-                            as={"a"}
-                            href={item.link}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            {item.name}
-                        </Link>
-                        :
-                        <Link
-                            to={item.link}
-                        >
-                            {item.name}
-                        </Link>
-                    }
-                </ListItem>
-            ))}
-            {event.frontmatter.links && event.frontmatter.links.map((item, i) => (
-                <ListItem button key={i}>
-                    <Link
-                        href={item.url}
+                item.external ?
+                    <ListItem
+                        button
+                        href={item.link}
                         rel="noopener noreferrer"
                         target="_blank"
+                        key={i}
                     >
+                        <ListItemText>
+                            {item.name}
+                        </ListItemText>
+                    </ListItem>
+                    :
+                    <ListItem
+                        button
+                        component={Link}
+                        to={item.link}
+                        key={i}
+                    >
+                        <ListItemText>
+                            {item.name}
+                        </ListItemText>
+                    </ListItem>
+            ))}
+            {event.frontmatter.links && event.frontmatter.links.map((item, i) => (
+                <ListItem
+                    button
+                    href={item.url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    key={i}
+                >
+                    <ListItemText>
                         {item.name}
-                    </Link>
+                    </ListItemText>
                 </ListItem>
             ))}
-        </>
+        </List>
     )
 }

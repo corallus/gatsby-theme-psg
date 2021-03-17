@@ -10,15 +10,15 @@ const useStyles = makeStyles((theme) => ({
 }))
 export default ({ title }) => {
     const classes = useStyles();
-  const data = useStaticQuery(
-      graphql`{
-        file(relativePath: {eq: "logo.png"}) {
-          childImageSharp {
-            gatsbyImageData(height: 50, layout: FIXED)
-          }
+    const data = useStaticQuery(
+        graphql`{
+            file(relativePath: {eq: "logo.png"}) {
+                childImageSharp {
+                    gatsbyImageData(height: 50, layout: FIXED)
+                }
+            }
         }
-      }
-      `
-  )
-  return <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={title} className={classes.root} />;
+        `
+    )
+    return <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt={title} className={classes.root} />;
 }

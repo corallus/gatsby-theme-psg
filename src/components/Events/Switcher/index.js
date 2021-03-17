@@ -14,7 +14,7 @@ export default () => {
                     event={post}
                     key={post.id}
                 >
-                    {state.event.frontmatter.dateShort} <Hidden smDown>{state.event.frontmatter.name}</Hidden>
+                    {post.frontmatter.dateShort} <Hidden smDown>{post.frontmatter.name}</Hidden>
                 </Button>
             ))}
         </ButtonGroup>

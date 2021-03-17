@@ -24,8 +24,7 @@ const Tickets = () => {
         >
             {tickets ? tickets.map((ticket, index) => (
                     <Grid item xs={3} {...ticketParams.colProps} key={index}>
-                        <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early}>
-                        </Ticket>
+                        <Ticket ticket={ticket} early_bird={earlyBird && ticket.price_early} />
                     </Grid>
                 ))
                 :

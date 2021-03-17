@@ -1,44 +1,75 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import Context from '../Events/Context'
-import {Button, Nav, Tab} from 'react-bootstrap'
-import Stage from './Stage'
+import Stage from '../Stage'
 import {lineupParams} from "../../params";
+import {Box, Tab, Tabs, Typography} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
 
+const TabPanel = (props) => {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box p={3}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+}));
 const Lineup = ({highlighted = 2, numItems = null}) => {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     const {state} = useContext(Context)
     const {event} = state
     const {stages} = event.frontmatter
-    const [key, setKey] = useState("0");
 
     return (
-        <React.Fragment>
-            {stages && stages.length > 1 ?
-                <Tab.Container defaultActiveKey={key} id="stage-tabs" onSelect={k => setKey(k)}>
-                    <Nav className="justify-content-center my-5" aria-label="Stages" size="sm">
-                        {stages.map((stage, index) => (
-                            <Button {...lineupParams.stage.buttonProps} as={Nav.Link} key={index} eventKey={index}
-                                    active={index === key}>
-                                {stage.name}
-                            </Button>
-                        ))
-                        }
-                    </Nav>
-                    <Tab.Content>
-                        {stages.map((stage, index) => (
-                            <Tab.Pane key={index} eventKey={index}>
-                                <Stage highlighted={highlighted} numItems={numItems} acts={stage.acts}/>
-                            </Tab.Pane>
-                        ))
-                        }
-                    </Tab.Content>
-                </Tab.Container>
+        stages && stages.length > 1 ?
+            <>
+                <Tabs className={classes.root} centered value={value} onChange={handleChange} aria-label="simple tabs example">
+                    {stages.map((stage, index) => (
+                        <Tab label={stage.name} {...lineupParams.stage.buttonProps} key={index} {...a11yProps(index)} />
+                    ))
+                    }
+                </Tabs>
+                {stages.map((stage, index) => (
+                    <TabPanel key={index} value={value} index={index}>
+                        <Stage highlighted={highlighted} numItems={numItems} acts={stage.acts}/>
+                    </TabPanel>
+                ))
+                }
+            </>
+            :
+            stages && stages.length > 0 ?
+                <Stage highlighted={highlighted} numItems={numItems} acts={stages[0].acts}/>
                 :
-                stages && stages.length > 0 ?
-                    <Stage highlighted={highlighted} numItems={numItems} acts={stages[0].acts}/>
-                    :
-                    <h3 className="text-center">{lineupParams.emptyText}</h3>
-            }
-        </React.Fragment>
+                <h3 className="text-center">{lineupParams.emptyText}</h3>
     )
 }
 

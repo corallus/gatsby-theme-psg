@@ -1,12 +1,12 @@
 import React from 'react'
-import {Button, Form } from 'react-bootstrap'
-import { Formik, Field, ErrorMessage } from 'formik'
+import {Formik, Field, ErrorMessage, Form} from 'formik'
 import * as Yup from 'yup'
 import Recaptcha from "react-recaptcha"
 import axios from 'axios'
 import FieldWrapper from './FieldWrapper'
 import { Helmet } from 'react-helmet';
 import useSiteMetadata from "../SiteMetadata";
+import {Button, Checkbox, createStyles, FormGroup, makeStyles, TextField} from "@material-ui/core";
 
 const TextAreaField = (props) => {
     return (
@@ -14,7 +14,19 @@ const TextAreaField = (props) => {
     )
 }
 
+const useStyles = makeStyles((theme) =>
+    createStyles({
+        root: {
+            '> *': {
+                margin: theme.spacing(1),
+                width: 200,
+            },
+        },
+    }),
+);
 export const ResponseForm = () => {
+    const classes = useStyles();
+
     const {domain} = useSiteMetadata()
 
     const api = `https://wlpbkbt4zc.execute-api.eu-central-1.amazonaws.com/production/contact`
@@ -64,7 +76,7 @@ export const ResponseForm = () => {
                         .required('Verplicht'),
                 }),
                 privacy: Yup.boolean()
-                    .oneOf([true], 'Verplicht veld'),
+                    .oneOf([true], 'U dient akkoord te gaan met de privacy voorwaarden'),
                 recaptcha: Yup.string()
                     .required('Verifieer dat je geen robot bent'),
             })}
@@ -79,7 +91,7 @@ export const ResponseForm = () => {
                     status
                 } = props;
                 return (
-                    <Form onSubmit={handleSubmit}>
+                    <form className={classes.root} onSubmit={handleSubmit}>
                         <Helmet>
                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                         </Helmet>
@@ -88,42 +100,33 @@ export const ResponseForm = () => {
                         <FieldWrapper id="email" label="Email" name="response.email" type="email" />
                         <FieldWrapper id="telefoonnummer" label="Telefoonnummer" name="response.telefoonnummer" type="tel" />
                         <FieldWrapper id="bericht" label="Bericht" name="response.bericht" type="textarea" component={TextAreaField} />
-                        <Form.Group>
-                            <Form.Check>
-                                <Form.Check.Input
-                                    name="privacy"
-                                    as={Field}
-                                    type="checkbox"
-                                    isValid={touched.privacy && !errors.privacy}
-                                    isInvalid={touched.privacy && Boolean(errors.privacy)}
-                                />
-                                <Form.Check.Label>
-                                    Ik ga akkoord met de <a href="/static/privacy-statement.pdf"
-                                                            rel="noopener noreferrer" target="_blank"> privacy voorwaarden</a>
-                                </Form.Check.Label>
-                                <ErrorMessage name="privacy" component={Form.Control.Feedback} />
-                            </Form.Check>
-                        </Form.Group>
 
-                        <Form.Group className={'text-center'}>
-                            <Recaptcha
-                                sitekey="6LeZnxkaAAAAAHsyk5igUVRWXPmLRz78Il6s8g0d"
-                                render="explicit"
-                                theme="light"
-                                verifyCallback={(response) => { setFieldValue("recaptcha", response); }}
-                                onloadCallback={() => { console.log("done loading!"); }}
+                        <label>
+                            <Field
+                                type="checkbox"
+                                name="privacy"
                             />
-                        </Form.Group>
+                            <span>Ik ga akkoord met de <a href="/static/privacy-statement.pdf" rel="noopener noreferrer" target="_blank"> privacy voorwaarden</a></span>
+                        </label>
+                        {errors.privacy && touched.privacy ? (
+                            <div>{errors.privacy}</div>
+                        ) : null}
 
-                        <Form.Group className={'form-buttons'}>
-                            <Button variant="primary" type="submit" disabled={isSubmitting} >
-                                {isSubmitting ? 'Aan het versturen…' : 'Versturen'}
-                            </Button>
-                            {status && status.message &&
-                            <div>{status.message}</div>
-                            }
-                        </Form.Group>
-                    </Form>
+                        <Recaptcha
+                            sitekey="6LeZnxkaAAAAAHsyk5igUVRWXPmLRz78Il6s8g0d"
+                            render="explicit"
+                            theme="light"
+                            verifyCallback={(response) => { setFieldValue("recaptcha", response); }}
+                            onloadCallback={() => { console.log("done loading!"); }}
+                        />
+
+                        <Button variant="contained" type="submit" disabled={isSubmitting} >
+                            {isSubmitting ? 'Aan het versturen…' : 'Versturen'}
+                        </Button>
+                        {status && status.message &&
+                        <div>{status.message}</div>
+                        }
+                    </form>
                 )
             }}
         </Formik>

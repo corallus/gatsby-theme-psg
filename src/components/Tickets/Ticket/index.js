@@ -4,47 +4,28 @@ import Price from './Price'
 import showdown from 'showdown'
 import {Link} from "gatsby";
 import {
-    Button,
     Card,
     CardActions,
     CardContent,
     CardHeader,
-    createStyles,
-    makeStyles,
-    Typography
 } from "@material-ui/core";
+import {useStyles} from "./style";
+import Button from "./Button";
 
 const converter = new showdown.Converter()
 
-const useStyles = makeStyles((theme) =>
-    createStyles({
-        root: {
-            height: '100%'
-        },
-        content: {
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'end'
-        }
-    }),
-);
 const Ticket = ({ticket, early_bird}) => {
     const classes = useStyles();
 
     return (
         <Card className={classes.root}>
-            <CardHeader
-                title={ticket.title}
-            />
+            <CardHeader className={classes.header} title={ticket.title} />
             <CardContent className={classes.content}>
                 <Price ticket={ticket} earlyBird={early_bird}/>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    <Content content={converter.makeHtml(ticket.body)}/>
-                </Typography>
+                <Content content={converter.makeHtml(ticket.body)}/>
             </CardContent>
-            <CardActions disableSpacing>
-                <Button as={Link} to={'/tickets'}/>
+            <CardActions className={classes.footer} disableSpacing>
+                <Button className={classes.button} as={Link} to={'/tickets'}/>
             </CardActions>
         </Card>
     )
