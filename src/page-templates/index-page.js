@@ -4,13 +4,13 @@ import Lineup from "../components/Lineup";
 import Tickets from "../components/Tickets";
 import {graphql} from "gatsby";
 import {Box} from "@material-ui/core";
-import Summary from "../components/Events/Summary";
+import {HomeHeader} from "../components/Headers/Home";
 
 const IndexPageTemplate = ({data}) => {
     return (
         <>
             <Box component={'header'}>
-                <Summary />
+                <HomeHeader />
             </Box>
             <Section title={'Lineup'} link={'/lineup'} linkName={'Volledige lineup'}>
                 <Lineup />

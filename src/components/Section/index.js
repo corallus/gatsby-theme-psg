@@ -8,7 +8,7 @@ const Section = ({title, linkName = null, name = null, children, link = null}) =
     const classes = useStyles();
     return (
         <Box component={'section'} className={classes.root}>
-            <Container>
+            <Container className={classes.container}>
                 <header className={classes.header}>
                     <Typography component={'h2'} variant={'h2'}>
                         <Box component={'span'}>

@@ -3,8 +3,6 @@ import {Carousel} from 'react-bootstrap'
 import Lightbox from 'react-image-lightbox'
 import { GatsbyImage } from "gatsby-plugin-image";
 import 'react-image-lightbox/style.css'
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import {galleryParams} from "../../params";
 
 class Index extends React.Component {
@@ -73,17 +71,16 @@ class Index extends React.Component {
 
                 {pages.map((page, i) => (
                     <Carousel.Item key={i}>
-                        <Row>
+                        <Grid container spacing={3}>
                             {page.map((image, j) => (
-                                <Col {...galleryParams.colProps} key={j} onClick={() => this.handleOpen(j)}
-                                     style={{padding: '15px'}}>
+                                <Grid item {...galleryParams.colProps} key={j} onClick={() => this.handleOpen(j)}>
                                     <GatsbyImage
                                         image={image.image.childImageSharp.gatsbyImageData}
                                         className="rounded"
                                         alt={image.alt | ''} />
-                                </Col>
+                                </Grid>
                             ))}
-                        </Row>
+                        </Grid>
                     </Carousel.Item>
                 ))}
             </Carousel>

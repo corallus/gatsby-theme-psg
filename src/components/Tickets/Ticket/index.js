@@ -24,8 +24,8 @@ const Ticket = ({ticket, early_bird}) => {
                 <Price ticket={ticket} earlyBird={early_bird}/>
                 <Content content={converter.makeHtml(ticket.body)}/>
             </CardContent>
-            <CardActions className={classes.footer} disableSpacing>
-                <Button className={classes.button} as={Link} to={'/tickets'}/>
+            <CardActions className={classes.footer}>
+                <Button className={classes.button} component={Link} to={'/tickets'}/>
             </CardActions>
         </Card>
     )
