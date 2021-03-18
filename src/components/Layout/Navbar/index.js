@@ -20,8 +20,6 @@ const useStyles = makeStyles((theme) => ({
     toolbar: {
         justifyContent: 'space-between'
     },
-    toolbarSide: {
-    },
     toolbarIcon: {
         display: 'flex',
         alignItems: 'center',
@@ -34,12 +32,6 @@ const useStyles = makeStyles((theme) => ({
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    appBarShift: {
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
         }),
     },
     menuButton: {
@@ -65,14 +57,6 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
     },
-    drawerPaperClose: {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(0),
-    },
 }));
 
 export default function Index() {
@@ -89,7 +73,7 @@ export default function Index() {
 
     return (
         <>
-            <AppBar  position="fixed" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="fixed" className={classes.appBar}>
                 <Toolbar
                     className={classes.toolbar}
                 >
