@@ -18,6 +18,7 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
+        justifyContent: 'space-between'
     },
     toolbarSide: {
     },
@@ -36,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
         }),
     },
     appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
@@ -50,10 +49,12 @@ const useStyles = makeStyles((theme) => ({
         display: 'none',
     },
     title: {
-        flexGrow: '1',
-        alignContent: 'center'
+        position: 'absolute',
+        left: '50%',
+        transform: 'translateX(-50%)'
     },
     drawerPaper: {
+        backgroundColor: '#000',
         position: 'relative',
         whiteSpace: 'nowrap',
         width: '100%',
@@ -72,12 +73,6 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
         width: theme.spacing(0),
-    },
-    paper: {
-        padding: theme.spacing(2),
-        display: 'flex',
-        overflow: 'auto',
-        flexDirection: 'column',
     },
 }));
 
@@ -99,18 +94,20 @@ export default function Index() {
                 <Toolbar
                     className={classes.toolbar}
                 >
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Hidden smDown implementation="css">
-                        <EventToggler/>
-                    </Hidden>
+                    <div className={classes.toolbarIcon}>
+                        <IconButton
+                            edge="start"
+                            color="inherit"
+                            aria-label="open drawer"
+                            onClick={handleDrawerOpen}
+                            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <Hidden smDown implementation="css">
+                            <EventToggler/>
+                        </Hidden>
+                    </div>
                     <div className={classes.title}>
                         <Logo title={title}/>
                     </div>
@@ -131,7 +128,7 @@ export default function Index() {
                     </Hidden>
                 </Toolbar>
             </AppBar>
-            <nav className={classes.drawer}>
+            <nav>
                 <Hidden smUp implementation="css">
                     <Drawer
                         variant="temporary"
@@ -145,9 +142,7 @@ export default function Index() {
                         }}
                     >
                         <div className={classes.toolbarIcon}>
-                            <Hidden smUp>
-                                <EventToggler/>
-                            </Hidden>
+                            <EventToggler/>
                             <IconButton onClick={handleDrawerClose}>
                                 <Close />
                             </IconButton>

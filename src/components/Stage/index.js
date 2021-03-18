@@ -1,7 +1,7 @@
 import React from 'react'
 import Act from '../Act';
 import {lineupParams} from "../../params";
-import {createStyles, Grid, makeStyles} from "@material-ui/core";
+import {createStyles, Grid, makeStyles, Typography} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) =>
     createStyles({
@@ -32,7 +32,7 @@ const Stage = ({highlighted = 2, numItems = null, acts}) => {
                 ))}
             </Grid>
             :
-            <h3 className="text-center">{lineupParams.emptyText}</h3>
+            <Typography>{lineupParams.emptyText}</Typography>
     )
 }
 

@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import Context from '../Events/Context'
 import Stage from '../Stage'
 import {lineupParams} from "../../params";
-import {Box, Tab, Tabs, Typography} from "@material-ui/core";
+import {Box, Tab, Tabs} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
 const TabPanel = (props) => {
@@ -18,7 +18,7 @@ const TabPanel = (props) => {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
