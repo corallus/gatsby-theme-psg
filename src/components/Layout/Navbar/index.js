@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     toolbarIcon: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         padding: '0 8px',
         ...theme.mixins.toolbar,
     },
@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
         transform: 'translateX(-50%)'
     },
     drawerPaper: {
-        backgroundColor: '#000',
         position: 'relative',
         whiteSpace: 'nowrap',
         width: '100%',
@@ -122,81 +121,59 @@ export default function Index() {
                             <Instagram />
                         </IconButton>
                         }
-                        <Button href="#" color="inherit" variant="outlined">
+                        <Button component={Link} to={'/tickets'} color="inherit" variant="outlined">
                             Tickets
                         </Button>
                     </Hidden>
                 </Toolbar>
             </AppBar>
-            <nav>
+            <Drawer
+                className={classes.drawer}
+                variant="temporary"
+                open={open}
+                onClose={handleDrawerClose}
+                classes={{
+                    paper: classes.drawerPaper,
+                }}
+                ModalProps={{
+                    keepMounted: true, // Better open performance on mobile.
+                }}
+            >
+                <div className={classes.toolbarIcon}>
+                    <EventToggler/>
+                    <IconButton onClick={handleDrawerClose}>
+                        <Close />
+                    </IconButton>
+                </div>
+                <div className={classes.toolbar} />
+                <PrimaryMenu handleClose={handleDrawerClose} />
                 <Hidden smUp implementation="css">
-                    <Drawer
-                        variant="temporary"
-                        open={open}
-                        onClose={handleDrawerClose}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                        ModalProps={{
-                            keepMounted: true, // Better open performance on mobile.
-                        }}
+                    {social.facebook &&
+                    <IconButton
+                        as={"a"}
+                        href={social.facebook} rel="noopener noreferrer"
+                        target="_blank"
                     >
-                        <div className={classes.toolbarIcon}>
-                            <EventToggler/>
-                            <IconButton onClick={handleDrawerClose}>
-                                <Close />
-                            </IconButton>
-                        </div>
-                        <List>
-                            <PrimaryMenu/>
-                            <ListItem button>
-                                <Link
-                                    to={"/tickets"}
-                                >
-                                    Tickets
-                                </Link>
-                            </ListItem>
-                            <ListItem button>
-                                <IconButton
-                                    as={"a"}
-                                    href={social.instagram} rel="noopener noreferrer"
-                                    target="_blank"
-                                >
-                                    <Facebook />
-                                </IconButton>
-                                {social.instagram &&
-                                <IconButton
-                                    as={"a"}
-                                    href={social.instagram}
-                                    rel="noopener noreferrer"
-
-                                    target="_blank"
-                                >
-                                    <Instagram />
-                                </IconButton>
-                                }
-                            </ListItem>
-                        </List>
-                    </Drawer>
-                </Hidden>
-                <Hidden xsDown implementation="css">
-                    <Drawer
-                        className={classes.drawer}
-                        variant="temporary"
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
+                        <Facebook />
+                    </IconButton>
+                    }
+                    {social.instagram &&
+                    <IconButton
+                        as={"a"}
+                        href={social.instagram}
+                        rel="noopener noreferrer"
+                        target="_blank"
                     >
-                        <div className={classes.toolbar} />
-                        <PrimaryMenu />
-                    </Drawer>
+                        <Instagram />
+                    </IconButton>
+                    }
                 </Hidden>
-            </nav>
+            </Drawer>
         </>
     );
 }
 
-export const PrimaryMenu = () => {
+export const PrimaryMenu = ({handleClose}) => {
     const {menuItems} = useSiteMetadata()
     const {state} = useContext(Context)
     const {event} = state
@@ -220,6 +197,7 @@ export const PrimaryMenu = () => {
                         button
                         component={Link}
                         to={item.link}
+                        onClick={handleClose}
                         key={i}
                     >
                         <ListItemText>
