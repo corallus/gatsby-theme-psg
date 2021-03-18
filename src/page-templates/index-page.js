@@ -5,22 +5,24 @@ import Tickets from "../components/Tickets";
 import {graphql} from "gatsby";
 import {Box} from "@material-ui/core";
 import {HomeHeader} from "../components/Headers/Home";
+import {useStyles} from "../components/Page/style"
 
 const IndexPageTemplate = ({data}) => {
+    const classes = useStyles();
     return (
-        <>
-            <Box component={'header'}>
-                <HomeHeader />
+        <Box className={classes.root}>
+            <HomeHeader />
+            <Box className={classes.content}>
+                <Section title={'Lineup'} link={'/lineup'} linkName={'Volledige lineup'}>
+                    <Lineup />
+                </Section>
+                <Section title={'Tickets'} link={'/tickets'} linkName={'Alle tickets'}>
+                    <Tickets />
+                </Section>
+                <Section title={'Gallery'} link={'/gallery'} linkName={'Bekijk alle foto\'s'}>
+                </Section>
             </Box>
-            <Section title={'Lineup'} link={'/lineup'} linkName={'Volledige lineup'}>
-                <Lineup />
-            </Section>
-            <Section title={'Tickets'} link={'/tickets'} linkName={'Alle tickets'}>
-                <Tickets />
-            </Section>
-            <Section title={'Gallery'} link={'/gallery'} linkName={'Bekijk alle foto\'s'}>
-            </Section>
-        </>
+        </Box>
     )
 }
 

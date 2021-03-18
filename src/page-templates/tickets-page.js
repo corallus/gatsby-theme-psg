@@ -1,13 +1,17 @@
 import React from 'react'
-import Section from "../components/Section";
 import Lineup from "../components/Lineup";
 import {graphql} from "gatsby";
+import {Page} from "../components/Page";
+import Tickets from "../components/Tickets";
+import {Container} from "@material-ui/core";
 
 const TicketsPageTemplate = ({data}) => {
     return (
-        <Section title={'Lineup'} link={'/lineup'}>
-            <Lineup />
-        </Section>
+        <Page markdown={data.markdownRemark}>
+            <Container>
+                <Tickets />
+            </Container>
+        </Page>
     )
 }
 

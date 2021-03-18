@@ -9,6 +9,7 @@ const Section = ({title, linkName = null, name = null, children, link = null}) =
     return (
         <Box component={'section'} className={classes.root}>
             <Container className={classes.container}>
+                {title &&
                 <header className={classes.header}>
                     <Typography component={'h2'} variant={'h2'}>
                         <Box component={'span'}>
@@ -16,10 +17,11 @@ const Section = ({title, linkName = null, name = null, children, link = null}) =
                         </Box>
                     </Typography>
                 </header>
+                }
                 {children}
                 {link !== null && linkName !== null &&
                 <footer>
-                    <Button as={Link} to={link}>
+                    <Button className={classes.button} as={Link} to={link}>
                         {linkName}
                     </Button>
                 </footer>

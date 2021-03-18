@@ -95,7 +95,7 @@ export default function Index() {
 
     return (
         <>
-            <AppBar position="fixed" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar  position="fixed" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar
                     className={classes.toolbar}
                 >

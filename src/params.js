@@ -1,10 +1,8 @@
 export const topicProps = {
-    bg: 'info'
 }
 
 export const switcherParams = {
     buttonProps: {
-        variant: 'primary'
     }
 }
 
@@ -19,14 +17,11 @@ export const summaryParams = {
 
 export const galleryParams = {
     colProps: {
-        md: 4
     }
 }
 
 export const navbarParams = {
     togglerProps: {
-        variant: "link",
-        size: "sm",
     },
     ticketButton: {
         text: 'Tickets',
@@ -38,17 +33,12 @@ export const navbarParams = {
 
 export const lineupParams = {
     highlightedColProps: {
-        md: 6,
-        className: "artist-highlighted act-col"
     },
     colProps: {
-        md: 4,
-        className: "act-col"
     },
     emptyText: 'To be announced',
     artist: {
         cardProps: {
-            className: 'artist',
             style: {backgroundColor: '#d8d8d8'}
         },
         emptyText: 'To be announced'

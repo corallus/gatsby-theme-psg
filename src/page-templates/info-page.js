@@ -3,22 +3,20 @@ import Section from "../components/Section";
 import {graphql} from "gatsby";
 import Info from "../components/Info";
 import Contact from "../components/Contact";
-import {Box, Container} from "@material-ui/core";
+import {Page} from "../components/Page";
 
 const InfoPageTemplate = ({data}) => {
     return (
-        <>
+        <Page markdown={data.markdownRemark}>
             {data.allMarkdownRemark.group.map((group, i) =>
                 <Section title={group.fieldValue} key={i}>
                     <Info items={group.nodes}/>
                 </Section>
             )}
-            <Box component={'section'}>
-                <Container>
-                    <Contact />
-                </Container>
-            </Box>
-        </>
+            <Section title={'Antwoord niet gevonden?'}>
+                <Contact />
+            </Section>
+        </Page>
     )
 }
 

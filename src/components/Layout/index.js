@@ -36,10 +36,8 @@ const Layout = ({title: pageTitle = null, description, template = null, children
             <EventMeta />
             <Navbar isHome={isHome}/>
             <div className={classes.appBarSpacer} />
-            <main className={classes.main}>
-                {children}
-                <NewsFlash />
-            </main>
+            {children}
+            <NewsFlash />
             <footer className={classes.footer}>
                 <Footer />
             </footer>

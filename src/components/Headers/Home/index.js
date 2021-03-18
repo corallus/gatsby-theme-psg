@@ -1,12 +1,11 @@
 import React from 'react'
-import {Header} from "../index";
-import Summary from "../../Events/Summary";
+import Summary from "../../Summary";
+import {Box} from "@material-ui/core";
 
-
-export const HomeHeader = ({title, children}) => {
-   return (
-       <Header {...props}>
-           <Summary />
-       </Header>
-   )
+export const HomeHeader = () => {
+    return (
+        <Box component={'header'}>
+            <Summary />
+        </Box>
+    )
 }

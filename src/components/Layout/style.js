@@ -8,8 +8,6 @@ export const useStyles = makeStyles((theme) => ({
         minHeight: '100vh'
     },
     appBarSpacer: theme.mixins.toolbar,
-    main: {
-    },
     footer: {
         marginTop: 'auto',
     }
