@@ -2,10 +2,19 @@ import React from 'react'
 import Section from "../components/Section";
 import {graphql} from "gatsby";
 import Info from "../components/Info";
-import Contact from "../components/Contact";
 import {Page} from "../components/Page";
+import {ResponseForm} from "../components/Form";
+import {makeStyles} from "@material-ui/core/styles";
 
+export const useStyles = makeStyles((theme) => ({
+    root: {
+    },
+    contact: {
+        margin: theme.spacing(0, 'auto')
+    },
+}));
 const InfoPageTemplate = ({data}) => {
+    const classes = useStyles();
     return (
         <Page markdown={data.markdownRemark}>
             {data.allMarkdownRemark.group.map((group, i) =>
@@ -14,7 +23,11 @@ const InfoPageTemplate = ({data}) => {
                 </Section>
             )}
             <Section title={'Antwoord niet gevonden?'}>
-                <Contact />
+                <div dangerouslySetInnerHTML={{__html: data.markdownRemark.html}} />
+
+                <div style={{maxWidth: '450px', margin: '0 auto'}}>
+                    <ResponseForm />
+                </div>
             </Section>
         </Page>
     )

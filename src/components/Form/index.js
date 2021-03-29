@@ -1,27 +1,30 @@
 import React from 'react'
-import {Formik, Field, ErrorMessage, Form} from 'formik'
+import {Formik} from 'formik'
 import * as Yup from 'yup'
 import Recaptcha from "react-recaptcha"
 import axios from 'axios'
 import FieldWrapper from './FieldWrapper'
 import { Helmet } from 'react-helmet';
 import useSiteMetadata from "../SiteMetadata";
-import {Button, Checkbox, createStyles, FormGroup, makeStyles, TextField} from "@material-ui/core";
-
-const TextAreaField = (props) => {
-    return (
-        <Field as="textarea" rows={6} {...props} />
-    )
-}
+import {
+    Box,
+    Button,
+    Checkbox,
+    createStyles, FormControl,
+    FormControlLabel,
+    FormHelperText,
+    makeStyles,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) =>
     createStyles({
         root: {
-            '> *': {
-                margin: theme.spacing(1),
-                width: 200,
-            },
         },
+        formControl: {
+            width: '100%'
+        },
+        button: {
+        }
     }),
 );
 export const ResponseForm = () => {
@@ -96,33 +99,44 @@ export const ResponseForm = () => {
                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
                         </Helmet>
 
-                        <FieldWrapper id="naam" label="Naam" name="response.naam" type="text" />
-                        <FieldWrapper id="email" label="Email" name="response.email" type="email" />
-                        <FieldWrapper id="telefoonnummer" label="Telefoonnummer" name="response.telefoonnummer" type="tel" />
-                        <FieldWrapper id="bericht" label="Bericht" name="response.bericht" type="textarea" component={TextAreaField} />
+                        <FieldWrapper className={classes.formControl} id="naam" label="Naam" name="response.naam" type="text" />
+                        <FieldWrapper className={classes.formControl} id="email" label="Email" name="response.email" type="email" />
+                        <FieldWrapper className={classes.formControl} id="telefoonnummer" label="Telefoonnummer" name="response.telefoonnummer" type="tel" />
+                        <FieldWrapper className={classes.formControl} id="bericht" label="Bericht" name="response.bericht" rows={5} multiline />
 
-                        <label>
-                            <Field
-                                type="checkbox"
-                                name="privacy"
+                        <FormControl className={classes.formControl} required error={errors.privacy && touched.privacy} component="fieldset">
+                            <FormControlLabel
+                                control={
+                                    <FieldWrapper
+                                        component={Checkbox}
+                                        id={"privacy"}
+                                        name="privacy"
+                                    />
+                                }
+                                label={<span>Ik ga akkoord met de <a href="/static/privacy-statement.pdf" rel="noopener noreferrer" target="_blank"> privacy voorwaarden</a></span>}
                             />
-                            <span>Ik ga akkoord met de <a href="/static/privacy-statement.pdf" rel="noopener noreferrer" target="_blank"> privacy voorwaarden</a></span>
-                        </label>
-                        {errors.privacy && touched.privacy ? (
-                            <div>{errors.privacy}</div>
-                        ) : null}
+                            {(errors.privacy && touched.privacy) &&
+                            <FormHelperText>
+                                {errors.privacy}
+                            </FormHelperText>
+                            }
+                        </FormControl>
 
-                        <Recaptcha
-                            sitekey="6LeZnxkaAAAAAHsyk5igUVRWXPmLRz78Il6s8g0d"
-                            render="explicit"
-                            theme="light"
-                            verifyCallback={(response) => { setFieldValue("recaptcha", response); }}
-                            onloadCallback={() => { console.log("done loading!"); }}
-                        />
+                        <FormControl className={classes.formControl}>
+                            <Recaptcha
+                                sitekey="6LeZnxkaAAAAAHsyk5igUVRWXPmLRz78Il6s8g0d"
+                                render="explicit"
+                                theme="light"
+                                verifyCallback={(response) => { setFieldValue("recaptcha", response); }}
+                                onloadCallback={() => { console.log("done loading!"); }}
+                            />
+                        </FormControl>
 
-                        <Button variant="contained" type="submit" disabled={isSubmitting} >
-                            {isSubmitting ? 'Aan het versturen…' : 'Versturen'}
-                        </Button>
+                        <Box className={classes.formControl} textAlign={'left'}>
+                            <Button className={classes.button} color={'primary'} variant="contained" type="submit" disabled={isSubmitting} >
+                                {isSubmitting ? 'Aan het versturen…' : 'Versturen'}
+                            </Button>
+                        </Box>
                         {status && status.message &&
                         <div>{status.message}</div>
                         }

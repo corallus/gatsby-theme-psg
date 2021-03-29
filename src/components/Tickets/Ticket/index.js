@@ -1,5 +1,4 @@
 import React from 'react'
-import Content from '../../Content'
 import Price from './Price'
 import showdown from 'showdown'
 import {Link} from "gatsby";
@@ -22,7 +21,7 @@ const Ticket = ({ticket, early_bird}) => {
             <CardHeader className={classes.header} title={ticket.title} />
             <CardContent className={classes.content}>
                 <Price ticket={ticket} earlyBird={early_bird}/>
-                <Content content={converter.makeHtml(ticket.body)}/>
+                <div dangerouslySetInnerHTML={{__html: converter.makeHtml(ticket.body)}} />
             </CardContent>
             <CardActions className={classes.footer}>
                 <Button className={classes.button} component={Link} to={'/tickets'}/>

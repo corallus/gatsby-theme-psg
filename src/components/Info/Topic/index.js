@@ -1,30 +1,50 @@
 import React from 'react';
-import {Accordion, Card} from 'react-bootstrap'
-import HTMLContent from '../../Content'
 import {graphql} from 'gatsby'
-import {MdArrowDownward, MdArrowUpward} from 'react-icons/md';
-import {topicProps} from '../../../params'
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {AccordionDetails, createStyles, makeStyles, Typography, withStyles, Accordion} from "@material-ui/core";
+import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 
-export default ({item, eventKey, handleClick, active}) => (
-    <Card style={{marginBottom: '15px'}} {...topicProps}>
-        <Accordion.Toggle as={Card.Header} onClick={() => handleClick(active ? null : eventKey)}
-                          eventKey={eventKey}
-                          className={'mb-0 d-flex align-items-center justify-content-between font-weight-bold border-0'}>
-            {item.frontmatter.title}
-            {active
-                ?
-                <MdArrowUpward/>
-                :
-                <MdArrowDownward/>
+const AccordionSummary = withStyles({
+    root: {
+        backgroundColor: 'rgba(0, 0, 0, .03)',
+    },
+    content: {
+    },
+    expanded: {},
+})(MuiAccordionSummary);
+
+const useStyles = makeStyles((theme) =>
+    createStyles({
+            root: {
+                width: '100%',
+            },
+            content: {
+                textAlign: 'left'
             }
-        </Accordion.Toggle>
-        <Accordion.Collapse eventKey={eventKey}>
-            <Card.Body>
-                <HTMLContent content={item.html}/>
-            </Card.Body>
-        </Accordion.Collapse>
-    </Card>
-)
+        }
+    ))
+export default ({item, index, expanded, handleChange}) => {
+    const classes = useStyles();
+    return (
+        <Accordion
+            className={classes.root}
+            expanded={expanded}
+            onChange={handleChange}
+        >
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls={`panel${index}d-content`}
+                id={`panel${index}d-header`}
+            >
+                <Typography>{item.frontmatter.title}</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.content}>
+                <div dangerouslySetInnerHTML={{__html: item.html}} />
+            </AccordionDetails>
+
+        </Accordion>
+    )
+}
 
 export const query = graphql`
     fragment Topic on MarkdownRemark {

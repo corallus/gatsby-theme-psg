@@ -2,16 +2,14 @@ import React from 'react'
 import { useFormikContext } from 'formik'
 import {TextField} from "@material-ui/core";
 
-export default ({ label, id, name, type }) => {
+export default (props) => {
     const { errors, touched } = useFormikContext()
     return (
         <TextField
-            name={name}
-            id={id}
-            label={label}
-            type={type}
-            error={touched[name] && Boolean(errors[name])}
-            helperText={touched[name] && errors[name]}
+            {...props}
+            margin={'dense'}
+            error={touched[props.name] && Boolean(errors[props.name])}
+            helperText={touched[props.name] && errors[props.name]}
         />
     )
 }
