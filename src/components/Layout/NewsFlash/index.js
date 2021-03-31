@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react'
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
 import {graphql, useStaticQuery} from "gatsby";
+import {Button, Dialog, DialogActions, DialogContent, DialogTitle} from "@material-ui/core";
 
-const NewsFlash = (props) => {
+const NewsFlash = () => {
     const [modalShow, setModalShow] = React.useState(false);
 
     const data = useStaticQuery(graphql`
@@ -29,29 +28,22 @@ const NewsFlash = (props) => {
         }
     }, [datetime, active]);
 
-
     return (
-        <Modal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            title={data.markdownRemark.frontmatter.title}
-            html={data.markdownRemark.html}
-            size="md"
-            aria-labelledby="contained-modal-title-vcenter"
-            scrollable
-            className={"text-dark"}
+        <Dialog
+            open={modalShow}
+            onClose={() => setModalShow(false)}
         >
-            <Modal.Header closeButton>
-                <Modal.Title className={"text-dark"} id="contained-modal-title-vcenter">
+            <DialogTitle>
                     {data.markdownRemark.frontmatter.title}
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={() => setModalShow(false)}>Close</Button>
-            </Modal.Footer>
-        </Modal>
+            </DialogTitle>
+            <DialogContent dangerouslySetInnerHTML={{__html: data.markdownRemark.html}}>
+            </DialogContent>
+            <DialogActions>
+                <Button autoFocus color={'primary'} onClick={() => setModalShow(false)}>
+                    Close
+                </Button>
+            </DialogActions>
+        </Dialog>
     )
 }
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import {Button, Modal} from 'react-bootstrap'
 import {MdPlayCircleOutline} from 'react-icons/md';
+import {Button, Dialog} from "@material-ui/core";
 
 export const Video = (props) => {
     const [showText, setShowText] = useState(true);
@@ -45,19 +45,14 @@ export class VideoModal extends React.Component {
         return (
             <React.Fragment>
                 <Button
-                    variant="dark"
-                    size={this.props.size}
                     onClick={() => this.setState({modalShow: true})}
-                    className="btn-transparent"
-                    style={{backgroundColor: 'gba(0, 0, 0, 0.5)'}}
                 >
                     <MdPlayCircleOutline/> Watch promo
                 </Button>
 
-                <Modal size="lg" show={this.state.modalShow} onHide={modalClose}
-                       aria-labelledby="contained-modal-title-vcenter" centered>
+                <Dialog size="lg" open={this.state.modalShow} onClose={modalClose}>
                     <Video src={this.props.src}/>
-                </Modal>
+                </Dialog>
             </React.Fragment>
         );
     }

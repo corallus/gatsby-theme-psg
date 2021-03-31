@@ -1,91 +1,29 @@
 import React from 'react'
-import {Carousel} from 'react-bootstrap'
-import Lightbox from 'react-image-lightbox'
 import { GatsbyImage } from "gatsby-plugin-image";
-import 'react-image-lightbox/style.css'
 import {galleryParams} from "../../params";
+import {Slide} from "../../shared/slide";
+import {Grid} from "@material-ui/core";
 
-class Index extends React.Component {
-    constructor(props, context) {
-        super(props, context);
+export const Gallery = ({items}) => {
+    const pageSize = 3
 
-        this.handleSelect = this.handleSelect.bind(this);
-        this.handleOpen = this.handleOpen.bind(this);
-
-        this.state = {
-            page: 0,
-            direction: null,
-            imageIndex: 0,
-            isOpen: false,
-        };
+    const Row = ({items}) => {
+       return (
+           <Grid container spacing={3}>
+               {items.map((image, j) => (
+                   <Grid xs={12/pageSize} item {...galleryParams.colProps} key={j}>
+                       <GatsbyImage
+                           image={image.image.childImageSharp.gatsbyImageData}
+                           className="rounded"
+                           alt={image.alt | ''} />
+                   </Grid>
+               ))}
+           </Grid>
+       )
     }
-
-    handleOpen(key) {
-        const {page: index} = this.state
-        this.setState({imageIndex: key + (index * this.props.imagesPerPage), isOpen: true})
-    }
-
-    handleSelect(selectedIndex, e) {
-        this.setState({
-            page: selectedIndex,
-            direction: e.direction,
-        });
-    }
-
-    render() {
-        const {page, direction, imageIndex, isOpen} = this.state;
-        const {images, imagesPerPage} = this.props;
-
-        const pages = [];
-        for (let i = 1; i <= Math.ceil(this.props.images.length / imagesPerPage); i++) {
-            let indexOfLastImage = i * imagesPerPage;
-            let indexOfFirstImage = indexOfLastImage - imagesPerPage;
-            let page = this.props.images.slice(indexOfFirstImage, indexOfLastImage);
-            pages.push(page);
-        }
-        return <>
-            {isOpen && (
-                <Lightbox
-                    mainSrc={images[imageIndex].image.childImageSharp.gatsbyImageData.src}
-                    nextSrc={images[(imageIndex + 1) % images.length].image.childImageSharp.gatsbyImageData.src}
-                    prevSrc={images[(imageIndex + images.length - 1) % images.length].image.childImageSharp.gatsbyImageData.src}
-                    onCloseRequest={() => this.setState({isOpen: false})}
-                    onMovePrevRequest={() =>
-                        this.setState({
-                            imageIndex: (imageIndex + images.length - 1) % images.length,
-                        })
-                    }
-                    onMoveNextRequest={() =>
-                        this.setState({
-                            imageIndex: (imageIndex + 1) % images.length,
-                        })
-                    }
-                />
-            )}
-            <Carousel
-                activeIndex={page}
-                dir={direction}
-                onSelect={this.handleSelect}
-                interval={null}
-            >
-
-                {pages.map((page, i) => (
-                    <Carousel.Item key={i}>
-                        <Grid container spacing={3}>
-                            {page.map((image, j) => (
-                                <Grid item {...galleryParams.colProps} key={j} onClick={() => this.handleOpen(j)}>
-                                    <GatsbyImage
-                                        image={image.image.childImageSharp.gatsbyImageData}
-                                        className="rounded"
-                                        alt={image.alt | ''} />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </Carousel.Item>
-                ))}
-            </Carousel>
-        </>;
-    }
+    return (
+        <Slide pageSize={pageSize} items={items} Component={Row} />
+    )
 }
 
-export default Index
+export default Gallery
