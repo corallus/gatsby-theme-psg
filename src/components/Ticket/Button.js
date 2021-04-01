@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from "../../Button"
-import {ticketParams} from "../../../params";
+import Button from "../Button"
+import {ticketParams} from "../../params";
 
 export default ({...props}) => {
     return (

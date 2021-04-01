@@ -1,9 +1,9 @@
 import React from 'react'
-import Section from "../components/Section";
+import Section from "../../components/Section";
 import {graphql} from "gatsby";
-import Info from "../components/Info";
-import {Page} from "../components/Page";
-import {ResponseForm} from "../components/Form";
+import Info from "../../components/Info";
+import {Page} from "../../components/Page";
+import {ResponseForm} from "./form";
 import {makeStyles} from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme) => ({
@@ -14,7 +14,6 @@ export const useStyles = makeStyles((theme) => ({
     },
 }));
 const InfoPageTemplate = ({data}) => {
-    const classes = useStyles();
     return (
         <Page markdown={data.markdownRemark}>
             {data.allMarkdownRemark.group.map((group, i) =>

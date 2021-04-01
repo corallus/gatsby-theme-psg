@@ -1,9 +1,9 @@
 import React, {useContext} from 'react'
 import Button from "./Button";
-import Context from '../Events/Context'
+import Context from '../../../components/Events/Context'
 import {Link} from "gatsby";
-import {summaryParams} from "../../params";
-import EventContainer from "../Events/Switcher";
+import {summaryParams} from "../../../params";
+import EventContainer from "../../../components/Events/Switcher";
 import {Box, Container, Typography} from "@material-ui/core";
 import {useStyles} from "./style";
 
@@ -14,7 +14,9 @@ const Summary = ({showText=false, children}) => {
     return (
         <Container component={'summary'} className={classes.root}>
             {children}
+            <div>
             <EventContainer/>
+            </div>
             <Box className={classes.dateLocation}>
                 <Typography component={'span'} className={classes.location} {...summaryParams.locationProps}>
                     {state.event.frontmatter.location}
@@ -24,7 +26,7 @@ const Summary = ({showText=false, children}) => {
                 </Typography>
             </Box>
             {showText &&
-                <div className={classes.body} dangerouslySetInnerHTML={{__html: state.event.html}} />
+            <div className={classes.body} dangerouslySetInnerHTML={{__html: state.event.html}} />
             }
             {state.event.frontmatter.status === 'In verkoop' ?
                 <Button className={classes.button} as={Link} to={"/tickets"}/>

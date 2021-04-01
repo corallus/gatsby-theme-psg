@@ -1,13 +1,8 @@
 import React from 'react'
 import useSiteMetadata from '../../SiteMetadata'
-import {Container, Link, makeStyles, Typography} from "@material-ui/core";
+import {Container, Link, Typography} from "@material-ui/core";
+import {useStyles} from './style'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing(6, 0),
-    },
-}));
 const Footer = () => {
     const classes = useStyles();
     return (

@@ -4,8 +4,8 @@ import {Box, Container, Typography} from "@material-ui/core";
 import {useStyles} from "./style";
 import Button from "./Button";
 
-const Section = ({title, linkName = null, name = null, children, link = null}) => {
-    const classes = useStyles();
+const Section = ({title, children, linkName = null, name = null, link = null, ...props}) => {
+    const classes = useStyles(props);
     return (
         <Box component={'section'} className={classes.root}>
             <Container className={classes.container}>
@@ -21,7 +21,7 @@ const Section = ({title, linkName = null, name = null, children, link = null}) =
                 {children}
                 {link !== null && linkName !== null &&
                 <footer>
-                    <Button className={classes.button} as={Link} to={link}>
+                    <Button className={classes.button} component={Link} to={link}>
                         {linkName}
                     </Button>
                 </footer>

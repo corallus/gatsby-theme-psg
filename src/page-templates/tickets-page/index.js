@@ -1,21 +1,21 @@
 import React from 'react'
-import Lineup from "../components/Lineup";
 import {graphql} from "gatsby";
-import {Page} from "../components/Page";
+import {Page} from "../../components/Page";
 import {Container} from "@material-ui/core";
+import Tickets from "./eventix";
 
-const TimetablePageTemplate = ({data}) => {
+const TicketsPageTemplate = ({data}) => {
     return (
         <Page markdown={data.markdownRemark}>
             <Container>
-                <Lineup />
+                <Tickets />
             </Container>
         </Page>
     )
 }
 
 export const query = graphql`
-    query TimetablePage($id: String!) {
+    query TicketsPage($id: String!) {
         markdownRemark(id: {eq: $id}) {
             html
             frontmatter {
@@ -26,4 +26,4 @@ export const query = graphql`
     }
 `
 
-export default TimetablePageTemplate
+export default TicketsPageTemplate

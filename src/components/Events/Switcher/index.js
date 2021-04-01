@@ -7,7 +7,7 @@ export default () => {
     return (
         state.events.length > 1 &&
 
-        <ButtonGroup color="primary" aria-label="event-selector">
+        <ButtonGroup color="primary" variant={'contained'} aria-label="event-selector">
             {state.events.map(post => (
                 <Button
                     onClick={() => dispatch({type: 'changeEvent', payload: post})}

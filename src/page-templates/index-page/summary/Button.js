@@ -1,6 +1,6 @@
 import React from 'react'
-import Button from '../Button'
-import {summaryParams} from "../../params";
+import Button from '../../../components/Button'
+import {summaryParams} from "../../../params";
 
 export default ({children, ...props}) => {
     return (
