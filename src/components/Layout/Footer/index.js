@@ -2,12 +2,16 @@ import React from 'react'
 import useSiteMetadata from '../../SiteMetadata'
 import {Container, Link, Typography} from "@material-ui/core";
 import {useStyles} from './style'
+import Menu from "./Menu";
+import SocialMenu from "../Navbar/SocialMenu";
 
 const Footer = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
             <Container maxWidth={'lg'}>
+                <Menu />
+                <SocialMenu />
                 <Copyright />
             </Container>
         </div>

@@ -3,7 +3,7 @@ import Button from "./Button";
 import Context from '../../../components/Events/Context'
 import {Link} from "gatsby";
 import {summaryParams} from "../../../params";
-import EventContainer from "../../../components/Events/Switcher";
+import EventSwitcher from "../../../components/Events/Switcher";
 import {Box, Container, Typography} from "@material-ui/core";
 import {useStyles} from "./style";
 
@@ -15,7 +15,7 @@ const Summary = ({showText=false, children}) => {
         <Container component={'summary'} className={classes.root}>
             {children}
             <div>
-            <EventContainer/>
+            <EventSwitcher/>
             </div>
             <Box className={classes.dateLocation}>
                 <Typography component={'span'} className={classes.location} {...summaryParams.locationProps}>
