@@ -1,4 +1,9 @@
 export default function (config = {}) {
+    const page = [
+        {label: 'Titel', name: 'title', widget: 'string'},
+        {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
+        {label: 'Tekst', name: 'body', widget: 'markdown', required: false},
+    ]
     return {
         load_config_file: false,
         media_folder: 'static/media',
@@ -24,8 +29,9 @@ export default function (config = {}) {
                 fields: [
                     {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'event'},
                     {label: 'Titel (unieke naam voor intern gebruik)', name: 'title', widget: 'string'},
+                    {label: 'Naam (weergave)', name: 'name', widget: 'string', required: false},
                     {label: 'Timetable', name: 'timetable', widget: 'image', required: false},
-                    {label: 'Naam', name: 'name', widget: 'string', required: false},
+                    {label: 'Aftermovie', name: 'aftermovie', widget: 'string', required: false},
                     {label: 'EventixId', name: 'eventix', widget: 'string', required: false},
                     {
                         label: 'Links', name: 'links', widget: 'list', collapsed: false, fields: [
@@ -75,6 +81,7 @@ export default function (config = {}) {
                                         required: true
                                     },
                                     {label: 'Aangekondigd', name: 'announced', widget: 'boolean', default: true},
+                                    {label: 'Plaatje', name: 'image', widget: 'image', required: false},
                                 ]
                             },
                         ]
@@ -155,16 +162,7 @@ export default function (config = {}) {
                         name: 'index',
                         file: 'src/pages/index.md',
                         fields: [
-                            {
-                                label: 'Template Key',
-                                name: 'templateKey',
-                                widget: 'hidden',
-                                default: 'index-page'
-                            },
-                            {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have between 12 and 160 characters"]},
-                            {label: 'Plaatje', name: 'image', widget: 'image', required: false},
-                            {label: 'Tekst', name: 'body', widget: 'markdown'},
+                            ...page,
                             {
                                 label: 'Fotos', name: 'images', widget: 'list', required: false, fields: [
                                     {label: 'Plaatje', name: 'image', widget: 'image'},
@@ -174,49 +172,50 @@ export default function (config = {}) {
                         ]
                     },
                     {
-                        file: 'src/pages/info/index.md',
+                        file: 'src/pages/info.md',
                         label: 'Info',
                         name: 'info',
                         fields: [
-                            {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'info-page'},
-                            {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have between 12 and 160 characters"]},
-                            {label: 'Image', name: 'image', widget: 'image', required: false},
-                            {label: 'Tekst', name: 'body', widget: 'markdown'},
+                            ...page
                         ]
                     },
                     {
-                        file: 'src/pages/lineup/index.md',
+                        file: 'src/pages/lineup.md',
                         label: 'Line-Up',
                         name: 'Lineup',
                         fields: [
-                            {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'Lineup-page'},
-                            {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
-                            {label: 'Plaatje', name: 'image', widget: 'image', required: false},
-                            {label: 'Tekst', name: 'body', widget: 'markdown'},
+                            ...page
                         ]
                     },
                     {
-                        file: 'src/pages/timetable/index.md',
+                        file: 'src/pages/timetable.md',
                         label: 'Timetable',
                         name: 'timetable',
                         fields: [
-                            {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'timetable-page'},
-                            {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
-                            {label: 'Tekst', name: 'body', widget: 'markdown'},
+                            ...page
                         ]
                     },
                     {
-                        file: 'src/pages/tickets/index.md',
+                        file: 'src/pages/tickets.md',
                         label: 'Tickets',
                         name: 'Tickets',
                         fields: [
-                            {label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'Tickets-page'},
-                            {label: 'Titel', name: 'title', widget: 'string'},
-                            {label: 'Description', name: 'description', widget: 'string', pattern: ['^.{12,160}$', "Must have at between 12 and 160 characters"]},
-                            {label: 'Tekst', name: 'body', widget: 'markdown'},
+                            ...page
+                        ]
+                    },
+                    {
+                        file: 'src/pages/fotos.md',
+                        label: 'Foto\'s',
+                        name: 'Fotos',
+                        fields: [
+                            ...page,
+                            {
+                                label: 'Galleries', name: 'galleries', widget: 'list', required: false, fields: [
+                                    {label: 'Naam', name: 'naam', widget: 'string', required: true},
+                                    {label: 'Plaatje', name: 'image', widget: 'image', required: true},
+                                    {label: 'Url', name: 'url', widget: 'string', required: true},
+                                ]
+                            },
                         ]
                     },
                 ]

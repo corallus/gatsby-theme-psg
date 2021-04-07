@@ -1,7 +1,7 @@
 import React from 'react'
-import {Header} from "../Headers";
+import {Header} from "./Header";
 import {Box} from "@material-ui/core";
-import {useStyles} from "./style";
+import useStyles from "./style";
 
 export const Page = ({markdown, children}) => {
     const classes = useStyles();

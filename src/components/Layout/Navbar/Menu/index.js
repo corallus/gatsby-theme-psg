@@ -35,7 +35,7 @@ const PrimaryMenu = ({handleClose, ...props}) => {
                         onClick={handleClose}
                         key={i}
                     >
-                        <ListItemText>
+                        <ListItemText className={classes.listItemText}>
                             {item.name}
                         </ListItemText>
                     </ListItem>

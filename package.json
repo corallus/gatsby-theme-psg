@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-psg",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "main": "index.js",
   "author": "Vincent van Bergen",
   "license": "MIT",
@@ -40,5 +40,10 @@
     "react-recaptcha": "^2.3.10",
     "showdown": "^1.9.1",
     "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-webpack-plugin": "^2.5.3",
+    "gatsby-plugin-eslint": "^3.0.0"
   }
 }

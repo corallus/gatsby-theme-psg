@@ -8,7 +8,7 @@ import {
     CardContent,
     CardHeader,
 } from "@material-ui/core";
-import {useStyles} from "./style";
+import useStyles from "./style";
 import Button from "./Button";
 
 const converter = new showdown.Converter()

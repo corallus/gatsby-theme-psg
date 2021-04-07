@@ -1,18 +1,19 @@
-import {makeStyles} from "@material-ui/core";
+import {makeStyles} from "@material-ui/styles";
 
-export const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
     list: {
         [theme.breakpoints.up('sm')]: {
             display: 'flex',
             flexDirection: 'row',
             justifyContent: "center",
-            margin: '0 auto',
+            margin: '0 auto !important',
             maxWidth: 900
         },
     },
     listItem: {
-        textAlign: 'center',
-        color: theme.palette.primary.main,
+        textAlign: 'center !important',
+        width: 'auto !important',
+        color: `${theme.palette.primary.main} !important`,
         [theme.breakpoints.up('sm')]: {
             position: 'relative',
             '&::after': {
@@ -29,6 +30,8 @@ export const useStyles = makeStyles((theme) => ({
         }
     },
     listItemText: {
-
+        textTransform: 'uppercase'
     }
 }));
+
+export default useStyles

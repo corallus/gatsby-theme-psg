@@ -1,4 +1,4 @@
-import {useStyles} from "./style";
+import useStyles from "./style";
 import PrimaryMenu from "../../Navbar/Menu";
 import React from "react";
 

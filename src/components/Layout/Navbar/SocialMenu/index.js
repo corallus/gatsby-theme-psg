@@ -10,13 +10,13 @@ const SocialMenu = () => {
     return (
        <>
            {social.facebook &&
-           <IconButton aria-label="facebook" color="inherit">
-               <Facebook />
+           <IconButton className={classes.iconButton} aria-label="facebook" color="inherit">
+               <Facebook color={'inherit'} />
            </IconButton>
            }
            {social.instagram &&
-           <IconButton aria-label="facebook" color="inherit">
-               <Instagram />
+           <IconButton className={classes.iconButton} aria-label="instagram" color="inherit">
+               <Instagram color={'inherit'} />
            </IconButton>
            }
        </>

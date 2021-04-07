@@ -1,10 +1,10 @@
 import React from 'react'
 import {Link} from 'gatsby'
 import {Box, Container, Typography} from "@material-ui/core";
-import {useStyles} from "./style";
+import useStyles from "./style";
 import Button from "./Button";
 
-const Section = ({title, children, linkName = null, name = null, link = null, ...props}) => {
+const Section = ({title, children, linkName = null, link = null, ...props}) => {
     const classes = useStyles(props);
     return (
         <Box component={'section'} className={classes.root}>
@@ -18,9 +18,11 @@ const Section = ({title, children, linkName = null, name = null, link = null, ..
                     </Typography>
                 </header>
                 }
-                {children}
+                <div className={classes.content}>
+                    {children}
+                </div>
                 {link !== null && linkName !== null &&
-                <footer>
+                <footer className={classes.footer}>
                     <Button className={classes.button} component={Link} to={link}>
                         {linkName}
                     </Button>

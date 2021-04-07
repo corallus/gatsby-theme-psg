@@ -80,7 +80,12 @@ exports.createPages = ({ actions, graphql }) => {
               slug
             }
             frontmatter {
-              templateKey
+              title
+            }
+            parent {
+              ... on File {
+                name
+              }
             }
           }
         }
@@ -98,7 +103,7 @@ exports.createPages = ({ actions, graphql }) => {
       const id = edge.node.id
       createPage({
         path: edge.node.fields.slug,
-        component: `${__dirname}/src/page-templates/${String(edge.node.frontmatter.templateKey)}/index.js`,
+        component: `${__dirname}/src/templates/${String(edge.node.parent.name)}/index.js`,
         // additional data can be passed via context
         context: {
           id,

@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import {graphql} from 'gatsby'
 import {lineupParams} from "../../params";
 import {Card, CardContent, CardMedia, Typography} from "@material-ui/core";
-import {useStyles} from "./style";
+import useStyles from "./style";
 
 const Act = ({act}) => {
     const classes = useStyles();
@@ -14,7 +14,7 @@ const Act = ({act}) => {
             <CardMedia>
                 {act.announced &&
                 <GatsbyImage
-                    image={artist.frontmatter.image.childImageSharp.gatsbyImageData}
+                    image={act.image?.childImageSharp.gatsbyImageData || artist.frontmatter.image.childImageSharp.gatsbyImageData}
                     alt={artist.frontmatter.title}
                 />
                 }

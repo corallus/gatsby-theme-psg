@@ -11,7 +11,7 @@ import useSiteMetadata from "../../SiteMetadata";
 import {Button, Hidden} from "@material-ui/core";
 import Logo from "./Logo";
 import EventToggler from "./Toggler";
-import {Close, Facebook, Instagram} from "@material-ui/icons";
+import {Close} from "@material-ui/icons";
 import PrimaryMenu from "./Menu";
 import SocialMenu from "./SocialMenu";
 
