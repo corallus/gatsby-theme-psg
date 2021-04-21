@@ -20,7 +20,7 @@ const Act = ({act}) => {
                 }
             </CardMedia>
             <CardContent className={classes.content}>
-                <Typography variant="h5" component="h2">
+                <Typography variant="h5" component="h3">
                     {act.announced
                         ?
                         artist.frontmatter.title
@@ -42,7 +42,7 @@ export const query = graphql`
             templateKey
             image {
                 childImageSharp {
-                    gatsbyImageData(width: 800, height: 600, quality: 100, layout: CONSTRAINED)
+                    gatsbyImageData(aspectRatio: 1.33, layout: FULL_WIDTH)
                 }
             }
         }

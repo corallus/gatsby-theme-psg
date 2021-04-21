@@ -1,5 +1,5 @@
 import React from 'react'
-import {Grid, withWidth} from "@material-ui/core";
+import {Card, CardMedia, Grid, withWidth} from "@material-ui/core";
 import {galleryParams} from "../../../params";
 import {GatsbyImage} from "gatsby-plugin-image";
 import {Slide} from "../../../shared/slide";
@@ -22,10 +22,13 @@ const GalleryHome = ({items, ...props}) => {
             <Grid container spacing={3}>
                 {items.map((image, j) => (
                     <Grid xs={12/pageSizes['xs']} sm={12/pageSizes['sm']} md={12/pageSizes['md']} lg={12/pageSizes['lg']} xl={12/pageSizes['xl']} item {...galleryParams.colProps} key={j}>
-                        <GatsbyImage
-                            image={image.image.childImageSharp.gatsbyImageData}
-                            className="rounded"
-                            alt={image.alt || ''} />
+                        <Card>
+                            <CardMedia>
+                                <GatsbyImage
+                                    image={image.image.childImageSharp.gatsbyImageData}
+                                    alt={image.alt || ''} />
+                            </CardMedia>
+                        </Card>
                     </Grid>
                 ))}
             </Grid>
