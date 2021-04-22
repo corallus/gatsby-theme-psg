@@ -16,12 +16,12 @@ const Stage = ({highlighted = 2, numItems = null, acts}) => {
             ?
             <Grid className={classes.root} container spacing={3} justify={'center'}>
                 {acts.slice(0, highlighted).map((act, index) => (
-                    <Grid item md={6} key={index}>
+                    <Grid item xs={12} sm={6} md={6} key={index}>
                         <Act act={act}/>
                     </Grid>
                 ))}
                 {acts.slice(highlighted, numItems ? numItems : acts.length).map((act, index) => (
-                    <Grid item md={4} key={index}>
+                    <Grid item xs={12} sm={4} md={4} key={index}>
                         <Act act={act}/>
                     </Grid>
                 ))}
