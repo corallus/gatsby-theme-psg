@@ -6,11 +6,12 @@ import MuiAccordionSummary from "@material-ui/core/AccordionSummary";
 
 const AccordionSummary = withStyles({
     root: {
-        backgroundColor: 'rgba(0, 0, 0, .03)',
     },
     content: {
     },
-    expanded: {},
+    expanded: {
+
+    },
 })(MuiAccordionSummary);
 
 const useStyles = makeStyles((theme) =>
@@ -19,7 +20,10 @@ const useStyles = makeStyles((theme) =>
                 width: '100%',
             },
             content: {
-                textAlign: 'left'
+                textAlign: 'left',
+                '& a': {
+                    color: theme.palette.primary.main
+                }
             }
         }
     ))

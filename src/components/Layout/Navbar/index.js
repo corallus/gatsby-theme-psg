@@ -86,7 +86,6 @@ export default function Index() {
                     <div className={classes.toolbarIcon}>
                         <MaterialButton
                             color="inherit"
-                            variant={'link'}
                             aria-label="open drawer"
                             onClick={handleDrawerOpen}
                             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
