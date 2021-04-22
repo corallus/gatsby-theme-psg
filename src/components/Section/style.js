@@ -16,13 +16,7 @@ const useStyles = makeStyles((theme) =>
             margin: theme.spacing(4, 0)
         },
         footer: {
-
         },
-        button: {
-            boxShadow: '0 0 8px 2px #02feff, inset 0 0 12px 2px #02feff',
-            border: 'solid 2px #02feff',
-            backgroundImage: 'linear-gradient(to bottom, #0251d4, #011f8d)'
-        }
     }),
 );
 

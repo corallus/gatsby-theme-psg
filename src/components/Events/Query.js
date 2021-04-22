@@ -33,6 +33,7 @@ export const useEventsQuery = () => {
               early_bird
               status
               eventix
+              aftermovie
               url
               links {
                 name

@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import Button from "./Button";
+import Button from "./button";
 import Context from '../../../../components/Events/Context'
 import {Link} from "gatsby";
 import {summaryParams} from "../../../../params";
@@ -29,7 +29,7 @@ const Summary = ({showText=false, children}) => {
             <div className={classes.body} dangerouslySetInnerHTML={{__html: state.event.html}} />
             }
             {state.event.frontmatter.status === 'In verkoop' ?
-                <Button className={classes.button} as={Link} to={"/tickets"}/>
+                <Button as={Link} to={"/tickets"}/>
                 :
                 <Typography className={classes.status}>
                     [{state.event.frontmatter.status}]

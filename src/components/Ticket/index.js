@@ -24,7 +24,7 @@ const Ticket = ({ticket, early_bird}) => {
                 <div dangerouslySetInnerHTML={{__html: converter.makeHtml(ticket.body)}} />
             </CardContent>
             <CardActions className={classes.footer}>
-                <Button className={classes.button} component={Link} to={'/tickets'}/>
+                <Button component={Link} to={'/tickets'}/>
             </CardActions>
         </Card>
     )

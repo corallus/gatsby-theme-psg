@@ -16,8 +16,6 @@ const useStyles = makeStyles((theme) =>
             },
             status: {
             },
-            button: {
-            }
     }),
 );
 

@@ -21,9 +21,9 @@ const Section = ({title, children, linkName = null, link = null, ...props}) => {
                 <div className={classes.content}>
                     {children}
                 </div>
-                {link !== null && linkName !== null &&
+                {link && linkName &&
                 <footer className={classes.footer}>
-                    <Button className={classes.button} component={Link} to={link}>
+                    <Button component={Link} to={link}>
                         {linkName}
                     </Button>
                 </footer>

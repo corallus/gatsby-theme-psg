@@ -34,8 +34,6 @@ export const navbarParams = {
 export const lineupParams = {
     highlightedColProps: {
     },
-    colProps: {
-    },
     emptyText: 'To be announced',
     artist: {
         cardProps: {
@@ -57,12 +55,6 @@ export const sectionParams = {
 }
 
 export const ticketParams = {
-    colProps: {
-        xs: 12,
-        sm: 6,
-        md: 4,
-        lg: 3
-    },
     button: {
         text: "Koop ticket",
         props: {

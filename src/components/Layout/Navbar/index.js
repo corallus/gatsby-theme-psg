@@ -6,14 +6,16 @@ import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
+import MaterialButton from '@material-ui/core/Button';
 import MenuIcon from '@material-ui/icons/Menu';
 import useSiteMetadata from "../../SiteMetadata";
-import {Button, Hidden} from "@material-ui/core";
+import {Box, Hidden} from "@material-ui/core";
 import Logo from "./Logo";
 import EventToggler from "./Toggler";
 import {Close} from "@material-ui/icons";
 import PrimaryMenu from "./Menu";
 import SocialMenu from "./SocialMenu";
+import Button from "./Button"
 
 const drawerWidth = 240;
 
@@ -58,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.enteringScreen,
         }),
     },
+    secondaryMenu: {
+
+    }
 }));
 
 export default function Index() {
@@ -79,15 +84,19 @@ export default function Index() {
                     className={classes.toolbar}
                 >
                     <div className={classes.toolbarIcon}>
-                        <IconButton
-                            edge="start"
+                        <MaterialButton
                             color="inherit"
+                            variant={'link'}
                             aria-label="open drawer"
                             onClick={handleDrawerOpen}
                             className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+                            startIcon={<MenuIcon fontSize={'large'}/>}
+                            size={'large'}
                         >
-                            <MenuIcon />
-                        </IconButton>
+                            <Hidden smDown implementation="css">
+                            menu
+                            </Hidden>
+                        </MaterialButton>
                         <Hidden smDown implementation="css">
                             <EventToggler/>
                         </Hidden>
@@ -95,12 +104,12 @@ export default function Index() {
                     <div className={classes.title}>
                         <Logo title={title}/>
                     </div>
-                    <Hidden smDown implementation="css">
+                    <Box className={classes.secondaryMenu}>
                         <SocialMenu />
-                        <Button component={Link} to={'/tickets'} color="inherit" variant="outlined">
-                            Tickets
-                        </Button>
-                    </Hidden>
+                        <Box display={{ xs: 'none', sm: 'none', md: 'inline-block' }}>
+                            <Button component={Link} to={'/tickets'} variant="outlined"/>
+                        </Box>
+                    </Box>
                 </Toolbar>
             </AppBar>
             <Drawer
