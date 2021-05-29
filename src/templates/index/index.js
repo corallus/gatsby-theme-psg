@@ -18,7 +18,10 @@ const IndexPageTemplate = ({data}) => {
                 <LineupHome />
                 <TicketsHome />
                 <Aftermovie />
-                <Gallery items={data.markdownRemark.frontmatter.images} />
+                {
+                    data.markdownRemark.frontmatter.images &&
+                    <Gallery items={data.markdownRemark.frontmatter.images} />
+                }
             </Box>
         </Box>
     )

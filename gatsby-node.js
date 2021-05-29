@@ -9,6 +9,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String
       templateKey: String
+      aftermovie: String
       description: String
       image: File @fileByRelativePath
       images: [MarkdownRemarkFrontmatterImages]
@@ -23,6 +24,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       early_bird: Date @dateformat
       active: Boolean
       stages: [MarkdownRemarkFrontmatterStages]
+      galleries: [MarkdownRemarkFrontmatterGalleries]
       tickets: [MarkdownRemarkFrontmatterTickets]
       timetable: File @fileByRelativePath
       category: String
@@ -43,6 +45,12 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatterStages {
       name: String
       acts: [MarkdownRemarkFrontmatterStagesActs]
+    }
+    
+    type MarkdownRemarkFrontmatterGalleries {
+      naam: String
+      image: File @fileByRelativePath
+      url: String
     }
 
     type MarkdownRemarkFrontmatterStagesActs {

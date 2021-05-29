@@ -88,7 +88,6 @@ module.exports = themeOptions => {
       {
         resolve: 'gatsby-plugin-sitemap',
         options: {
-          exclude: ["/kruidvat", "/abn", "/vakantieveilingen"],
         }
       },
       {

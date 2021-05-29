@@ -44,6 +44,7 @@ const PrimaryMenu = ({handleClose, ...props}) => {
                 <ListItem
                     className={classes.listItem}
                     button
+                    component="a"
                     href={item.url}
                     rel="noopener noreferrer"
                     target="_blank"

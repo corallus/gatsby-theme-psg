@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from 'gatsby';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,54 +15,7 @@ import {Close} from "@material-ui/icons";
 import PrimaryMenu from "./Menu";
 import SocialMenu from "./SocialMenu";
 import Button from "./Button"
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-    toolbar: {
-        justifyContent: 'space-between'
-    },
-    toolbarIcon: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '0 8px',
-        ...theme.mixins.toolbar,
-    },
-    appBar: {
-        zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
-    },
-    menuButton: {
-        marginRight: 36,
-    },
-    menuButtonHidden: {
-        display: 'none',
-    },
-    title: {
-        position: 'absolute',
-        left: '50%',
-        transform: 'translateX(-50%)'
-    },
-    drawerPaper: {
-        position: 'relative',
-        whiteSpace: 'nowrap',
-        width: '100%',
-        [theme.breakpoints.up('sm')]: {
-            width: drawerWidth,
-        },
-        transition: theme.transitions.create('width', {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    },
-    secondaryMenu: {
-
-    }
-}));
+import useStyles from './style'
 
 export default function Index() {
     const classes = useStyles();

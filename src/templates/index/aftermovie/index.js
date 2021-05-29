@@ -24,10 +24,12 @@ const Aftermovie = ({children, ...props}) => {
                 </Typography>
             </IconButton>
             <Dialog onClose={() => setOpen(false)} aria-labelledby="aftermovie-dialog" open={open}>
+                {state.event.frontmatter.aftermovie &&
                 <iframe width="560" height="315" src={`${state.event.frontmatter.aftermovie.replace('watch?v=', 'embed/')}?autoplay=1`}
                         title="YouTube video player" frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen />
+                }
             </Dialog>
         </Section>
     )
