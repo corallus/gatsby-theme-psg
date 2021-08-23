@@ -15,7 +15,6 @@ module.exports = themeOptions => {
           policy: [{ userAgent: '*', allow: '/' }]
         }
       },
-      'gatsby-plugin-material-ui',
       {
         // keep as first gatsby-source-filesystem plugin for gatsby image support
         resolve: 'gatsby-source-filesystem',
