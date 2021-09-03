@@ -42,6 +42,7 @@ type MarkdownRemarkFrontmatterStages {
 
 type MarkdownRemarkFrontmatterStagesActs {
   artist: MarkdownRemark @link(by: "frontmatter.title")
+  image: File @fileByRelativePath
   announced: Boolean
 }
 

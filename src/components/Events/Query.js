@@ -18,6 +18,11 @@ export const useEventsQuery = () => {
                     ...Artist
                   }
                   announced
+                  image {
+                    childImageSharp {
+                      gatsbyImageData(aspectRatio: 1.33, layout: FULL_WIDTH)
+                    }
+                  }
                 }
               }
               tickets {
