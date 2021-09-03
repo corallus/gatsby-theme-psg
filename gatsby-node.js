@@ -56,6 +56,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MarkdownRemarkFrontmatterStagesActs {
       artist: MarkdownRemark @link(by: "frontmatter.title")
       announced: Boolean
+      image: File @fileByRelativePath
     }
 
     type MarkdownRemarkFrontmatterTickets {
