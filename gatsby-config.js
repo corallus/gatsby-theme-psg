@@ -113,8 +113,6 @@ module.exports = themeOptions => {
       'MarkdownRemark.frontmatter.artist': `MarkdownRemark.frontmatter.title`,
       'MarkdownRemark.frontmatter.event': `MarkdownRemark.frontmatter.title`,
       'MarkdownRemark.frontmatter.events': `MarkdownRemark.frontmatter.title`,
-      'MarkdownRemark.frontmatter.info1': `MarkdownRemark.frontmatter.title`,
-      'MarkdownRemark.frontmatter.info2': `MarkdownRemark.frontmatter.title`,
       'MarkdownRemark.frontmatter.stages.acts.artist': `MarkdownRemark.frontmatter.title`,
     },
   }
