@@ -1,5 +1,6 @@
 import React from 'react'
-import {Link} from 'gatsby'
+import algemeneVoorwaarden from '../assets/algemenevoorwaarden.pdf'
+import privacyStatement from '../assets/privacy-statement.pdf'
 
 import useSiteMetadata from "./SiteMetadata";
 
@@ -8,12 +9,12 @@ const Copyright = () => {
     return (
        <>
            © Copyright {new Date().getFullYear()}, All Rights Reserved.{' '}
-           <Link color="inherit" href="/algemene-voorwaarden.pdf">
+           <a href={algemeneVoorwaarden}>
                General conditions of {title}
-           </Link> apply to this event{' | '}
-           <Link color="inherit" href="/privacy-statement.pdf">
+           </a> apply to this event{' | '}
+           <a href={privacyStatement}>
                Privacy statement
-           </Link>
+           </a>
        </>
     )
 }
