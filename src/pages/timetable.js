@@ -18,6 +18,11 @@ export const query = graphql`
             frontmatter {
                 title
                 description
+                timetable {
+                    childImageSharp {
+                        gatsbyImageData(layout: FULL_WIDTH)
+                    }
+                }
             }
         }
     }
