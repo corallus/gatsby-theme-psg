@@ -6,9 +6,9 @@ import { Helmet } from 'react-helmet';
 
 import useSiteMetadata from "gatsby-theme-psg/src/components/SiteMetadata";
 
-import FormDisplay from "./display";
+import FormDisplay from "./form";
 
-export const ResponseForm = () => {
+const ContactForm = () => {
     const {domain} = useSiteMetadata()
 
     const api = `https://wlpbkbt4zc.execute-api.eu-central-1.amazonaws.com/production/contact`
@@ -73,3 +73,5 @@ export const ResponseForm = () => {
         </>
     )
 }
+
+export default ContactForm

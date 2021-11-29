@@ -1,9 +1,9 @@
 import React from 'react';
 
-const FormDisplay = ({props}) => {
+const Form = ({props}) => {
     return (
         <>Not implemented</>
     )
 }
 
-export default FormDisplay
+export default Form
