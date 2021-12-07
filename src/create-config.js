@@ -114,7 +114,7 @@ export default function (config = {}) {
                         searchFields: ['title'],
                         valueField: 'title'
                     },
-                    {label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int', required: false}
+                    {label: 'Volgorde', name: 'order', widget: 'number', valueType: 'int', required: true}
                 ]
             },
             {
