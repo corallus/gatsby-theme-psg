@@ -8,7 +8,7 @@ const useInfo = (items) => {
     return items.filter(post =>
         !post.frontmatter.events ||
         post.frontmatter.events.length === 0 ||
-        post.frontmatter.events.some(ev => ev.id === event.id)
+        post.frontmatter.events.some(ev => ev?.id === event.id)
     )
 }
 
