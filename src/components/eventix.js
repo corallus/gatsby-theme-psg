@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext} from 'react'
 import Context from 'gatsby-theme-psg/src/components/Events/Context'
 import {ticketParams} from "gatsby-theme-psg/src/params";
 import {Helmet} from "react-helmet";
