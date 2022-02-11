@@ -10,12 +10,12 @@ const Tickets = () => {
     if (!event.frontmatter.eventix) return <h3 className="text-center">{ticketParams.emptyText}</h3>
 
     return (
-            <>
-                <Helmet>
-                    <script src={`https://shop.eventix.io/build/integrate.js?event=${event.frontmatter.eventix}`}/>
-                </Helmet>
-                <Display event={event} />
-            </>
+        <>
+            <Helmet>
+                <script src={`https://shop.eventix.io/build/integrate.js?event=${event.frontmatter.eventix}`}/>
+            </Helmet>
+            <Display event={event} />
+        </>
     )
 }
 
