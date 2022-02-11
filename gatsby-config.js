@@ -107,7 +107,6 @@ module.exports = themeOptions => {
           display: `standalone`,
         },
       },
-      'gatsby-plugin-offline',
     ],
     mapping: {
       'MarkdownRemark.frontmatter.artist': `MarkdownRemark.frontmatter.title`,
