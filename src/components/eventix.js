@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import Context from 'gatsby-theme-psg/src/components/Events/Context'
 import {ticketParams} from "gatsby-theme-psg/src/params";
-import {Helmet} from "react-helmet";
+
 
 const Tickets = () => {
     const {state} = useContext(Context)
@@ -10,15 +10,13 @@ const Tickets = () => {
     if (!event.frontmatter.eventix) return <h3 className="text-center">{ticketParams.emptyText}</h3>
 
     return (
-        <>
-            <Helmet>
-                <script src={`https://shop.eventix.io/build/integrate.js`}/>
-            </Helmet>
-            <div id="shop-frame"
-                 data-url={`https://shop.eventix.io/${event.frontmatter.eventix}`}
-                 style={{maxWidth: '600px', margin: '0 auto'}}
-            />
-        </>
+        <iframe
+            width={'100%'}
+            frameBorder="0"
+            className="ot-container__iframe"
+            src={`https://shop.eventix.io/${event.frontmatter.eventix}`}
+            style={{minHeight: '700px', height: '1500px', width: '100%'}}
+        />
     )
 }
 
