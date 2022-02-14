@@ -12,19 +12,13 @@ const Tickets = () => {
     return (
         <>
             <Helmet>
-                <script src={`https://shop.eventix.io/build/integrate.js?event=${event.frontmatter.eventix}`}/>
+                <script src={`https://shop.eventix.io/build/integrate.js`}/>
             </Helmet>
-            <Display event={event} />
+            <div id="shop-frame"
+                 data-url={`https://shop.eventix.io/${event.frontmatter.eventix}`}
+                 style={{maxWidth: '600px', margin: '0 auto'}}
+            />
         </>
-    )
-}
-
-const Display = ({event}) => {
-    return (
-        <div id="shop-frame"
-             data-url={`https://shop.eventix.io/${event.frontmatter.eventix}`}
-             style={{maxWidth: '600px', margin: '0 auto'}}
-        />
     )
 }
 
