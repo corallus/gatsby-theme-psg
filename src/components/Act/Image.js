@@ -5,7 +5,7 @@ const ActImage = ({act}) => {
 
     const artist = act.artist
 
-    const image = act.image?.childImageSharp.gatsbyImageData || artist.frontmatter.image.childImageSharp.gatsbyImageData
+    const image = act.image?.childImageSharp.gatsbyImageData || artist.frontmatter.image?.childImageSharp.gatsbyImageData
 
     return (
         <GatsbyImage
